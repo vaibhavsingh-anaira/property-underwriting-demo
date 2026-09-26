@@ -1,0 +1,75 @@
+{
+  "account": "Keystone Plastics",
+  "run_date": "2025-10-10",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 6293,
+  "aal_by_peril": {
+    "SCS": 6293
+  },
+  "location_aal": {
+    "L1": 6293,
+    "L2": 0
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 51011
+    },
+    {
+      "rp": 50,
+      "loss": 65114
+    },
+    {
+      "rp": 100,
+      "loss": 81773
+    },
+    {
+      "rp": 250,
+      "loss": 281095
+    },
+    {
+      "rp": 500,
+      "loss": 281095
+    },
+    {
+      "rp": 1000,
+      "loss": 281095
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 51011
+    },
+    {
+      "rp": 50,
+      "loss": 65114
+    },
+    {
+      "rp": 100,
+      "loss": 81773
+    },
+    {
+      "rp": 250,
+      "loss": 281095
+    },
+    {
+      "rp": 500,
+      "loss": 281095
+    },
+    {
+      "rp": 1000,
+      "loss": 281095
+    }
+  ]
+}

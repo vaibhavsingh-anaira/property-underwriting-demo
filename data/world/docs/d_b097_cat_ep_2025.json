@@ -1,0 +1,87 @@
+{
+  "account": "Magnolia Logistics",
+  "run_date": "2025-10-19",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 112503,
+  "aal_by_peril": {
+    "SCS": 71852,
+    "WF": 7051,
+    "EQ": 33600
+  },
+  "location_aal": {
+    "L1": 1537,
+    "L2": 650,
+    "L3": 8962,
+    "L4": 2797,
+    "L5": 3029,
+    "L6": 691,
+    "L7": 3803,
+    "L8": 4006,
+    "L9": 39450,
+    "L10": 1364,
+    "L11": 4725,
+    "L12": 41489
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 145696
+    },
+    {
+      "rp": 25,
+      "loss": 261358
+    },
+    {
+      "rp": 50,
+      "loss": 596112
+    },
+    {
+      "rp": 100,
+      "loss": 635891
+    },
+    {
+      "rp": 250,
+      "loss": 1534242
+    },
+    {
+      "rp": 500,
+      "loss": 4061331
+    },
+    {
+      "rp": 1000,
+      "loss": 8625332
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 201492
+    },
+    {
+      "rp": 25,
+      "loss": 382473
+    },
+    {
+      "rp": 50,
+      "loss": 635891
+    },
+    {
+      "rp": 100,
+      "loss": 804283
+    },
+    {
+      "rp": 250,
+      "loss": 2187137
+    },
+    {
+      "rp": 500,
+      "loss": 8683359
+    },
+    {
+      "rp": 1000,
+      "loss": 9043371
+    }
+  ]
+}

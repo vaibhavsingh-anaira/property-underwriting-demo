@@ -1,0 +1,77 @@
+{
+  "account": "Pioneer Health System",
+  "run_date": "2025-10-23",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 22200,
+  "aal_by_peril": {
+    "SCS": 143,
+    "HU": 22057,
+    "FL": 0
+  },
+  "location_aal": {
+    "L1": 143,
+    "L2": 22057
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 0
+    },
+    {
+      "rp": 50,
+      "loss": 9788
+    },
+    {
+      "rp": 100,
+      "loss": 492865
+    },
+    {
+      "rp": 250,
+      "loss": 2048227
+    },
+    {
+      "rp": 500,
+      "loss": 3770108
+    },
+    {
+      "rp": 1000,
+      "loss": 4378709
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 0
+    },
+    {
+      "rp": 50,
+      "loss": 9788
+    },
+    {
+      "rp": 100,
+      "loss": 309166
+    },
+    {
+      "rp": 250,
+      "loss": 1660746
+    },
+    {
+      "rp": 500,
+      "loss": 3770108
+    },
+    {
+      "rp": 1000,
+      "loss": 4378708
+    }
+  ]
+}

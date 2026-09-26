@@ -1,0 +1,78 @@
+{
+  "account": "Yardley Logistics",
+  "run_date": "2025-10-20",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 97868,
+  "aal_by_peril": {
+    "HU": 36740,
+    "SCS": 9050,
+    "FL": 52078
+  },
+  "location_aal": {
+    "L1": 47162,
+    "L2": 9961,
+    "L3": 40745
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 113041
+    },
+    {
+      "rp": 25,
+      "loss": 368546
+    },
+    {
+      "rp": 50,
+      "loss": 953822
+    },
+    {
+      "rp": 100,
+      "loss": 1795153
+    },
+    {
+      "rp": 250,
+      "loss": 4672162
+    },
+    {
+      "rp": 500,
+      "loss": 6413843
+    },
+    {
+      "rp": 1000,
+      "loss": 10000000
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 139161
+    },
+    {
+      "rp": 25,
+      "loss": 414932
+    },
+    {
+      "rp": 50,
+      "loss": 956757
+    },
+    {
+      "rp": 100,
+      "loss": 1806420
+    },
+    {
+      "rp": 250,
+      "loss": 6235118
+    },
+    {
+      "rp": 500,
+      "loss": 7090184
+    },
+    {
+      "rp": 1000,
+      "loss": 10000000
+    }
+  ]
+}

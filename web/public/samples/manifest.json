@@ -1,0 +1,72 @@
+{
+  "pdf": {
+    "url": "/samples/declarations.pdf",
+    "highlights": [
+      {
+        "page": 1,
+        "bbox": [
+          270,
+          249.0,
+          339.2,
+          264.0
+        ],
+        "label": "TIV \u00b7 $120.4M",
+        "page_size": [
+          612.0,
+          792.0
+        ]
+      },
+      {
+        "page": 1,
+        "bbox": [
+          270,
+          297.0,
+          333.6,
+          312.0
+        ],
+        "label": "BI limit \u00b7 $15M",
+        "page_size": [
+          612.0,
+          792.0
+        ]
+      },
+      {
+        "page": 2,
+        "bbox": [
+          270,
+          153.0,
+          477.0,
+          168.0
+        ],
+        "label": "Named storm ded \u00b7 2%",
+        "page_size": [
+          612.0,
+          792.0
+        ]
+      },
+      {
+        "page": 3,
+        "bbox": [
+          270,
+          201.0,
+          510.3,
+          216.0
+        ],
+        "label": "Protective safeguards",
+        "page_size": [
+          612.0,
+          792.0
+        ]
+      }
+    ]
+  },
+  "xlsx": {
+    "anchor": {
+      "doc_id": null,
+      "kind": "xlsx",
+      "sheet": "Locations",
+      "cell": "M14",
+      "range": "A14:S14"
+    }
+  }
+}

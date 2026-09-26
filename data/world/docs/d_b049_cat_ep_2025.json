@@ -1,0 +1,80 @@
+{
+  "account": "Valley Commons LLC",
+  "run_date": "2025-10-05",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 72402,
+  "aal_by_peril": {
+    "EQ": 32456,
+    "WF": 30764,
+    "SCS": 9182
+  },
+  "location_aal": {
+    "L1": 16805,
+    "L2": 6954,
+    "L3": 46416,
+    "L4": 0,
+    "L5": 2228
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 48653
+    },
+    {
+      "rp": 25,
+      "loss": 286242
+    },
+    {
+      "rp": 50,
+      "loss": 417100
+    },
+    {
+      "rp": 100,
+      "loss": 1221981
+    },
+    {
+      "rp": 250,
+      "loss": 3857800
+    },
+    {
+      "rp": 500,
+      "loss": 7245721
+    },
+    {
+      "rp": 1000,
+      "loss": 8709759
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 50377
+    },
+    {
+      "rp": 25,
+      "loss": 293860
+    },
+    {
+      "rp": 50,
+      "loss": 442497
+    },
+    {
+      "rp": 100,
+      "loss": 1252282
+    },
+    {
+      "rp": 250,
+      "loss": 2751573
+    },
+    {
+      "rp": 500,
+      "loss": 7245720
+    },
+    {
+      "rp": 1000,
+      "loss": 8375100
+    }
+  ]
+}

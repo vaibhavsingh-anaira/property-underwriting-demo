@@ -1,0 +1,3 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-31768,1,Sterling Dayton Facility,39.696617,-84.264835,US,OH,1220,5150,1977,1,2001,22425000,3273000,11499000,2708000,WTC;WSS;QEQ;ORF;BFR,AOP,25000
+NSP-CP-2025-31768,2,Sterling San Jose Building,37.325193,-121.903343,US,CA,1220,5150,1982,1,2018,23399000,3409000,12793000,3232000,WTC;WSS;QEQ;ORF;BFR,AOP,25000

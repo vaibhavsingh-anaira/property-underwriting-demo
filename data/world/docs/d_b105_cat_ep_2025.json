@@ -1,0 +1,77 @@
+{
+  "account": "Oakmont Fabrication",
+  "run_date": "2025-10-10",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 38866,
+  "aal_by_peril": {
+    "SCS": 36062,
+    "WF": 2804
+  },
+  "location_aal": {
+    "L1": 644,
+    "L2": 2329,
+    "L3": 35893
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 71182
+    },
+    {
+      "rp": 25,
+      "loss": 102084
+    },
+    {
+      "rp": 50,
+      "loss": 201366
+    },
+    {
+      "rp": 100,
+      "loss": 375861
+    },
+    {
+      "rp": 250,
+      "loss": 375861
+    },
+    {
+      "rp": 500,
+      "loss": 375861
+    },
+    {
+      "rp": 1000,
+      "loss": 375861
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 91395
+    },
+    {
+      "rp": 25,
+      "loss": 155790
+    },
+    {
+      "rp": 50,
+      "loss": 237537
+    },
+    {
+      "rp": 100,
+      "loss": 386554
+    },
+    {
+      "rp": 250,
+      "loss": 477827
+    },
+    {
+      "rp": 500,
+      "loss": 699542
+    },
+    {
+      "rp": 1000,
+      "loss": 762860
+    }
+  ]
+}

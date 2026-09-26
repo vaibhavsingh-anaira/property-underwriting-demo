@@ -1,0 +1,75 @@
+{
+  "account": "Cobalt Recycling",
+  "run_date": "2025-11-20",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 111272,
+  "aal_by_peril": {
+    "SCS": 111272
+  },
+  "location_aal": {
+    "L1": 110172,
+    "L2": 1099
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 191693
+    },
+    {
+      "rp": 25,
+      "loss": 344041
+    },
+    {
+      "rp": 50,
+      "loss": 662350
+    },
+    {
+      "rp": 100,
+      "loss": 809445
+    },
+    {
+      "rp": 250,
+      "loss": 857078
+    },
+    {
+      "rp": 500,
+      "loss": 857078
+    },
+    {
+      "rp": 1000,
+      "loss": 857078
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 257346
+    },
+    {
+      "rp": 25,
+      "loss": 450452
+    },
+    {
+      "rp": 50,
+      "loss": 809445
+    },
+    {
+      "rp": 100,
+      "loss": 908686
+    },
+    {
+      "rp": 250,
+      "loss": 1026564
+    },
+    {
+      "rp": 500,
+      "loss": 1087335
+    },
+    {
+      "rp": 1000,
+      "loss": 1355654
+    }
+  ]
+}

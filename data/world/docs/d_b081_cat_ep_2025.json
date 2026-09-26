@@ -1,0 +1,87 @@
+{
+  "account": "Kingsport Realty Trust",
+  "run_date": "2025-10-27",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 111011,
+  "aal_by_peril": {
+    "SCS": 711,
+    "EQ": 88991,
+    "WF": 21309
+  },
+  "location_aal": {
+    "L1": 314,
+    "L2": 18506,
+    "L3": 0,
+    "L4": 0,
+    "L5": 397,
+    "L6": 0,
+    "L7": 0,
+    "L8": 0,
+    "L9": 0,
+    "L10": 91794,
+    "L11": 0,
+    "L12": 0
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 52512
+    },
+    {
+      "rp": 50,
+      "loss": 224052
+    },
+    {
+      "rp": 100,
+      "loss": 850740
+    },
+    {
+      "rp": 250,
+      "loss": 5437920
+    },
+    {
+      "rp": 500,
+      "loss": 13833700
+    },
+    {
+      "rp": 1000,
+      "loss": 30430977
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 51663
+    },
+    {
+      "rp": 50,
+      "loss": 276754
+    },
+    {
+      "rp": 100,
+      "loss": 990735
+    },
+    {
+      "rp": 250,
+      "loss": 5437920
+    },
+    {
+      "rp": 500,
+      "loss": 13833700
+    },
+    {
+      "rp": 1000,
+      "loss": 46487832
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-32850,1,Evergreen Phoenix Facility,33.457277,-112.059935,US,AZ,0702,5300,2000,11,2022,13611000,3053000,0,2293000,WTC;WSS;QEQ;ORF;BFR,AOP,25000
+NSP-CP-2025-32850,2,Evergreen Pittsburgh Building,40.370736,-79.981363,US,PA,0702,5100,1978,16,2001,16419000,3462000,0,2859000,WTC;WSS;QEQ;ORF;BFR,AOP,25000

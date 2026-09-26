@@ -1,0 +1,78 @@
+{
+  "account": "Delta Kitchens",
+  "run_date": "2025-09-28",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 127538,
+  "aal_by_peril": {
+    "HU": 71491,
+    "SCS": 3404,
+    "FL": 52643
+  },
+  "location_aal": {
+    "L1": 38666,
+    "L2": 87870,
+    "L3": 1002
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 88431
+    },
+    {
+      "rp": 25,
+      "loss": 530280
+    },
+    {
+      "rp": 50,
+      "loss": 1306937
+    },
+    {
+      "rp": 100,
+      "loss": 2609738
+    },
+    {
+      "rp": 250,
+      "loss": 7029528
+    },
+    {
+      "rp": 500,
+      "loss": 10000000
+    },
+    {
+      "rp": 1000,
+      "loss": 12454287
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 97319
+    },
+    {
+      "rp": 25,
+      "loss": 576207
+    },
+    {
+      "rp": 50,
+      "loss": 1417318
+    },
+    {
+      "rp": 100,
+      "loss": 2374225
+    },
+    {
+      "rp": 250,
+      "loss": 5003602
+    },
+    {
+      "rp": 500,
+      "loss": 7640784
+    },
+    {
+      "rp": 1000,
+      "loss": 12454287
+    }
+  ]
+}

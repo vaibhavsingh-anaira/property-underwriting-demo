@@ -1,0 +1,81 @@
+{
+  "account": "Driftwood Manufacturing",
+  "run_date": "2025-09-13",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 129459,
+  "aal_by_peril": {
+    "EQ": 70624,
+    "WF": 41531,
+    "SCS": 17304
+  },
+  "location_aal": {
+    "L1": 36897,
+    "L2": 1543,
+    "L3": 0,
+    "L4": 15760,
+    "L5": 29704,
+    "L6": 45554
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 96887
+    },
+    {
+      "rp": 25,
+      "loss": 355597
+    },
+    {
+      "rp": 50,
+      "loss": 772681
+    },
+    {
+      "rp": 100,
+      "loss": 2177927
+    },
+    {
+      "rp": 250,
+      "loss": 6995630
+    },
+    {
+      "rp": 500,
+      "loss": 12562262
+    },
+    {
+      "rp": 1000,
+      "loss": 15596041
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 96887
+    },
+    {
+      "rp": 25,
+      "loss": 348494
+    },
+    {
+      "rp": 50,
+      "loss": 772682
+    },
+    {
+      "rp": 100,
+      "loss": 2002700
+    },
+    {
+      "rp": 250,
+      "loss": 6906722
+    },
+    {
+      "rp": 500,
+      "loss": 10220641
+    },
+    {
+      "rp": 1000,
+      "loss": 15588300
+    }
+  ]
+}

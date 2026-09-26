@@ -1,0 +1,83 @@
+{
+  "account": "Delta Commons LLC",
+  "run_date": "2025-12-04",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 163011,
+  "aal_by_peril": {
+    "EQ": 125746,
+    "WF": 32870,
+    "SCS": 4395
+  },
+  "location_aal": {
+    "L1": 68172,
+    "L2": 0,
+    "L3": 2550,
+    "L4": 0,
+    "L5": 1846,
+    "L6": 0,
+    "L7": 90444,
+    "L8": 0
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 48125
+    },
+    {
+      "rp": 25,
+      "loss": 145500
+    },
+    {
+      "rp": 50,
+      "loss": 501953
+    },
+    {
+      "rp": 100,
+      "loss": 1883637
+    },
+    {
+      "rp": 250,
+      "loss": 7869507
+    },
+    {
+      "rp": 500,
+      "loss": 15009268
+    },
+    {
+      "rp": 1000,
+      "loss": 42056449
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 48125
+    },
+    {
+      "rp": 25,
+      "loss": 165224
+    },
+    {
+      "rp": 50,
+      "loss": 416852
+    },
+    {
+      "rp": 100,
+      "loss": 1589021
+    },
+    {
+      "rp": 250,
+      "loss": 12444333
+    },
+    {
+      "rp": 500,
+      "loss": 42056448
+    },
+    {
+      "rp": 1000,
+      "loss": 46771344
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-47222,1,Westbrook San Jose Facility,37.36132,-121.856138,US,CA,0567,5100,1978,1,2018,1962000,896000,1063000,411000,WTC;WSS;QEQ;ORF;BFR,AOP,25000

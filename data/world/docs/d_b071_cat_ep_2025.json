@@ -1,0 +1,87 @@
+{
+  "account": "Magnolia Realty Trust",
+  "run_date": "2025-09-18",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 236243,
+  "aal_by_peril": {
+    "SCS": 48127,
+    "EQ": 126593,
+    "WF": 61523
+  },
+  "location_aal": {
+    "L1": 1879,
+    "L2": 59,
+    "L3": 77905,
+    "L4": 321,
+    "L5": 10239,
+    "L6": 147,
+    "L7": 2650,
+    "L8": 48680,
+    "L9": 30192,
+    "L10": 61530,
+    "L11": 0,
+    "L12": 2641
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 201802
+    },
+    {
+      "rp": 25,
+      "loss": 666848
+    },
+    {
+      "rp": 50,
+      "loss": 1393133
+    },
+    {
+      "rp": 100,
+      "loss": 4411398
+    },
+    {
+      "rp": 250,
+      "loss": 8672545
+    },
+    {
+      "rp": 500,
+      "loss": 16392202
+    },
+    {
+      "rp": 1000,
+      "loss": 24355064
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 250243
+    },
+    {
+      "rp": 25,
+      "loss": 787216
+    },
+    {
+      "rp": 50,
+      "loss": 1574432
+    },
+    {
+      "rp": 100,
+      "loss": 4865061
+    },
+    {
+      "rp": 250,
+      "loss": 11136044
+    },
+    {
+      "rp": 500,
+      "loss": 18765994
+    },
+    {
+      "rp": 1000,
+      "loss": 24355064
+    }
+  ]
+}

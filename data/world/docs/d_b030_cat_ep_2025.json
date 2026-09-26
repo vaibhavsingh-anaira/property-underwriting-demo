@@ -1,0 +1,85 @@
+{
+  "account": "Mesa Realty Trust",
+  "run_date": "2025-09-29",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 504868,
+  "aal_by_peril": {
+    "EQ": 6956,
+    "WF": 25950,
+    "SCS": 17967,
+    "HU": 390813,
+    "FL": 63183
+  },
+  "location_aal": {
+    "L1": 32905,
+    "L2": 9143,
+    "L3": 61817,
+    "L4": 205540,
+    "L5": 0,
+    "L6": 105839,
+    "L7": 57850,
+    "L8": 31774
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 488165
+    },
+    {
+      "rp": 25,
+      "loss": 2931888
+    },
+    {
+      "rp": 50,
+      "loss": 6766754
+    },
+    {
+      "rp": 100,
+      "loss": 10000000
+    },
+    {
+      "rp": 250,
+      "loss": 15104668
+    },
+    {
+      "rp": 500,
+      "loss": 21812035
+    },
+    {
+      "rp": 1000,
+      "loss": 24495316
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 545166
+    },
+    {
+      "rp": 25,
+      "loss": 3431948
+    },
+    {
+      "rp": 50,
+      "loss": 7399888
+    },
+    {
+      "rp": 100,
+      "loss": 10397803
+    },
+    {
+      "rp": 250,
+      "loss": 15666906
+    },
+    {
+      "rp": 500,
+      "loss": 21818954
+    },
+    {
+      "rp": 1000,
+      "loss": 24513752
+    }
+  ]
+}

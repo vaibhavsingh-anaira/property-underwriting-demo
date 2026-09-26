@@ -1,0 +1,74 @@
+{
+  "account": "Ridgeway Living",
+  "run_date": "2025-09-06",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 164,
+  "aal_by_peril": {
+    "SCS": 164
+  },
+  "location_aal": {
+    "L1": 164
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 303
+    },
+    {
+      "rp": 50,
+      "loss": 1521
+    },
+    {
+      "rp": 100,
+      "loss": 4167
+    },
+    {
+      "rp": 250,
+      "loss": 11558
+    },
+    {
+      "rp": 500,
+      "loss": 11558
+    },
+    {
+      "rp": 1000,
+      "loss": 11558
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 303
+    },
+    {
+      "rp": 50,
+      "loss": 1824
+    },
+    {
+      "rp": 100,
+      "loss": 4167
+    },
+    {
+      "rp": 250,
+      "loss": 11558
+    },
+    {
+      "rp": 500,
+      "loss": 11558
+    },
+    {
+      "rp": 1000,
+      "loss": 11558
+    }
+  ]
+}

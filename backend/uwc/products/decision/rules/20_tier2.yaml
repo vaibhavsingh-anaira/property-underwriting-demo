@@ -1,0 +1,155 @@
+# Decision Assurance — tier 2 assurance model. In production this tier is a model-based critique of the intended
+# action (an LLM pass over the evidence, the rationale and the wording). Here it is a transparent, deterministic
+# stand-in with the same inputs and outputs: every signal is computed from the evidence ledger and shown with its
+# score, so the carrier can see exactly why it fired. Outcomes feed calibration (outcome feedback, stage 10).
+
+- id: DA.T2.CONFLICT_UNRESOLVED
+  product: decision
+  version: 1
+  family: data_integrity
+  title: Tier 2 — action taken on unresolved conflicting evidence
+  applies_to: case
+  when: "case.open_material_contradictions > 0"
+  outcome: FLAG
+  severity: HIGH
+  origin: standard_library
+  scope: {tier: 2, stage: action, dimension: evidence, signal: conflict}
+  observed: "{case.open_material_contradictions} material contradiction(s) unresolved · rating impact {usd(case.open_contradiction_impact)}"
+  expected: "Contradictions resolved (source chosen, with reason) before commitment"
+  source: "Anaira assurance model (deterministic stand-in) · evidence critique"
+  impact: contradiction_impact
+  tests:
+    - {name: open, fixture: {case: {open_material_contradictions: 1}}, expect: FLAG}
+    - {name: resolved, fixture: {case: {open_material_contradictions: 0}}, expect: PASS}
+
+- id: DA.T2.LOW_CONFIDENCE
+  product: decision
+  version: 1
+  family: data_integrity
+  title: Tier 2 — rating-critical fields rest on low-confidence extraction
+  applies_to: case
+  when: "case.low_conf_fields > 0"
+  outcome: FLAG
+  severity: LOW
+  origin: standard_library
+  scope: {tier: 2, stage: action, dimension: evidence, signal: confidence}
+  observed: "{case.low_conf_fields} rating field(s) below 85% confidence: {case.low_conf_text}"
+  expected: "Rating fields confirmed or verified"
+  source: "Anaira assurance model (deterministic stand-in) · extraction confidence"
+  impact: none
+  tests:
+    - {name: low, fixture: {case: {low_conf_fields: 2}}, expect: FLAG}
+
+- id: DA.T2.UNUSUAL_RISK
+  product: decision
+  version: 1
+  family: pricing
+  title: Tier 2 — rate unusual against peer submissions
+  applies_to: case
+  when: "abs(case.peer_rate_z) > 2.0"
+  outcome: FLAG
+  severity: MEDIUM
+  origin: standard_library
+  scope: {tier: 2, stage: action, dimension: pricing, signal: unusual}
+  observed: "Non-CAT rate {case.rate_per_100} per $100 TIV vs peer median {case.peer_rate_median} ({case.peer_n} {case.governing_label} submissions, z = {case.peer_rate_z})"
+  expected: "Within two standard deviations of peers, or explained in the rationale"
+  source: "Anaira assurance model (deterministic stand-in) · peer comparison"
+  impact: none
+  tests:
+    - {name: outlier, fixture: {case: {peer_rate_z: 2.6}}, expect: FLAG}
+    - {name: normal, fixture: {case: {peer_rate_z: 0.4}}, expect: PASS}
+
+- id: DA.T2.LARGE_LIMIT
+  product: decision
+  version: 1
+  family: authority
+  title: Tier 2 — large limit / high severity, senior review recommended
+  applies_to: case
+  when: "act.limit >= g.large_limit"
+  outcome: FLAG
+  severity: MEDIUM
+  origin: standard_library
+  scope: {tier: 2, stage: action, dimension: authority, signal: severity, tier3: true}
+  observed: "Limit {usd(act.limit)} · 1-in-250 OEP {usd(px.oep_250)}"
+  expected: "Senior review of limits ≥ {usd(g.large_limit)}"
+  source: "Anaira assurance model (deterministic stand-in) · severity"
+  impact: none
+  tests:
+    - {name: big, fixture: {act: {limit: 104500000}, g: {large_limit: 100000000}}, expect: FLAG}
+
+- id: DA.T2.MANUSCRIPT
+  product: decision
+  version: 1
+  family: coverage
+  title: Tier 2 — manuscript wording deletes a standard exclusion
+  applies_to: case
+  when: "act.manuscript == 'full'"
+  outcome: REFER
+  severity: HIGH
+  referral_level: 3
+  origin: carrier_guideline
+  scope: {tier: 2, stage: action, dimension: guidelines, signal: wording, tier3: true}
+  observed: "{case.manuscript_text}"
+  expected: "Standard exclusions retained, or Level 3 approval with legal review"
+  source: "NB Standards NB§6.1 · assurance model wording critique"
+  impact: manuscript_load
+  tests:
+    - {name: deleted, fixture: {act: {manuscript: full}}, expect: REFER}
+    - {name: limited, fixture: {act: {manuscript: limited}}, expect: PASS}
+    - {name: none, fixture: {act: {manuscript: null}}, expect: PASS}
+
+- id: DA.T2.OVERRIDE_EVIDENCE
+  product: decision
+  version: 1
+  family: data_integrity
+  title: Tier 2 — override rationale not supported by the evidence on file
+  applies_to: case
+  when: "act.override_unevidenced > 0 || act.override_contrary > 0"
+  outcome: REFER
+  severity: HIGH
+  origin: standard_library
+  scope: {tier: 2, stage: action, dimension: evidence, signal: override, level: override, tier3: true}
+  observed: "{act.override_text}"
+  expected: "Overrides carry a reason, and evidence for any fact the reason relies on"
+  source: "NB Standards NB§7.2 · assurance model rationale critique"
+  impact: none
+  tests:
+    - {name: unevidenced, fixture: {act: {override_unevidenced: 1, override_contrary: 0}}, expect: REFER}
+    - {name: none, fixture: {act: {override_unevidenced: 0, override_contrary: 0}}, expect: PASS}
+
+- id: DA.T2.RATIONALE
+  product: decision
+  version: 1
+  family: pricing
+  title: Tier 2 — deviation from technical without a rationale
+  applies_to: case
+  when: "abs(act.dev) > g.rationale_required_dev && !act.has_rationale"
+  outcome: FLAG
+  severity: LOW
+  origin: carrier_guideline
+  scope: {tier: 2, stage: action, dimension: pricing, signal: rationale}
+  observed: "{pct(act.dev)} from technical, no rationale recorded"
+  expected: "Rationale for deviations beyond ±{pct(g.rationale_required_dev)}"
+  source: "NB Standards NB§7.2"
+  impact: none
+  tests:
+    - {name: missing, fixture: {act: {dev: -0.06, has_rationale: false}, g: {rationale_required_dev: 0.025}}, expect: FLAG}
+    - {name: given, fixture: {act: {dev: -0.06, has_rationale: true}, g: {rationale_required_dev: 0.025}}, expect: PASS}
+
+- id: DA.T2.RATIONALE_EVIDENCE
+  product: decision
+  version: 1
+  family: data_integrity
+  title: Tier 2 — rationale relies on loss history that is incomplete
+  applies_to: case
+  when: "act.rationale_cites_losses && case.loss_run_years < g.loss_run_years_required"
+  outcome: FLAG
+  severity: MEDIUM
+  origin: standard_library
+  scope: {tier: 2, stage: action, dimension: evidence, signal: rationale}
+  observed: "Rationale cites loss history; {case.loss_run_years} of {g.loss_run_years_required} years on file"
+  expected: "Loss-history arguments rest on the full experience period"
+  source: "Anaira assurance model (deterministic stand-in) · rationale critique"
+  impact: none
+  tests:
+    - {name: short, fixture: {act: {rationale_cites_losses: true}, case: {loss_run_years: 3}, g: {loss_run_years_required: 5}}, expect: FLAG}

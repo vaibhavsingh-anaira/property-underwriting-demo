@@ -1,0 +1,78 @@
+{
+  "account": "Newport Refrigerated Services",
+  "run_date": "2025-11-14",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 99979,
+  "aal_by_peril": {
+    "SCS": 44977,
+    "EQ": 45641,
+    "WF": 9362
+  },
+  "location_aal": {
+    "L1": 245,
+    "L2": 52222,
+    "L3": 47512
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 126002
+    },
+    {
+      "rp": 25,
+      "loss": 259999
+    },
+    {
+      "rp": 50,
+      "loss": 438036
+    },
+    {
+      "rp": 100,
+      "loss": 645240
+    },
+    {
+      "rp": 250,
+      "loss": 3205672
+    },
+    {
+      "rp": 500,
+      "loss": 5902134
+    },
+    {
+      "rp": 1000,
+      "loss": 13866669
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 144698
+    },
+    {
+      "rp": 25,
+      "loss": 278322
+    },
+    {
+      "rp": 50,
+      "loss": 438036
+    },
+    {
+      "rp": 100,
+      "loss": 868303
+    },
+    {
+      "rp": 250,
+      "loss": 2901685
+    },
+    {
+      "rp": 500,
+      "loss": 5902134
+    },
+    {
+      "rp": 1000,
+      "loss": 16299002
+    }
+  ]
+}

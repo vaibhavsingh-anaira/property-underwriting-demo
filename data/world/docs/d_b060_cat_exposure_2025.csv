@@ -1,0 +1,3 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-41209,1,Prairie Fort Worth Facility,32.801217,-97.306398,US,TX,1220,5200,1993,1,2017,12591000,1644000,6160000,1449000,WTC;WSS;QEQ;ORF;BFR,AOP,10000
+NSP-CP-2025-41209,2,Prairie Denver Building,39.782019,-104.986487,US,CO,1220,5200,2009,2,2022,23824000,3353000,12516000,2917000,WTC;WSS;QEQ;ORF;BFR,AOP,10000

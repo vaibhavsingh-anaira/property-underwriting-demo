@@ -1,0 +1,81 @@
+{
+  "account": "Liberty Row Properties",
+  "run_date": "2025-10-28",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 80135,
+  "aal_by_peril": {
+    "SCS": 5686,
+    "EQ": 57620,
+    "WF": 16830
+  },
+  "location_aal": {
+    "L1": 24,
+    "L2": 1704,
+    "L3": 29,
+    "L4": 3367,
+    "L5": 563,
+    "L6": 74450
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 42545
+    },
+    {
+      "rp": 25,
+      "loss": 100697
+    },
+    {
+      "rp": 50,
+      "loss": 234389
+    },
+    {
+      "rp": 100,
+      "loss": 594972
+    },
+    {
+      "rp": 250,
+      "loss": 2986202
+    },
+    {
+      "rp": 500,
+      "loss": 8517926
+    },
+    {
+      "rp": 1000,
+      "loss": 22533754
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 46776
+    },
+    {
+      "rp": 25,
+      "loss": 105771
+    },
+    {
+      "rp": 50,
+      "loss": 239343
+    },
+    {
+      "rp": 100,
+      "loss": 807420
+    },
+    {
+      "rp": 250,
+      "loss": 8522599
+    },
+    {
+      "rp": 500,
+      "loss": 13866999
+    },
+    {
+      "rp": 1000,
+      "loss": 25984108
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "account": "Harborline Retail Centers",
+  "run_date": "2025-10-03",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 110111,
+  "aal_by_peril": {
+    "SCS": 3875,
+    "EQ": 84875,
+    "WF": 21362
+  },
+  "location_aal": {
+    "L1": 0,
+    "L2": 251,
+    "L3": 46691,
+    "L4": 21103,
+    "L5": 37251,
+    "L6": 4815
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 67482
+    },
+    {
+      "rp": 50,
+      "loss": 268459
+    },
+    {
+      "rp": 100,
+      "loss": 1149108
+    },
+    {
+      "rp": 250,
+      "loss": 5641587
+    },
+    {
+      "rp": 500,
+      "loss": 15021884
+    },
+    {
+      "rp": 1000,
+      "loss": 28001046
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 67482
+    },
+    {
+      "rp": 50,
+      "loss": 268459
+    },
+    {
+      "rp": 100,
+      "loss": 1094420
+    },
+    {
+      "rp": 250,
+      "loss": 4357963
+    },
+    {
+      "rp": 500,
+      "loss": 17205424
+    },
+    {
+      "rp": 1000,
+      "loss": 34357672
+    }
+  ]
+}

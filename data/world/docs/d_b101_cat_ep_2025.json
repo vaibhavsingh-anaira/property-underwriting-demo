@@ -1,0 +1,78 @@
+{
+  "account": "Magnolia Frozen Logistics",
+  "run_date": "2025-10-12",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 259174,
+  "aal_by_peril": {
+    "HU": 236374,
+    "SCS": 2718,
+    "FL": 20082
+  },
+  "location_aal": {
+    "L1": 56742,
+    "L2": 44572,
+    "L3": 157859
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 195014
+    },
+    {
+      "rp": 25,
+      "loss": 1824424
+    },
+    {
+      "rp": 50,
+      "loss": 3288444
+    },
+    {
+      "rp": 100,
+      "loss": 6211178
+    },
+    {
+      "rp": 250,
+      "loss": 8501624
+    },
+    {
+      "rp": 500,
+      "loss": 14606902
+    },
+    {
+      "rp": 1000,
+      "loss": 17232657
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 214947
+    },
+    {
+      "rp": 25,
+      "loss": 1886628
+    },
+    {
+      "rp": 50,
+      "loss": 3343752
+    },
+    {
+      "rp": 100,
+      "loss": 7882868
+    },
+    {
+      "rp": 250,
+      "loss": 8766416
+    },
+    {
+      "rp": 500,
+      "loss": 17232656
+    },
+    {
+      "rp": 1000,
+      "loss": 32260372
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "account": "Beacon Recycling",
+  "run_date": "2025-11-24",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 209120,
+  "aal_by_peril": {
+    "EQ": 113570,
+    "WF": 78726,
+    "SCS": 16824
+  },
+  "location_aal": {
+    "L1": 42821,
+    "L2": 1342,
+    "L3": 88889,
+    "L4": 0,
+    "L5": 431,
+    "L6": 60586,
+    "L7": 13927,
+    "L8": 1124
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 160207
+    },
+    {
+      "rp": 25,
+      "loss": 442065
+    },
+    {
+      "rp": 50,
+      "loss": 1262776
+    },
+    {
+      "rp": 100,
+      "loss": 3191531
+    },
+    {
+      "rp": 250,
+      "loss": 10678582
+    },
+    {
+      "rp": 500,
+      "loss": 14789882
+    },
+    {
+      "rp": 1000,
+      "loss": 27007984
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 175828
+    },
+    {
+      "rp": 25,
+      "loss": 491286
+    },
+    {
+      "rp": 50,
+      "loss": 1656864
+    },
+    {
+      "rp": 100,
+      "loss": 3809513
+    },
+    {
+      "rp": 250,
+      "loss": 10974077
+    },
+    {
+      "rp": 500,
+      "loss": 21262066
+    },
+    {
+      "rp": 1000,
+      "loss": 57332420
+    }
+  ]
+}

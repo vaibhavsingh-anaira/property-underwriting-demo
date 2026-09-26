@@ -1,0 +1,404 @@
+# Decision Assurance — tier 1 deterministic controls (new business). Evaluated on the decision pack (stage: pack),
+# on the underwriter's intended action (stage: action), or both. Context objects:
+#   case (submission-level resolved facts), loc (one location), act (intended action), auth (authority of the acting
+#   underwriter, new-business matrix), px (pricing context), pf (portfolio / accumulation), g (guidelines 2026 + NB standards)
+# scope.dimension: evidence | pricing | guidelines | appetite | authority
+
+- id: DA.DOC.LOSS_RUNS
+  product: decision
+  version: 1
+  family: data_completeness
+  title: Fewer than five years of loss runs on file
+  applies_to: case
+  when: "case.loss_run_years < g.loss_run_years_required"
+  outcome: DATA_REQUEST
+  severity: MEDIUM
+  origin: carrier_guideline
+  effective_from: "2025-01-01"
+  scope: {tier: 1, stage: both, dimension: evidence, request: "Five years of currently valued loss runs"}
+  observed: "{case.loss_run_years} years of loss runs on file"
+  expected: "{g.loss_run_years_required} full years, valued within 90 days"
+  source: "NB Standards NB§1.2"
+  impact: none
+  tests:
+    - {name: three_years, fixture: {case: {loss_run_years: 3}, g: {loss_run_years_required: 5}}, expect: DATA_REQUEST}
+    - {name: five_years, fixture: {case: {loss_run_years: 5}, g: {loss_run_years_required: 5}}, expect: PASS}
+
+- id: DA.DOC.LOSS_RUNS_BIND
+  product: decision
+  version: 1
+  family: data_completeness
+  title: Bind with a required document outstanding
+  applies_to: case
+  when: "act.type == 'BIND' && case.loss_run_years < g.loss_run_years_required"
+  outcome: BLOCK
+  severity: HIGH
+  origin: carrier_guideline
+  effective_from: "2025-01-01"
+  scope: {tier: 1, stage: action, dimension: evidence, coverable: false}
+  observed: "Bind requested with {case.loss_run_years} of {g.loss_run_years_required} years of loss runs"
+  expected: "No bind while a required document is outstanding"
+  source: "NB Standards NB§1.2"
+  impact: control_premium
+  tests:
+    - {name: bind_short, fixture: {act: {type: BIND}, case: {loss_run_years: 3}, g: {loss_run_years_required: 5}}, expect: BLOCK}
+    - {name: quote_short, fixture: {act: {type: QUOTE}, case: {loss_run_years: 3}, g: {loss_run_years_required: 5}}, expect: PASS}
+
+- id: DA.DOC.INSPECTION
+  product: decision
+  version: 1
+  family: data_completeness
+  title: Loss-control inspection required for this size of risk
+  applies_to: case
+  when: "case.tiv > g.inspection_tiv_threshold && !case.has_inspection"
+  outcome: DATA_REQUEST
+  severity: MEDIUM
+  origin: carrier_guideline
+  effective_from: "2025-01-01"
+  scope: {tier: 1, stage: both, dimension: evidence, request: "Loss-control inspection"}
+  observed: "TIV {usd(case.tiv)} with no inspection on file"
+  expected: "Inspection within 24 months above {usd(g.inspection_tiv_threshold)}"
+  source: "NB Standards NB§1.2"
+  impact: none
+  tests:
+    - {name: large_no_insp, fixture: {case: {tiv: 80000000, has_inspection: false}, g: {inspection_tiv_threshold: 50000000}}, expect: DATA_REQUEST}
+    - {name: small, fixture: {case: {tiv: 20000000, has_inspection: false}, g: {inspection_tiv_threshold: 50000000}}, expect: PASS}
+
+- id: DA.DOC.COPE_MISSING
+  product: decision
+  version: 1
+  family: data_completeness
+  title: COPE fields missing for a location
+  applies_to: location
+  when: "loc.missing_cope > 0"
+  outcome: DATA_REQUEST
+  severity: LOW
+  origin: standard_library
+  scope: {tier: 1, stage: both, dimension: evidence}
+  observed: "{loc.label}: {loc.missing_cope_text}"
+  expected: "Construction, occupancy, year built, area, roof year, protection and values for every location"
+  source: "Anaira standard library · data completeness"
+  impact: none
+  tests:
+    - {name: missing, fixture: {loc: {missing_cope: 2}}, expect: DATA_REQUEST}
+    - {name: complete, fixture: {loc: {missing_cope: 0}}, expect: PASS}
+
+- id: DA.APPETITE.PROHIBITED
+  product: decision
+  version: 1
+  family: appetite
+  title: Declined class evidenced in the submission
+  applies_to: case
+  when: "case.governing_class in g.declined_classes"
+  outcome: DECLINE
+  severity: CRITICAL
+  referral_level: 4
+  origin: carrier_guideline
+  effective_from: "2025-01-01"
+  scope: {tier: 1, stage: both, dimension: appetite}
+  observed: "{case.governing_label} — evidenced by {case.class_evidence}"
+  expected: "Declined under Guidelines {g.version} §2.1; exception only at Level 4"
+  source: "Guidelines §2.1 · NB Standards NB§2.3"
+  impact: risk_cost
+  tests:
+    - {name: scrap, fixture: {case: {governing_class: scrap}, g: {declined_classes: [scrap]}}, expect: DECLINE}
+    - {name: warehouse, fixture: {case: {governing_class: warehouse}, g: {declined_classes: [scrap]}}, expect: PASS}
+
+- id: DA.PROT.PARTIAL_SPRINKLER
+  product: decision
+  version: 1
+  family: protective_safeguards
+  title: Partial or no sprinkler protection on a material location
+  applies_to: location
+  when: "loc.sprinkler_pct < 0.99 && loc.tiv > g.partial_sprinkler_refer_tiv && loc.occ_hazard >= 4"
+  outcome: REFER
+  severity: HIGH
+  referral_level: 2
+  origin: carrier_guideline
+  effective_from: "2025-01-01"
+  scope: {tier: 1, stage: both, dimension: guidelines}
+  observed: "{loc.label}: {pct(loc.sprinkler_pct)} sprinklered ({loc.sprinkler_source}) · TIV {usd(loc.tiv)}"
+  expected: "Level 2 referral above {usd(g.partial_sprinkler_refer_tiv)} TIV"
+  source: "NB Standards NB§5.4 · Guidelines §6.5"
+  impact: protection_delta
+  tests:
+    - {name: dallas_60, fixture: {loc: {sprinkler_pct: 0.6, tiv: 25400000, occ_hazard: 6}, g: {partial_sprinkler_refer_tiv: 10000000}}, expect: REFER}
+    - {name: full, fixture: {loc: {sprinkler_pct: 1.0, tiv: 25400000, occ_hazard: 6}, g: {partial_sprinkler_refer_tiv: 10000000}}, expect: PASS}
+    - {name: office_small, fixture: {loc: {sprinkler_pct: 0.0, tiv: 4000000, occ_hazard: 1}, g: {partial_sprinkler_refer_tiv: 10000000}}, expect: PASS}
+
+- id: DA.PROT.STORAGE_ABOVE_DESIGN
+  product: decision
+  version: 1
+  family: protective_safeguards
+  title: Storage height above the sprinkler design basis
+  applies_to: location
+  when: "has(loc.storage_height_ft) && has(loc.sprinkler_design_ft) && loc.storage_height_ft > loc.sprinkler_design_ft"
+  outcome: REFER
+  severity: CRITICAL
+  referral_level: 3
+  origin: carrier_guideline
+  effective_from: "2025-01-01"
+  scope: {tier: 1, stage: both, dimension: guidelines}
+  observed: "{loc.label}: storage {loc.storage_height_ft} ft vs design {loc.sprinkler_design_ft} ft ({loc.commodity})"
+  expected: "Verified in-rack protection or re-survey before bind; override only at Level 3"
+  source: "NB Standards NB§5.4 · Guidelines §6.5"
+  impact: protection_delta
+  tests:
+    - {name: racks_30_on_20, fixture: {loc: {storage_height_ft: 30, sprinkler_design_ft: 20}}, expect: REFER}
+    - {name: within, fixture: {loc: {storage_height_ft: 24, sprinkler_design_ft: 30}}, expect: PASS}
+    - {name: no_design, fixture: {loc: {storage_height_ft: 24, sprinkler_design_ft: null}}, expect: PASS}
+
+- id: DA.ROOF.AGE
+  product: decision
+  version: 1
+  family: construction
+  title: Roof older than guideline maximum in a hail or wind zone
+  applies_to: location
+  when: "loc.roof_age > g.roof_age_max && (loc.hail_zone || has(loc.wind_tier)) && !loc.roof_mitigated"
+  outcome: CONDITION
+  severity: MEDIUM
+  origin: carrier_guideline
+  effective_from: "2025-01-01"
+  scope: {tier: 1, stage: both, dimension: guidelines, condition: "Roof replacement schedule or roof condition survey before bind", request: "Roof replacement schedule"}
+  observed: "{loc.label}: roof {loc.roof_age} years old (roof year {loc.roof_year})"
+  expected: "≤ {g.roof_age_max} years, or a roof schedule / roof survey before bind"
+  source: "Guidelines §6.2"
+  impact: roof_delta
+  tests:
+    - {name: old_hail, fixture: {loc: {roof_age: 23, hail_zone: true, wind_tier: null, roof_mitigated: false}, g: {roof_age_max: 20}}, expect: CONDITION}
+    - {name: scheduled, fixture: {loc: {roof_age: 23, hail_zone: true, wind_tier: null, roof_mitigated: true}, g: {roof_age_max: 20}}, expect: PASS}
+    - {name: inland, fixture: {loc: {roof_age: 23, hail_zone: false, wind_tier: null, roof_mitigated: false}, g: {roof_age_max: 20}}, expect: PASS}
+
+- id: DA.VAL.RC_RATIO
+  product: decision
+  version: 1
+  family: valuation
+  title: Building value below modelled replacement cost
+  applies_to: location
+  when: "has(loc.valuation_ratio) && loc.valuation_ratio < g.valuation_ratio_min"
+  outcome: PRICE_ADJUST
+  severity: HIGH
+  origin: carrier_guideline
+  scope: {tier: 1, stage: both, dimension: guidelines, request: "Insurable value appraisal"}
+  observed: "{loc.label}: {usd(loc.building_value)} = {pct(loc.valuation_ratio)} of modelled RC {usd(loc.model_rc)}"
+  expected: "≥ {pct(g.valuation_ratio_min)} of modelled RC or an appraisal"
+  source: "Guidelines §5.1"
+  impact: valuation_gap
+  tests:
+    - {name: low, fixture: {loc: {valuation_ratio: 0.62}, g: {valuation_ratio_min: 0.8}}, expect: PRICE_ADJUST}
+    - {name: ok, fixture: {loc: {valuation_ratio: 0.95}, g: {valuation_ratio_min: 0.8}}, expect: PASS}
+
+- id: DA.ACCUM.ZONE
+  product: decision
+  version: 1
+  family: accumulation
+  title: Takes a CAT zone above its accumulation threshold
+  applies_to: case
+  when: "pf.zone_util_after > g.accumulation_util_refer && pf.zone_increase > 0"
+  outcome: REFER
+  severity: HIGH
+  referral_level: 3
+  origin: carrier_guideline
+  effective_from: "2025-01-01"
+  scope: {tier: 1, stage: both, dimension: appetite, flag_when_approved: true}
+  observed: "{pf.zone_name} {pct(pf.zone_util_before)} → {pct(pf.zone_util_after)} of 1-in-250 capacity (+{usd(pf.zone_increase)} PML)"
+  expected: "≤ {pct(g.accumulation_util_refer)} utilisation, or Level 3 portfolio approval"
+  source: "Guidelines §11.4"
+  impact: cat_load
+  tests:
+    - {name: over, fixture: {pf: {zone_util_after: 0.95, zone_increase: 9000000}, g: {accumulation_util_refer: 0.9}}, expect: REFER}
+    - {name: under, fixture: {pf: {zone_util_after: 0.7, zone_increase: 9000000}, g: {accumulation_util_refer: 0.9}}, expect: PASS}
+
+- id: DA.CAT.NS_DED_FLOOR
+  product: decision
+  version: 1
+  family: cat_terms
+  title: Named storm deductible below guideline floor
+  applies_to: location
+  when: "loc.wind_tier == 'T1' && coalesce(act.ns_pct, 0) < g.wind_ded_floor_pct_t1"
+  outcome: TERM_BREACH
+  severity: HIGH
+  referral_level: 2
+  origin: carrier_guideline
+  effective_from: "2025-01-01"
+  scope: {tier: 1, stage: action, dimension: guidelines}
+  observed: "{pct(coalesce(act.ns_pct, 0))} named storm at Tier 1 {loc.label}"
+  expected: "≥ {pct(g.wind_ded_floor_pct_t1)} per location"
+  source: "Guidelines §7.3"
+  impact: terms_delta
+  tests:
+    - {name: two_pct, fixture: {loc: {wind_tier: T1}, act: {ns_pct: 0.02}, g: {wind_ded_floor_pct_t1: 0.03}}, expect: TERM_BREACH}
+    - {name: three_pct, fixture: {loc: {wind_tier: T1}, act: {ns_pct: 0.03}, g: {wind_ded_floor_pct_t1: 0.03}}, expect: PASS}
+
+- id: DA.CAT.NS_MIN
+  product: decision
+  version: 1
+  family: cat_terms
+  title: Named storm minimum below guideline floor
+  applies_to: case
+  when: "case.has_t1 && coalesce(act.ns_min, 0) < g.ns_min_floor"
+  outcome: TERM_BREACH
+  severity: MEDIUM
+  referral_level: 2
+  origin: carrier_guideline
+  effective_from: "2025-01-01"
+  scope: {tier: 1, stage: action, dimension: guidelines}
+  observed: "Named storm minimum {usd(coalesce(act.ns_min, 0))}"
+  expected: "≥ {usd(g.ns_min_floor)}"
+  source: "Guidelines §7.3"
+  impact: terms_delta
+  tests:
+    - {name: low, fixture: {case: {has_t1: true}, act: {ns_min: 100000}, g: {ns_min_floor: 250000}}, expect: TERM_BREACH}
+
+- id: DA.TERMS.AOP_MIN
+  product: decision
+  version: 1
+  family: cat_terms
+  title: AOP deductible below the minimum for this TIV
+  applies_to: case
+  when: "act.aop < case.aop_min"
+  outcome: TERM_BREACH
+  severity: MEDIUM
+  referral_level: 2
+  origin: carrier_guideline
+  effective_from: "2025-01-01"
+  scope: {tier: 1, stage: action, dimension: guidelines}
+  observed: "AOP deductible {usd(act.aop)} on {usd(case.tiv)} TIV"
+  expected: "≥ {usd(case.aop_min)}"
+  source: "NB Standards NB§4.1"
+  impact: terms_delta
+  tests:
+    - {name: low, fixture: {act: {aop: 50000}, case: {aop_min: 250000}}, expect: TERM_BREACH}
+    - {name: ok, fixture: {act: {aop: 250000}, case: {aop_min: 250000}}, expect: PASS}
+
+- id: DA.TERMS.HAIL_DED
+  product: decision
+  version: 1
+  family: cat_terms
+  title: Wind/hail deductible below minimum at a hail-exposed location
+  applies_to: location
+  when: "loc.hail_zone && coalesce(act.wh_pct, 0) < g.hail_ded_pct_min"
+  outcome: TERM_BREACH
+  severity: MEDIUM
+  referral_level: 2
+  origin: carrier_guideline
+  effective_from: "2025-01-01"
+  scope: {tier: 1, stage: action, dimension: guidelines}
+  observed: "{pct(coalesce(act.wh_pct, 0))} wind/hail at {loc.label}"
+  expected: "≥ {pct(g.hail_ded_pct_min)} per building"
+  source: "NB Standards NB§4.1"
+  impact: terms_delta
+  tests:
+    - {name: none, fixture: {loc: {hail_zone: true}, act: {wh_pct: null}, g: {hail_ded_pct_min: 0.01}}, expect: TERM_BREACH}
+    - {name: one_pct, fixture: {loc: {hail_zone: true}, act: {wh_pct: 0.01}, g: {hail_ded_pct_min: 0.01}}, expect: PASS}
+
+- id: DA.TERMS.LIMIT_TIV
+  product: decision
+  version: 1
+  family: coverage
+  title: Limit above the scheduled values
+  applies_to: case
+  when: "act.limit > case.tiv * act.line * 1.001"
+  outcome: FLAG
+  severity: LOW
+  origin: standard_library
+  scope: {tier: 1, stage: action, dimension: guidelines}
+  observed: "Limit {usd(act.limit)} vs scheduled {usd(case.tiv * act.line)}"
+  expected: "Blanket limit ≤ scheduled TIV × line"
+  source: "Anaira standard library · coverage"
+  impact: none
+  tests:
+    - {name: over, fixture: {act: {limit: 110, line: 1.0}, case: {tiv: 100}}, expect: FLAG}
+
+- id: DA.PRICE.RANGE
+  product: decision
+  version: 1
+  family: pricing
+  title: Premium outside the suggested range
+  applies_to: case
+  when: "act.premium < px.band_low || act.premium > px.band_high"
+  outcome: FLAG
+  severity: MEDIUM
+  origin: standard_library
+  scope: {tier: 1, stage: action, dimension: pricing}
+  observed: "{usd(act.premium)} vs suggested {usd(px.band_low)}–{usd(px.band_high)} (technical {usd(px.technical)})"
+  expected: "Within the suggested range, or a rationale"
+  source: "Anaira standard library · pricing"
+  impact: range_gap
+  tests:
+    - {name: below, fixture: {act: {premium: 400}, px: {band_low: 500, band_high: 540}}, expect: FLAG}
+    - {name: inside, fixture: {act: {premium: 505}, px: {band_low: 500, band_high: 540}}, expect: PASS}
+
+- id: DA.PRICE.DEVIATION
+  product: decision
+  version: 1
+  family: authority
+  title: Pricing deviation beyond the underwriter's authority
+  applies_to: case
+  when: "abs(act.dev) > auth.max_price_dev"
+  outcome: REFER
+  severity: HIGH
+  origin: standard_library
+  scope: {tier: 1, stage: action, dimension: authority, level: price_dev}
+  observed: "{pct(act.dev)} vs technical {usd(px.technical)}; permitted ±{pct(auth.max_price_dev)} at L{auth.level}"
+  expected: "Within ±{pct(auth.max_price_dev)} or approval at the level that covers the deviation"
+  source: "NB Standards NB§3.2"
+  impact: price_shortfall
+  tests:
+    - {name: minus_18, fixture: {act: {dev: -0.18}, auth: {max_price_dev: 0.1}}, expect: REFER}
+    - {name: minus_2_9, fixture: {act: {dev: -0.029}, auth: {max_price_dev: 0.05}}, expect: PASS}
+
+- id: DA.AUTH.TIV
+  product: decision
+  version: 1
+  family: authority
+  title: Account limit above the underwriter's authority
+  applies_to: case
+  when: "act.limit > auth.max_account_tiv || case.max_loc_tiv * act.line > auth.max_loc_tiv"
+  outcome: REFER
+  severity: HIGH
+  origin: standard_library
+  scope: {tier: 1, stage: action, dimension: authority, level: tiv}
+  observed: "Limit {usd(act.limit)} · largest location {usd(case.max_loc_tiv * act.line)} at L{auth.level}"
+  expected: "≤ {usd(auth.max_account_tiv)} account, ≤ {usd(auth.max_loc_tiv)} location"
+  source: "NB Standards NB§3.2"
+  impact: none
+  tests:
+    - {name: over, fixture: {act: {limit: 200000000, line: 1.0}, case: {max_loc_tiv: 30000000}, auth: {max_account_tiv: 150000000, max_loc_tiv: 40000000}}, expect: REFER}
+
+- id: DA.AUTH.PREMIUM
+  product: decision
+  version: 1
+  family: authority
+  title: Premium above the underwriter's authority
+  applies_to: case
+  when: "act.premium > auth.max_premium"
+  outcome: REFER
+  severity: MEDIUM
+  origin: standard_library
+  scope: {tier: 1, stage: action, dimension: authority, level: premium}
+  observed: "{usd(act.premium)} at L{auth.level}"
+  expected: "≤ {usd(auth.max_premium)}"
+  source: "NB Standards NB§3.2"
+  impact: none
+  tests:
+    - {name: over, fixture: {act: {premium: 900000}, auth: {max_premium: 750000}}, expect: REFER}
+
+- id: DA.BIND.CONDITIONS_OPEN
+  product: decision
+  version: 1
+  family: authority
+  title: Bind with a pre-bind condition still open
+  applies_to: case
+  when: "act.type == 'BIND' && case.open_conditions > 0"
+  outcome: BLOCK
+  severity: HIGH
+  origin: standard_library
+  scope: {tier: 1, stage: action, dimension: authority, coverable: false}
+  observed: "{case.open_conditions} pre-bind condition(s) open: {case.open_conditions_text}"
+  expected: "Every pre-bind condition cleared by evidence"
+  source: "Anaira standard library · bind control"
+  impact: none
+  tests:
+    - {name: open, fixture: {act: {type: BIND}, case: {open_conditions: 1}}, expect: BLOCK}
+    - {name: quote, fixture: {act: {type: QUOTE}, case: {open_conditions: 1}}, expect: PASS}

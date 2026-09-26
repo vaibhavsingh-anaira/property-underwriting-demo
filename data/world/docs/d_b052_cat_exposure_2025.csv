@@ -1,0 +1,3 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-37551,1,Yardley Wilmington Facility,34.217449,-77.868516,US,NC,4950,5150,2000,2,2019,10928000,8097000,11744000,3600000,WTC;WSS;QEQ;ORF;BFR,NS%,0.05
+NSP-CP-2025-37551,2,Yardley Fort Lauderdale Building,26.072291,-80.164989,US,FL,4950,5300,2004,3,2009,12774000,11568000,15256000,4532000,WTC;WSS;QEQ;ORF;BFR,NS%,0.05

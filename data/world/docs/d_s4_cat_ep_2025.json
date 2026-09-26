@@ -1,0 +1,76 @@
+{
+  "account": "Redline Logistics",
+  "run_date": "2025-10-05",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 53863,
+  "aal_by_peril": {
+    "SCS": 53863
+  },
+  "location_aal": {
+    "L1": 51601,
+    "L2": 1211,
+    "L3": 1051
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 125363
+    },
+    {
+      "rp": 25,
+      "loss": 236689
+    },
+    {
+      "rp": 50,
+      "loss": 397939
+    },
+    {
+      "rp": 100,
+      "loss": 482567
+    },
+    {
+      "rp": 250,
+      "loss": 717417
+    },
+    {
+      "rp": 500,
+      "loss": 717417
+    },
+    {
+      "rp": 1000,
+      "loss": 717417
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 163807
+    },
+    {
+      "rp": 25,
+      "loss": 329872
+    },
+    {
+      "rp": 50,
+      "loss": 482567
+    },
+    {
+      "rp": 100,
+      "loss": 717417
+    },
+    {
+      "rp": 250,
+      "loss": 777668
+    },
+    {
+      "rp": 500,
+      "loss": 843321
+    },
+    {
+      "rp": 1000,
+      "loss": 916792
+    }
+  ]
+}

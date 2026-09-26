@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-49526,1,Frontier Denver Facility,39.760964,-105.062316,US,CO,1220,5100,1971,3,2008,15540000,2124000,8111000,1841000,WTC;WSS;QEQ;ORF;BFR,AOP,50000.0

@@ -1,0 +1,78 @@
+{
+  "account": "Union Home Goods",
+  "run_date": "2025-09-16",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 274470,
+  "aal_by_peril": {
+    "HU": 190241,
+    "SCS": 15385,
+    "FL": 68845
+  },
+  "location_aal": {
+    "L1": 183890,
+    "L2": 37416,
+    "L3": 53164
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 292636
+    },
+    {
+      "rp": 25,
+      "loss": 1154788
+    },
+    {
+      "rp": 50,
+      "loss": 2915990
+    },
+    {
+      "rp": 100,
+      "loss": 4584038
+    },
+    {
+      "rp": 250,
+      "loss": 7591547
+    },
+    {
+      "rp": 500,
+      "loss": 11987192
+    },
+    {
+      "rp": 1000,
+      "loss": 15449533
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 335203
+    },
+    {
+      "rp": 25,
+      "loss": 1154788
+    },
+    {
+      "rp": 50,
+      "loss": 3006898
+    },
+    {
+      "rp": 100,
+      "loss": 4832458
+    },
+    {
+      "rp": 250,
+      "loss": 7626530
+    },
+    {
+      "rp": 500,
+      "loss": 12415564
+    },
+    {
+      "rp": 1000,
+      "loss": 61078896
+    }
+  ]
+}

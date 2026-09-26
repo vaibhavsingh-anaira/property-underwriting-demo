@@ -1,0 +1,80 @@
+{
+  "account": "Lakeshore Distribution",
+  "run_date": "2025-11-28",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 141461,
+  "aal_by_peril": {
+    "HU": 117059,
+    "SCS": 0,
+    "FL": 24402
+  },
+  "location_aal": {
+    "L1": 46680,
+    "L2": 33594,
+    "L3": 19205,
+    "L4": 0,
+    "L5": 41981
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 83304
+    },
+    {
+      "rp": 25,
+      "loss": 696837
+    },
+    {
+      "rp": 50,
+      "loss": 1836434
+    },
+    {
+      "rp": 100,
+      "loss": 4011031
+    },
+    {
+      "rp": 250,
+      "loss": 5665571
+    },
+    {
+      "rp": 500,
+      "loss": 6929662
+    },
+    {
+      "rp": 1000,
+      "loss": 16032240
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 76860
+    },
+    {
+      "rp": 25,
+      "loss": 696838
+    },
+    {
+      "rp": 50,
+      "loss": 2070230
+    },
+    {
+      "rp": 100,
+      "loss": 2738612
+    },
+    {
+      "rp": 250,
+      "loss": 4790306
+    },
+    {
+      "rp": 500,
+      "loss": 6929662
+    },
+    {
+      "rp": 1000,
+      "loss": 16032240
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "account": "Silverline Retail Centers",
+  "run_date": "2025-09-11",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 78869,
+  "aal_by_peril": {
+    "SCS": 78869
+  },
+  "location_aal": {
+    "L1": 6427,
+    "L2": 6149,
+    "L3": 66293
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 122396
+    },
+    {
+      "rp": 25,
+      "loss": 196800
+    },
+    {
+      "rp": 50,
+      "loss": 463766
+    },
+    {
+      "rp": 100,
+      "loss": 568918
+    },
+    {
+      "rp": 250,
+      "loss": 628006
+    },
+    {
+      "rp": 500,
+      "loss": 628006
+    },
+    {
+      "rp": 1000,
+      "loss": 628006
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 184620
+    },
+    {
+      "rp": 25,
+      "loss": 344633
+    },
+    {
+      "rp": 50,
+      "loss": 583153
+    },
+    {
+      "rp": 100,
+      "loss": 659859
+    },
+    {
+      "rp": 250,
+      "loss": 735589
+    },
+    {
+      "rp": 500,
+      "loss": 767596
+    },
+    {
+      "rp": 1000,
+      "loss": 810656
+    }
+  ]
+}

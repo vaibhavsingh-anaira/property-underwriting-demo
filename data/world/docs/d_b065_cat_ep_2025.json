@@ -1,0 +1,76 @@
+{
+  "account": "Granite Fabrication",
+  "run_date": "2025-10-25",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 25060,
+  "aal_by_peril": {
+    "SCS": 25060
+  },
+  "location_aal": {
+    "L1": 6667,
+    "L2": 14560,
+    "L3": 3833
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 58778
+    },
+    {
+      "rp": 25,
+      "loss": 101940
+    },
+    {
+      "rp": 50,
+      "loss": 126208
+    },
+    {
+      "rp": 100,
+      "loss": 141509
+    },
+    {
+      "rp": 250,
+      "loss": 165280
+    },
+    {
+      "rp": 500,
+      "loss": 165280
+    },
+    {
+      "rp": 1000,
+      "loss": 165280
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 78833
+    },
+    {
+      "rp": 25,
+      "loss": 131570
+    },
+    {
+      "rp": 50,
+      "loss": 163557
+    },
+    {
+      "rp": 100,
+      "loss": 183596
+    },
+    {
+      "rp": 250,
+      "loss": 213755
+    },
+    {
+      "rp": 500,
+      "loss": 252192
+    },
+    {
+      "rp": 1000,
+      "loss": 279681
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design tokens. Calm, dense, enterprise. Ink-navy neutrals, one teal accent,
+   semantic severity colours. Numbers use tabular figures everywhere.
+   ------------------------------------------------------------------------- */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-ink-950: #0b1220;
+  --color-ink-900: #111a2e;
+  --color-ink-800: #1b2640;
+  --color-ink-700: #2a3754;
+  --color-ink-600: #45526e;
+  --color-ink-500: #65718a;
+  --color-ink-400: #8b95aa;
+  --color-ink-300: #b7bfce;
+  --color-ink-200: #d9dee7;
+  --color-ink-100: #eceff4;
+  --color-ink-50:  #f6f7fa;
+
+  --color-canvas: #f4f6f9;
+  --color-surface: #ffffff;
+  --color-line: #e3e7ee;
+  --color-line-strong: #cfd5e0;
+
+  --color-accent-700: #0b6e6e;
+  --color-accent-600: #0e8585;
+  --color-accent-500: #13a3a3;
+  --color-accent-100: #d9f2f1;
+  --color-accent-50:  #eefaf9;
+
+  --color-crit: #c2263a;
+  --color-crit-bg: #fdecee;
+  --color-high: #d15a12;
+  --color-high-bg: #fdf0e6;
+  --color-med: #b88404;
+  --color-med-bg: #fdf6de;
+  --color-low: #5b677f;
+  --color-low-bg: #eef1f5;
+  --color-ok: #1f8a4c;
+  --color-ok-bg: #e7f5ec;
+  --color-info: #2f5bd3;
+  --color-info-bg: #e9effd;
+
+  /* evidence type chips */
+  --color-obs-c: #6b7280;
+  --color-obs-s: #2f5bd3;
+  --color-obs-n: #7c4dcc;
+  --color-obs-v: #1f8a4c;
+  --color-obs-d: #45526e;
+  --color-obs-m: #0e8585;
+  --color-obs-r: #b8620a;
+
+  --radius-card: 10px;
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
+  --shadow-pop: 0 12px 32px -8px rgba(16, 24, 40, 0.22), 0 4px 8px -4px rgba(16, 24, 40, 0.08);
+}
+
+:root {
+  color-scheme: light;
+  font-feature-settings: "cv11", "ss01", "tnum";
+}
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+.num { font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--font-mono); }
+
+/* thin scrollbars */
+* { scrollbar-width: thin; scrollbar-color: var(--color-ink-300) transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: var(--color-ink-200); border-radius: 8px; }
+*::-webkit-scrollbar-thumb:hover { background: var(--color-ink-300); }
+
+/* data tables */
+.dt { width: 100%; border-collapse: separate; border-spacing: 0; }
+.dt th {
+  position: sticky; top: 0; z-index: 1;
+  background: var(--color-ink-50);
+  color: var(--color-ink-500);
+  font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+  text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--color-line);
+  white-space: nowrap;
+}
+.dt td { padding: 8px 10px; border-bottom: 1px solid var(--color-line); vertical-align: middle; }
+.dt tbody tr:hover td { background: #fafbfd; }
+.dt tr.is-selected td { background: var(--color-accent-50); }
+.dt td.r, .dt th.r { text-align: right; }
+
+/* focus */
+:focus-visible { outline: 2px solid var(--color-accent-500); outline-offset: 1px; border-radius: 4px; }
+
+@keyframes slide-in-right { from { transform: translateX(24px); opacity: 0 } to { transform: none; opacity: 1 } }
+.anim-slide-in { animation: slide-in-right .18s ease-out; }
+@keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+.anim-fade { animation: fade-in .15s ease-out; }
+@keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(19,163,163,.45) } 100% { box-shadow: 0 0 0 10px rgba(19,163,163,0) } }
+.pulse-ring { animation: pulse-ring 1.4s ease-out infinite; }
+
+.maplibregl-ctrl-attrib { font-size: 10px; }
+
+@keyframes ghost-ripple { 0% { transform: scale(.3); opacity: .9 } 100% { transform: scale(2.2); opacity: 0 } }
+.ghost-ripple { animation: ghost-ripple .55s ease-out forwards; }
+@keyframes caption-in { from { transform: translateY(8px); opacity: 0 } to { transform: none; opacity: 1 } }
+.caption-in { animation: caption-in .25s ease-out; }

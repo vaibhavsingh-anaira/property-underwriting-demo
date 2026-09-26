@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-49289,1,Anchor Sparks Facility,39.586362,-119.84526,US,NV,2150,5300,2008,3,2016,13034000,5747000,1349000,1615000,WTC;WSS;QEQ;ORF;BFR,AOP,100000

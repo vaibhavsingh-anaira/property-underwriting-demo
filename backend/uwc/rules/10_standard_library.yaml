@@ -1,0 +1,323 @@
+# Anaira standard control library — identical across carriers (data integrity,
+# contract integrity, authority, engineering, claims). Context objects:
+#   acct, loc, terms (working proposal), exp_terms (expiring/endorsed), g (guidelines in force),
+#   pricing, diff (contract field), rec (recommendation), subj (subjectivity), appr (approval)
+
+- id: DQ.RENEWAL_SOV_MISSING
+  version: 1
+  family: data_completeness
+  title: Renewal SOV not received inside 60 days
+  applies_to: account
+  when: "!acct.renewal_sov_received && acct.days_to_expiry < 60 && acct.days_to_expiry > 0"
+  outcome: DATA_REQUEST
+  severity: MEDIUM
+  observed: "No renewal SOV on file at T-{acct.days_to_expiry}"
+  expected: "Renewal SOV received by T-60"
+  impact: none
+  evidence: [acct.expiry]
+  tests:
+    - {name: late, fixture: {acct: {renewal_sov_received: false, days_to_expiry: 40}}, expect: DATA_REQUEST}
+    - {name: received, fixture: {acct: {renewal_sov_received: true, days_to_expiry: 40}}, expect: PASS}
+
+- id: DQ.MATCH_AMBIGUOUS
+  version: 2
+  family: data_completeness
+  title: Location match needs confirmation
+  applies_to: location
+  when: "loc.match_status == 'AMBIGUOUS'"
+  outcome: DATA_REQUEST
+  severity: MEDIUM
+  observed: "Renewal row '{loc.address}' proposed as match ({loc.match_method}, score {loc.match_score})"
+  expected: "Confirmed one-to-one match to an expiring location"
+  impact: control_tiv
+  evidence: [loc.address]
+  tests:
+    - {name: ambiguous, fixture: {loc: {match_status: AMBIGUOUS}}, expect: DATA_REQUEST}
+    - {name: matched, fixture: {loc: {match_status: MATCHED}}, expect: PASS}
+
+- id: DQ.SECONDARY_MODIFIERS
+  version: 1
+  family: data_completeness
+  title: CAT secondary modifiers missing on material locations
+  applies_to: account
+  when: "acct.missing_modifier_locs > 0"
+  outcome: DATA_REQUEST
+  severity: MEDIUM
+  observed: "{acct.missing_modifier_locs} location(s) missing roof year / secondary modifiers, {pct(acct.missing_modifier_aal_share)} of modelled AAL"
+  expected: "Roof year and secondary modifiers on every location ranked by AAL"
+  impact: dq_uncertainty
+  evidence: []
+  tests:
+    - {name: missing, fixture: {acct: {missing_modifier_locs: 2}}, expect: DATA_REQUEST}
+    - {name: complete, fixture: {acct: {missing_modifier_locs: 0}}, expect: PASS}
+
+- id: SOV.TIV_ARITH
+  version: 1
+  family: sov_integrity
+  title: Reported TIV does not equal its components
+  applies_to: location
+  when: "has(loc.tiv_reported) && loc.tiv > 0 && abs(loc.tiv_reported - loc.tiv) / loc.tiv > 0.005"
+  outcome: FLAG
+  severity: LOW
+  observed: "Reported {usd(loc.tiv_reported)} vs components {usd(loc.tiv)}"
+  expected: "Reported TIV = building + contents + stock + BI (±0.5%)"
+  impact: none
+  evidence: [loc.tiv_reported, loc.building_value]
+  tests:
+    - {name: off, fixture: {loc: {tiv_reported: 110, tiv: 100}}, expect: FLAG}
+
+- id: EXP.NEW_LOCATION_UNMODELLED
+  version: 2
+  family: exposure
+  title: New location not in the CAT model run
+  applies_to: location
+  when: "loc.match_status == 'NEW' && !loc.in_cat_run && loc.tiv > 0"
+  outcome: REFER
+  severity: HIGH
+  referral_level: 2
+  observed: "New location {loc.label} ({usd(loc.tiv)}) — not in the as-bound CAT run"
+  expected: "Every location modelled before quote"
+  impact: unmodelled_aal
+  evidence: [loc.address, loc.tiv_reported, loc.wind_tier]
+  tests:
+    - {name: new, fixture: {loc: {match_status: NEW, in_cat_run: false, tiv: 5}}, expect: REFER}
+
+- id: EXP.DELETED_LOCATION
+  version: 1
+  family: exposure
+  title: Expiring location missing from renewal SOV
+  applies_to: location
+  when: "loc.match_status == 'DELETED' && acct.renewal_sov_received"
+  outcome: FLAG
+  severity: LOW
+  observed: "{loc.label} on the expiring schedule is not on the renewal SOV"
+  expected: "Deletion confirmed by the insured (disposal / sale) before removing"
+  impact: none
+  evidence: [loc.address]
+
+- id: OCC.DRIFT
+  version: 3
+  family: classification
+  title: Occupancy changed since last bind
+  applies_to: location
+  when: "has(loc.occupancy_prior) && has(loc.occupancy_class) && loc.occupancy_class != loc.occupancy_prior"
+  outcome: REFER
+  severity: HIGH
+  referral_level: 2
+  observed: "{loc.occupancy_prior_label} → {loc.occupancy_label}"
+  expected: "Occupancy re-underwritten and re-rated before renewal"
+  impact: occupancy_rate_delta
+  evidence: [loc.occupancy_class]
+  tests:
+    - {name: drift, fixture: {loc: {occupancy_prior: warehouse, occupancy_class: li_storage}}, expect: REFER}
+    - {name: same, fixture: {loc: {occupancy_prior: warehouse, occupancy_class: warehouse}}, expect: PASS}
+
+- id: ROOF.YEAR_CONFLICT
+  version: 1
+  family: data_integrity
+  title: Broker roof year contradicts verified evidence
+  applies_to: location
+  when: "loc.roof_conflict"
+  outcome: FLAG
+  severity: LOW
+  observed: "SOV roof year {loc.roof_year_reported} vs verified {loc.roof_year}"
+  expected: "SOV consistent with engineering; broker template corrected"
+  impact: none
+  evidence: [loc.roof_year]
+
+- id: CAT.INPUT_MISMATCH
+  version: 1
+  family: cat_integrity
+  title: CAT model input contradicts resolved construction
+  applies_to: location
+  when: "has(loc.cat_input_construction) && has(loc.construction_class) && loc.cat_input_construction != loc.construction_class"
+  outcome: FLAG
+  severity: MEDIUM
+  observed: "Modelled as {loc.cat_input_construction_label}; resolved {loc.construction_label}"
+  expected: "CAT exposure coded from the resolved risk state"
+  impact: cat_recode_delta
+  evidence: [loc.cat_input_construction, loc.construction_class]
+
+- id: CONTRACT.QUOTE_BINDER
+  version: 1
+  family: contract_integrity
+  title: Bound terms differ from accepted quote
+  applies_to: contract_field
+  when: "diff.pair == 'quote_binder' && diff.result != 'MATCH'"
+  outcome: FLAG
+  severity: HIGH
+  observed: "{diff.label}: quote {diff.a} → binder {diff.b}"
+  expected: "Binder reproduces the accepted quote"
+  impact: contract_delta
+  evidence: []
+  action: ENDORSEMENT_CORRECTION
+
+- id: CONTRACT.BINDER_POLICY
+  version: 2
+  family: contract_integrity
+  title: Issued policy differs from binder
+  applies_to: contract_field
+  when: "diff.pair == 'binder_policy' && diff.result != 'MATCH'"
+  outcome: FLAG
+  severity: HIGH
+  observed: "{diff.label}: binder {diff.a} → issued {diff.b}"
+  expected: "Issued policy reproduces the bound terms"
+  impact: contract_delta
+  evidence: []
+  action: ENDORSEMENT_CORRECTION
+  tests:
+    - {name: mismatch, fixture: {diff: {pair: binder_policy, result: MISMATCH}}, expect: FLAG}
+    - {name: match, fixture: {diff: {pair: binder_policy, result: MATCH}}, expect: PASS}
+
+- id: CONTRACT.SUBJECTIVITY_OPEN
+  version: 1
+  family: contract_integrity
+  title: Subjectivity still open after bind
+  applies_to: subjectivity
+  when: "subj.status == 'OPEN' && subj.age_days > 30"
+  outcome: FLAG
+  severity: HIGH
+  observed: "'{subj.text}' open {subj.age_days} days after bind"
+  expected: "Subjectivities cleared or coverage conditioned within 30 days"
+  impact: control_premium
+  evidence: []
+
+- id: AUTH.APPROVAL_INVALID
+  version: 2
+  family: authority
+  title: Bound without a valid approval for the bound terms
+  applies_to: account
+  when: "appr.required && !appr.valid_for_bound"
+  outcome: REFER
+  severity: CRITICAL
+  referral_level: 3
+  observed: "Approval covers quote v{appr.approved_version}; v{appr.bound_version} was bound ({appr.change})"
+  expected: "Approval tied to the exact terms bound (terms hash)"
+  impact: control_premium
+  evidence: []
+  tests:
+    - {name: invalid, fixture: {appr: {required: true, valid_for_bound: false}}, expect: REFER}
+    - {name: valid, fixture: {appr: {required: true, valid_for_bound: true}}, expect: PASS}
+
+- id: PRICE.RARC_AUTHORITY
+  version: 2
+  family: pricing
+  title: Rate change below the underwriter's authority
+  applies_to: account
+  when: "pricing.has_proposal && has(pricing.rarc) && pricing.rarc < pricing.uw_min_rarc"
+  outcome: REFER
+  severity: HIGH
+  referral_level: 2
+  observed: "RARC {pct(pricing.rarc)} (headline {pct(pricing.headline_change)}) vs authority floor {pct(pricing.uw_min_rarc)}"
+  expected: "RARC within authority or referred"
+  impact: rate_given_away
+  evidence: []
+  tests:
+    - {name: below, fixture: {pricing: {rarc: -0.12, uw_min_rarc: -0.05}}, expect: REFER}
+
+- id: ENG.OVERDUE_REC
+  version: 1
+  family: engineering
+  title: Engineering recommendation overdue
+  applies_to: recommendation
+  when: "rec.status in ['OPEN', 'IN_PROGRESS'] && rec.days_overdue > 0 && rec.severity in ['HIGH', 'CRITICAL']"
+  outcome: CONDITION
+  severity: HIGH
+  observed: "{rec.rec_id} ({rec.category}) {rec.days_overdue} days overdue"
+  expected: "Completed by target date or renewal conditioned"
+  impact: rec_loss_uplift
+  evidence: []
+
+- id: ENG.UNVERIFIED_CLOSURE
+  version: 1
+  family: engineering
+  title: Recommendation closed without completion evidence
+  applies_to: recommendation
+  when: "rec.status == 'CLOSED' && !has(rec.completion_evidence)"
+  outcome: FLAG
+  severity: HIGH
+  observed: "{rec.rec_id} marked closed {rec.closed_on} with no evidence"
+  expected: "Closure verified by risk engineering"
+  impact: none
+  evidence: []
+
+- id: ENG.BROKEN_COMMITMENT
+  version: 1
+  family: engineering
+  title: Bind-condition recommendation not verified complete
+  applies_to: recommendation
+  when: "rec.bind_condition && rec.status != 'VERIFIED_CLOSED' && rec.days_overdue > 0"
+  outcome: REFER
+  severity: CRITICAL
+  referral_level: 3
+  observed: "{rec.rec_id} was a condition of binding; status {rec.status}"
+  expected: "Bind conditions verified closed"
+  impact: rec_loss_uplift
+  evidence: []
+
+- id: ENG.CLAIM_LINKED
+  version: 1
+  family: engineering
+  title: Loss linked to an unresolved recommendation
+  applies_to: recommendation
+  when: "rec.linked_incurred > 0 && rec.status != 'VERIFIED_CLOSED'"
+  outcome: REFER
+  severity: CRITICAL
+  referral_level: 3
+  observed: "{usd(rec.linked_incurred)} incurred on claims linked to {rec.rec_id}"
+  expected: "No losses arising from open engineering deficiencies"
+  impact: none
+  evidence: []
+
+- id: WATER.REPEAT
+  version: 1
+  family: claims
+  title: Repeat non-weather water losses
+  applies_to: location
+  when: "loc.water_claims_since_bind >= g.repeat_loss_count"
+  outcome: CONDITION
+  severity: HIGH
+  observed: "{loc.water_claims_since_bind} water losses since bind ({usd(loc.water_incurred)})"
+  expected: "< {g.repeat_loss_count} per term, or water-damage controls conditioned"
+  impact: repeat_loss
+  evidence: []
+
+- id: CLAIMS.REPEAT_CAUSE
+  version: 1
+  family: claims
+  title: Repeat cause across the account
+  applies_to: account
+  when: "acct.repeat_fire_claims >= 3"
+  outcome: CONDITION
+  severity: HIGH
+  observed: "{acct.repeat_fire_claims} fire losses in 3 years at {acct.repeat_fire_sites} sites"
+  expected: "Cause addressed (controls verified) before renewal"
+  impact: repeat_loss_account
+  evidence: []
+
+- id: CLAIMS.LARGE_LOSS
+  version: 1
+  family: claims
+  title: Large loss since bind
+  applies_to: account
+  when: "acct.max_claim_since_bind >= 500000"
+  outcome: REFER
+  severity: HIGH
+  referral_level: 2
+  observed: "Largest loss since bind {usd(acct.max_claim_since_bind)}"
+  expected: "Large losses reviewed before renewal terms"
+  impact: none
+  evidence: []
+
+- id: SAFEGUARD.BREACH
+  version: 2
+  family: protective_safeguards
+  title: Scheduled protective safeguard not verified compliant
+  applies_to: location
+  when: "size(loc.safeguard_gaps) > 0"
+  outcome: CONDITION
+  severity: HIGH
+  observed: "{loc.safeguard_gap_text}"
+  expected: "Every CP 04 11 safeguard verified in working order"
+  impact: control_tiv
+  evidence: []

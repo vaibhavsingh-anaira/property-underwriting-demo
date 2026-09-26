@@ -1,0 +1,79 @@
+{
+  "account": "Evergreen Salvage",
+  "run_date": "2025-10-12",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 112393,
+  "aal_by_peril": {
+    "SCS": 8886,
+    "EQ": 64110,
+    "WF": 39397
+  },
+  "location_aal": {
+    "L1": 6202,
+    "L2": 2684,
+    "L3": 39804,
+    "L4": 63702
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 65579
+    },
+    {
+      "rp": 25,
+      "loss": 313353
+    },
+    {
+      "rp": 50,
+      "loss": 728202
+    },
+    {
+      "rp": 100,
+      "loss": 2273090
+    },
+    {
+      "rp": 250,
+      "loss": 4856737
+    },
+    {
+      "rp": 500,
+      "loss": 9118015
+    },
+    {
+      "rp": 1000,
+      "loss": 14838084
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 80503
+    },
+    {
+      "rp": 25,
+      "loss": 313353
+    },
+    {
+      "rp": 50,
+      "loss": 675192
+    },
+    {
+      "rp": 100,
+      "loss": 1711982
+    },
+    {
+      "rp": 250,
+      "loss": 3835315
+    },
+    {
+      "rp": 500,
+      "loss": 5407078
+    },
+    {
+      "rp": 1000,
+      "loss": 14013256
+    }
+  ]
+}

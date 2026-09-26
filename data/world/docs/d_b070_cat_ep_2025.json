@@ -1,0 +1,78 @@
+{
+  "account": "Westbrook Office Partners",
+  "run_date": "2025-11-22",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 175296,
+  "aal_by_peril": {
+    "HU": 140497,
+    "SCS": 950,
+    "FL": 33850
+  },
+  "location_aal": {
+    "L1": 63033,
+    "L2": 25868,
+    "L3": 86396
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 70049
+    },
+    {
+      "rp": 25,
+      "loss": 752879
+    },
+    {
+      "rp": 50,
+      "loss": 2119784
+    },
+    {
+      "rp": 100,
+      "loss": 4164189
+    },
+    {
+      "rp": 250,
+      "loss": 10755906
+    },
+    {
+      "rp": 500,
+      "loss": 13790982
+    },
+    {
+      "rp": 1000,
+      "loss": 16900173
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 63007
+    },
+    {
+      "rp": 25,
+      "loss": 676830
+    },
+    {
+      "rp": 50,
+      "loss": 1746905
+    },
+    {
+      "rp": 100,
+      "loss": 4147090
+    },
+    {
+      "rp": 250,
+      "loss": 10755906
+    },
+    {
+      "rp": 500,
+      "loss": 16900174
+    },
+    {
+      "rp": 1000,
+      "loss": 21301030
+    }
+  ]
+}

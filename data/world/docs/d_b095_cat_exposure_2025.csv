@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-47593,1,Ridgeway Philadelphia Facility,39.879032,-75.100061,US,PA,0311,5100,1977,3,2015,4349000,138000,0,611000,WTC;WSS;QEQ;ORF;BFR,AOP,10000

@@ -1,0 +1,80 @@
+{
+  "account": "Sterling Distribution",
+  "run_date": "2025-11-23",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 112167,
+  "aal_by_peril": {
+    "SCS": 99162,
+    "EQ": 10251,
+    "WF": 2754
+  },
+  "location_aal": {
+    "L1": 2961,
+    "L2": 11315,
+    "L3": 79563,
+    "L4": 5323,
+    "L5": 13005
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 164109
+    },
+    {
+      "rp": 25,
+      "loss": 317270
+    },
+    {
+      "rp": 50,
+      "loss": 446376
+    },
+    {
+      "rp": 100,
+      "loss": 666203
+    },
+    {
+      "rp": 250,
+      "loss": 666203
+    },
+    {
+      "rp": 500,
+      "loss": 1347134
+    },
+    {
+      "rp": 1000,
+      "loss": 2610676
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 242710
+    },
+    {
+      "rp": 25,
+      "loss": 425376
+    },
+    {
+      "rp": 50,
+      "loss": 555648
+    },
+    {
+      "rp": 100,
+      "loss": 717790
+    },
+    {
+      "rp": 250,
+      "loss": 845927
+    },
+    {
+      "rp": 500,
+      "loss": 1539376
+    },
+    {
+      "rp": 1000,
+      "loss": 2656981
+    }
+  ]
+}

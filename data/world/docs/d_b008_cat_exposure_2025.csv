@@ -1,0 +1,3 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-45901,1,Anchor Columbus Facility,40.00835,-83.099542,US,OH,2150,5300,2011,3,2013,16018000,6805000,1595000,1947000,WTC;WSS;QEQ;ORF;BFR,AOP,50000
+NSP-CP-2025-45901,2,Anchor Columbus Building,39.957579,-83.093264,US,OH,2150,5150,1979,3,2022,3413000,1513000,354000,435000,WTC;WSS;QEQ;ORF;BFR,AOP,50000

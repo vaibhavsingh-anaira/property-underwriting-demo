@@ -1,0 +1,74 @@
+{
+  "account": "Driftwood Distribution",
+  "run_date": "2025-12-11",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 1317,
+  "aal_by_peril": {
+    "SCS": 1317
+  },
+  "location_aal": {
+    "L1": 1317
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 207
+    },
+    {
+      "rp": 50,
+      "loss": 3136
+    },
+    {
+      "rp": 100,
+      "loss": 23388
+    },
+    {
+      "rp": 250,
+      "loss": 114656
+    },
+    {
+      "rp": 500,
+      "loss": 114656
+    },
+    {
+      "rp": 1000,
+      "loss": 114656
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 207
+    },
+    {
+      "rp": 50,
+      "loss": 3136
+    },
+    {
+      "rp": 100,
+      "loss": 23388
+    },
+    {
+      "rp": 250,
+      "loss": 114656
+    },
+    {
+      "rp": 500,
+      "loss": 114656
+    },
+    {
+      "rp": 1000,
+      "loss": 114656
+    }
+  ]
+}

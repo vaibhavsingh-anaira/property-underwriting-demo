@@ -1,0 +1,75 @@
+{
+  "account": "Orchard Frozen Logistics",
+  "run_date": "2025-10-17",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 79603,
+  "aal_by_peril": {
+    "EQ": 63281,
+    "WF": 16322
+  },
+  "location_aal": {
+    "L1": 79603
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 73373
+    },
+    {
+      "rp": 50,
+      "loss": 170398
+    },
+    {
+      "rp": 100,
+      "loss": 637899
+    },
+    {
+      "rp": 250,
+      "loss": 4081003
+    },
+    {
+      "rp": 500,
+      "loss": 10936176
+    },
+    {
+      "rp": 1000,
+      "loss": 16163718
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 71094
+    },
+    {
+      "rp": 50,
+      "loss": 200837
+    },
+    {
+      "rp": 100,
+      "loss": 1121747
+    },
+    {
+      "rp": 250,
+      "loss": 4200708
+    },
+    {
+      "rp": 500,
+      "loss": 13973644
+    },
+    {
+      "rp": 1000,
+      "loss": 20118000
+    }
+  ]
+}

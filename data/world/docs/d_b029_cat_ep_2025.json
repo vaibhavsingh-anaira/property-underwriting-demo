@@ -1,0 +1,76 @@
+{
+  "account": "Harborline Hospitality Group",
+  "run_date": "2025-11-16",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 7055,
+  "aal_by_peril": {
+    "SCS": 7055
+  },
+  "location_aal": {
+    "L1": 33,
+    "L2": 0,
+    "L3": 7022
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 54512
+    },
+    {
+      "rp": 50,
+      "loss": 140408
+    },
+    {
+      "rp": 100,
+      "loss": 209284
+    },
+    {
+      "rp": 250,
+      "loss": 227066
+    },
+    {
+      "rp": 500,
+      "loss": 227066
+    },
+    {
+      "rp": 1000,
+      "loss": 227066
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 54512
+    },
+    {
+      "rp": 50,
+      "loss": 140408
+    },
+    {
+      "rp": 100,
+      "loss": 209284
+    },
+    {
+      "rp": 250,
+      "loss": 227066
+    },
+    {
+      "rp": 500,
+      "loss": 227066
+    },
+    {
+      "rp": 1000,
+      "loss": 229191
+    }
+  ]
+}

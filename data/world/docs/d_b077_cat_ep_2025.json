@@ -1,0 +1,75 @@
+{
+  "account": "Westbrook Stores",
+  "run_date": "2025-10-09",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 7940,
+  "aal_by_peril": {
+    "EQ": 7426,
+    "WF": 514
+  },
+  "location_aal": {
+    "L1": 7940
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 0
+    },
+    {
+      "rp": 50,
+      "loss": 0
+    },
+    {
+      "rp": 100,
+      "loss": 52507
+    },
+    {
+      "rp": 250,
+      "loss": 398199
+    },
+    {
+      "rp": 500,
+      "loss": 1300754
+    },
+    {
+      "rp": 1000,
+      "loss": 2191860
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 0
+    },
+    {
+      "rp": 50,
+      "loss": 0
+    },
+    {
+      "rp": 100,
+      "loss": 42217
+    },
+    {
+      "rp": 250,
+      "loss": 341846
+    },
+    {
+      "rp": 500,
+      "loss": 804115
+    },
+    {
+      "rp": 1000,
+      "loss": 3872684
+    }
+  ]
+}

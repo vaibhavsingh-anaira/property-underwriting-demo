@@ -1,0 +1,30 @@
+# SAMPLE rule — carrier guideline, fictional
+rule_id: cat_terms.named_storm_ded_floor
+version: 3
+family: cat_terms
+title: Named storm deductible below tier floor
+effective_from: 2026-01-01
+effective_to: null
+applies_to: location
+scope:
+  lob: commercial_property
+  states: [FL, TX, LA, MS, AL, GA, SC, NC]
+when: >
+  location.wind_tier in ['T1', 'T2'] &&
+  terms.named_storm_ded_pct < tier_floor(location.wind_tier)
+outcome: REFER
+severity: HIGH
+expected: "Named storm deductible >= 3% for Tier 1-2 wind locations"
+referral_level: 3
+impact_method: rarc_terms_delta   # priced via model re-run, elasticity fallback
+source: "Northgate CP Guidelines 2026 §4.2.1 (fictional)"
+tests:
+  - name: tier1_at_2pct_refers
+    fixture: { location: { wind_tier: T1 }, terms: { named_storm_ded_pct: 0.02 } }
+    expect: REFER
+  - name: tier1_at_3pct_passes
+    fixture: { location: { wind_tier: T1 }, terms: { named_storm_ded_pct: 0.03 } }
+    expect: PASS
+  - name: inland_not_applicable
+    fixture: { location: { wind_tier: null }, terms: { named_storm_ded_pct: 0.01 } }
+    expect: NOT_APPLICABLE

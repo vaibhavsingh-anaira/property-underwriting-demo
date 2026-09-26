@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-42465,1,Prairie Miami Facility,25.804648,-80.140114,US,FL,0580,5200,1976,3,2010,26022000,1283000,0,5121000,WTC;WSS;QEQ;ORF;BFR,NS%,0.05

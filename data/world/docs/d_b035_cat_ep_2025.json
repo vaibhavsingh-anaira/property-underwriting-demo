@@ -1,0 +1,79 @@
+{
+  "account": "Lakeshore Residential",
+  "run_date": "2025-10-17",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 80947,
+  "aal_by_peril": {
+    "EQ": 61063,
+    "WF": 8623,
+    "SCS": 11261
+  },
+  "location_aal": {
+    "L1": 69686,
+    "L2": 865,
+    "L3": 10204,
+    "L4": 191
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 32625
+    },
+    {
+      "rp": 25,
+      "loss": 175987
+    },
+    {
+      "rp": 50,
+      "loss": 244955
+    },
+    {
+      "rp": 100,
+      "loss": 713875
+    },
+    {
+      "rp": 250,
+      "loss": 2819568
+    },
+    {
+      "rp": 500,
+      "loss": 12194145
+    },
+    {
+      "rp": 1000,
+      "loss": 24604695
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 38063
+    },
+    {
+      "rp": 25,
+      "loss": 175987
+    },
+    {
+      "rp": 50,
+      "loss": 244955
+    },
+    {
+      "rp": 100,
+      "loss": 560947
+    },
+    {
+      "rp": 250,
+      "loss": 1909567
+    },
+    {
+      "rp": 500,
+      "loss": 2995404
+    },
+    {
+      "rp": 1000,
+      "loss": 19513602
+    }
+  ]
+}

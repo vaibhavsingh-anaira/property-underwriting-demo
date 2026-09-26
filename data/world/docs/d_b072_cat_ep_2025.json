@@ -1,0 +1,74 @@
+{
+  "account": "Allied Logistics",
+  "run_date": "2025-09-26",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 8459,
+  "aal_by_peril": {
+    "SCS": 8459
+  },
+  "location_aal": {
+    "L1": 8459
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 29027
+    },
+    {
+      "rp": 25,
+      "loss": 52827
+    },
+    {
+      "rp": 50,
+      "loss": 92654
+    },
+    {
+      "rp": 100,
+      "loss": 139887
+    },
+    {
+      "rp": 250,
+      "loss": 142983
+    },
+    {
+      "rp": 500,
+      "loss": 142983
+    },
+    {
+      "rp": 1000,
+      "loss": 142983
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 29027
+    },
+    {
+      "rp": 25,
+      "loss": 52827
+    },
+    {
+      "rp": 50,
+      "loss": 92654
+    },
+    {
+      "rp": 100,
+      "loss": 139887
+    },
+    {
+      "rp": 250,
+      "loss": 142983
+    },
+    {
+      "rp": 500,
+      "loss": 157123
+    },
+    {
+      "rp": 1000,
+      "loss": 172315
+    }
+  ]
+}

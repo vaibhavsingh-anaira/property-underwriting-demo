@@ -1,0 +1,78 @@
+{
+  "account": "Quarry Industries",
+  "run_date": "2025-10-24",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 133335,
+  "aal_by_peril": {
+    "HU": 100608,
+    "SCS": 16295,
+    "FL": 16432
+  },
+  "location_aal": {
+    "L1": 58700,
+    "L2": 58867,
+    "L3": 15768
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 179031
+    },
+    {
+      "rp": 25,
+      "loss": 747298
+    },
+    {
+      "rp": 50,
+      "loss": 1775598
+    },
+    {
+      "rp": 100,
+      "loss": 2457787
+    },
+    {
+      "rp": 250,
+      "loss": 4001970
+    },
+    {
+      "rp": 500,
+      "loss": 5006583
+    },
+    {
+      "rp": 1000,
+      "loss": 7774801
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 208973
+    },
+    {
+      "rp": 25,
+      "loss": 731097
+    },
+    {
+      "rp": 50,
+      "loss": 1822469
+    },
+    {
+      "rp": 100,
+      "loss": 2480616
+    },
+    {
+      "rp": 250,
+      "loss": 3710292
+    },
+    {
+      "rp": 500,
+      "loss": 4062515
+    },
+    {
+      "rp": 1000,
+      "loss": 7774802
+    }
+  ]
+}

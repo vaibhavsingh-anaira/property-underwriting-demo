@@ -1,0 +1,78 @@
+{
+  "account": "Keystone Industries",
+  "run_date": "2025-09-18",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 93073,
+  "aal_by_peril": {
+    "EQ": 73034,
+    "WF": 19451,
+    "SCS": 587
+  },
+  "location_aal": {
+    "L1": 23283,
+    "L2": 587,
+    "L3": 69203
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 30081
+    },
+    {
+      "rp": 25,
+      "loss": 141079
+    },
+    {
+      "rp": 50,
+      "loss": 457856
+    },
+    {
+      "rp": 100,
+      "loss": 1016763
+    },
+    {
+      "rp": 250,
+      "loss": 5566314
+    },
+    {
+      "rp": 500,
+      "loss": 7671945
+    },
+    {
+      "rp": 1000,
+      "loss": 22826745
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 37266
+    },
+    {
+      "rp": 25,
+      "loss": 154379
+    },
+    {
+      "rp": 50,
+      "loss": 508730
+    },
+    {
+      "rp": 100,
+      "loss": 1270956
+    },
+    {
+      "rp": 250,
+      "loss": 4489012
+    },
+    {
+      "rp": 500,
+      "loss": 19381350
+    },
+    {
+      "rp": 1000,
+      "loss": 25690220
+    }
+  ]
+}

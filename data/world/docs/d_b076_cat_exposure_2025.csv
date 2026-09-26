@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-43863,1,Cobalt Denver Facility,39.70403,-105.070044,US,CO,0567,5150,1972,1,2006,21576000,9346000,12784000,4997000,WTC;WSS;QEQ;ORF;BFR,AOP,25000

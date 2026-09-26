@@ -1,0 +1,80 @@
+{
+  "account": "Beacon Cold Chain",
+  "run_date": "2025-11-04",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 119279,
+  "aal_by_peril": {
+    "SCS": 4979,
+    "HU": 14937,
+    "FL": 6376,
+    "EQ": 75448,
+    "WF": 17539
+  },
+  "location_aal": {
+    "L1": 2669,
+    "L2": 23622,
+    "L3": 92987
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 59834
+    },
+    {
+      "rp": 25,
+      "loss": 228878
+    },
+    {
+      "rp": 50,
+      "loss": 814504
+    },
+    {
+      "rp": 100,
+      "loss": 1545059
+    },
+    {
+      "rp": 250,
+      "loss": 6359858
+    },
+    {
+      "rp": 500,
+      "loss": 9725424
+    },
+    {
+      "rp": 1000,
+      "loss": 32230150
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 74666
+    },
+    {
+      "rp": 25,
+      "loss": 260176
+    },
+    {
+      "rp": 50,
+      "loss": 879541
+    },
+    {
+      "rp": 100,
+      "loss": 1978958
+    },
+    {
+      "rp": 250,
+      "loss": 6708548
+    },
+    {
+      "rp": 500,
+      "loss": 9725424
+    },
+    {
+      "rp": 1000,
+      "loss": 32234416
+    }
+  ]
+}

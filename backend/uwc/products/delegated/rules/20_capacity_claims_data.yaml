@@ -1,0 +1,199 @@
+# Delegated authority — capacity (zone aggregates, premium income), claims bordereau and reporting controls.
+# `zone` = in-force TIV in a CAT zone from the exposure return plus bordereau movements; `cap` = premium income;
+# `claim` = one claim on the latest claims bordereau joined to its policy; `bdx` = one received bordereau.
+
+- id: DA.AGGREGATE.WARNING
+  product: delegated
+  version: 1
+  family: aggregate
+  title: Zone aggregate above the warning level
+  description: Zone aggregate vs warning
+  applies_to: zone
+  when: "zone.util >= zone.warn && zone.util < 1"
+  outcome: WARN
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "{usd(zone.tiv)} = {pct(zone.util)} of {usd(zone.limit)}"
+  expected: "Below {pct(zone.warn)} warning level"
+  source: "BAA §6 Aggregate and capacity limits"
+  impact: zone_excess
+  action: "Refer or stop incremental business in the zone by endorsement"
+  tests:
+    - {name: ninety_three, fixture: {zone: {util: 0.93, warn: 0.9}}, expect: WARN}
+    - {name: eighty, fixture: {zone: {util: 0.8, warn: 0.9}}, expect: PASS}
+
+- id: DA.AGGREGATE.LIMIT
+  product: delegated
+  version: 1
+  family: aggregate
+  title: Zone aggregate limit exceeded
+  description: Zone aggregate vs limit
+  applies_to: zone
+  when: "zone.util >= 1"
+  outcome: BREACH
+  severity: CRITICAL
+  origin: carrier_guideline
+  observed: "{usd(zone.tiv)} = {pct(zone.util)} of {usd(zone.limit)}"
+  expected: "≤ {usd(zone.limit)}"
+  source: "BAA §6 Aggregate and capacity limits"
+  impact: zone_excess
+  action: "Stop incremental business; reinsurance notification"
+  tests:
+    - {name: over, fixture: {zone: {util: 1.04}}, expect: BREACH}
+
+- id: DA.CAPACITY.GPI
+  product: delegated
+  version: 1
+  family: capacity
+  title: Premium income projected above the GPI limit
+  description: Projected GPI vs limit
+  applies_to: capacity
+  when: "cap.projected > cap.limit"
+  outcome: WARN
+  severity: MEDIUM
+  origin: carrier_guideline
+  observed: "Projected {usd(cap.projected)} (YTD {usd(cap.ytd)})"
+  expected: "≤ {usd(cap.limit)}"
+  source: "BAA §3 Gross premium income limit"
+  impact: none
+  action: "Capacity review with the coverholder"
+  tests:
+    - {name: over, fixture: {cap: {projected: 45000000, limit: 42000000, ytd: 15000000}}, expect: WARN}
+
+- id: DA.CLAIM.OUT_OF_AUTHORITY
+  product: delegated
+  version: 1
+  family: claims
+  title: Claim on a risk written outside authority
+  description: Claim on an authorised risk
+  applies_to: claim
+  when: "claim.policy_outside_authority"
+  outcome: REVIEW
+  severity: CRITICAL
+  origin: carrier_guideline
+  observed: "{claim.claim_ref} · {usd(claim.incurred)} incurred · policy exception: {claim.policy_exception}"
+  expected: "Claims only on risks bound within authority"
+  source: "BAA §5 / claims conditions"
+  impact: claim_incurred
+  action: "Coverage review; reserve rights; recovery from the coverholder"
+  tests:
+    - {name: excluded_county, fixture: {claim: {policy_outside_authority: true}}, expect: REVIEW}
+    - {name: clean, fixture: {claim: {policy_outside_authority: false}}, expect: PASS}
+
+- id: DA.CLAIM.LATE_LARGE_LOSS
+  product: delegated
+  version: 1
+  family: claims
+  title: Large loss notified late
+  description: Large loss notification
+  applies_to: claim
+  when: "claim.first_incurred >= auth.large_loss_threshold && claim.days_to_carrier > auth.large_loss_days"
+  outcome: BREACH
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "{claim.claim_ref} · {usd(claim.first_incurred)} · carrier informed {claim.days_to_carrier} days after notification"
+  expected: "Large loss advice within {auth.large_loss_days} days above {usd(auth.large_loss_threshold)}"
+  source: "BAA §3 Large loss notification"
+  impact: claim_incurred
+  action: "Request loss adviser report; record notification breach on the scorecard"
+  tests:
+    - {name: late, fixture: {claim: {first_incurred: 640000, days_to_carrier: 52}, auth: {large_loss_threshold: 250000, large_loss_days: 7}}, expect: BREACH}
+    - {name: small, fixture: {claim: {first_incurred: 40000, days_to_carrier: 52}, auth: {large_loss_threshold: 250000, large_loss_days: 7}}, expect: PASS}
+
+- id: DA.CLAIM.RESERVE_JUMP
+  product: delegated
+  version: 1
+  family: claims
+  title: Significant reserve movement
+  description: Reserve movement
+  applies_to: claim
+  when: "claim.incurred_change >= 100000 && claim.incurred_change_pct >= 0.5"
+  outcome: REVIEW
+  severity: MEDIUM
+  origin: standard_library
+  observed: "{claim.claim_ref} · incurred {usd(claim.prior_incurred)} → {usd(claim.incurred)}"
+  expected: "Movement under 50% or $100,000 without explanation"
+  source: "Claims oversight guideline"
+  impact: claim_change
+  action: "Request adjuster report and reserve rationale"
+  tests:
+    - {name: jump, fixture: {claim: {incurred_change: 340000, incurred_change_pct: 1.9}}, expect: REVIEW}
+
+- id: DA.CLAIM.SETTLEMENT_AUTHORITY
+  product: delegated
+  version: 1
+  family: claims
+  title: Claim paid above the coverholder's settlement authority
+  description: Claims settlement authority
+  applies_to: claim
+  when: "claim.handled_by_coverholder && claim.paid > auth.claims_authority"
+  outcome: BREACH
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "{claim.claim_ref} · paid {usd(claim.paid)} by the coverholder"
+  expected: "≤ {usd(auth.claims_authority)} without carrier approval"
+  source: "BAA §3 Claims settlement authority"
+  impact: claim_paid_excess
+  action: "Request claim file and carrier approval evidence"
+  tests:
+    - {name: over, fixture: {claim: {handled_by_coverholder: true, paid: 72500}, auth: {claims_authority: 50000}}, expect: BREACH}
+    - {name: tpa, fixture: {claim: {handled_by_coverholder: false, paid: 72500}, auth: {claims_authority: 50000}}, expect: PASS}
+
+- id: DA.CLAIM.DOL_OUTSIDE_PERIOD
+  product: delegated
+  version: 1
+  family: claims
+  title: Date of loss outside the policy period
+  description: Loss within policy period
+  applies_to: claim
+  when: "has(claim.policy_inception) && (claim.date_of_loss < claim.policy_inception || claim.date_of_loss > claim.policy_expiry)"
+  outcome: REVIEW
+  severity: HIGH
+  origin: standard_library
+  observed: "Loss {claim.date_of_loss}, policy {claim.policy_inception} to {claim.policy_expiry}"
+  expected: "Loss within the policy period"
+  source: "Claims oversight guideline"
+  impact: claim_incurred
+  action: "Coverage review"
+  tests:
+    - {name: before_inception, fixture: {claim: {policy_inception: "2026-06-01", policy_expiry: "2027-06-01", date_of_loss: "2026-05-20"}}, expect: REVIEW}
+
+- id: DA.DATA.LATE_BORDEREAU
+  product: delegated
+  version: 1
+  family: timeliness
+  title: Bordereau received after the due date
+  description: Bordereau on time
+  applies_to: bordereau
+  when: "bdx.days_late > 0"
+  outcome: BREACH
+  severity: MEDIUM
+  origin: carrier_guideline
+  observed: "Received {bdx.received} — {bdx.days_late} days late"
+  expected: "By {bdx.due} ({auth.bordereau_due_days} days after month end)"
+  source: "BAA Bordereau due"
+  impact: none
+  action: "Record on the scorecard; repeated lateness triggers an audit"
+  tests:
+    - {name: late, fixture: {bdx: {days_late: 9}}, expect: BREACH}
+    - {name: on_time, fixture: {bdx: {days_late: 0}}, expect: PASS}
+
+- id: DA.DATA.MANDATORY_FIELDS
+  product: delegated
+  version: 1
+  family: data_quality
+  title: Mandatory CRS v5.2 fields missing from the bordereau
+  description: CRS v5.2 mandatory fields
+  applies_to: bordereau
+  when: "size(bdx.missing) > 0"
+  outcome: BREACH
+  severity: MEDIUM
+  origin: standard_library
+  observed: "{bdx.missing_list}"
+  expected: "All mandatory CRS v5.2 fields"
+  source: "Lloyd's Coverholder Reporting Standards v5.2"
+  impact: none
+  action: "Request resubmission in the CRS template"
+  tests:
+    - {name: missing, fixture: {bdx: {missing: [construction, year_built]}}, expect: BREACH}
+    - {name: complete, fixture: {bdx: {missing: []}}, expect: PASS}

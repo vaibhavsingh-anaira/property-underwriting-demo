@@ -1,0 +1,82 @@
+{
+  "account": "Crescent Retail Centers",
+  "run_date": "2025-09-19",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 11185,
+  "aal_by_peril": {
+    "SCS": 10016,
+    "WF": 1169
+  },
+  "location_aal": {
+    "L1": 1980,
+    "L2": 239,
+    "L3": 0,
+    "L4": 2284,
+    "L5": 0,
+    "L6": 5804,
+    "L7": 304,
+    "L8": 573
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 33215
+    },
+    {
+      "rp": 25,
+      "loss": 85175
+    },
+    {
+      "rp": 50,
+      "loss": 114468
+    },
+    {
+      "rp": 100,
+      "loss": 187943
+    },
+    {
+      "rp": 250,
+      "loss": 187943
+    },
+    {
+      "rp": 500,
+      "loss": 187943
+    },
+    {
+      "rp": 1000,
+      "loss": 187943
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 30549
+    },
+    {
+      "rp": 25,
+      "loss": 85175
+    },
+    {
+      "rp": 50,
+      "loss": 162366
+    },
+    {
+      "rp": 100,
+      "loss": 187943
+    },
+    {
+      "rp": 250,
+      "loss": 187943
+    },
+    {
+      "rp": 500,
+      "loss": 221158
+    },
+    {
+      "rp": 1000,
+      "loss": 419928
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-37156,1,Frontier Pittsburgh Facility,40.509376,-79.995972,US,PA,2150,5300,1998,1,2001,12813000,5799000,1343000,1550000,WTC;WSS;QEQ;ORF;BFR,NS%,0.05

@@ -1,0 +1,81 @@
+{
+  "account": "Delta Apartments",
+  "run_date": "2025-10-08",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 16453,
+  "aal_by_peril": {
+    "EQ": 12075,
+    "WF": 1247,
+    "SCS": 3131
+  },
+  "location_aal": {
+    "L1": 13322,
+    "L2": 0,
+    "L3": 0,
+    "L4": 1409,
+    "L5": 1614,
+    "L6": 108
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 33212
+    },
+    {
+      "rp": 50,
+      "loss": 100451
+    },
+    {
+      "rp": 100,
+      "loss": 128233
+    },
+    {
+      "rp": 250,
+      "loss": 496157
+    },
+    {
+      "rp": 500,
+      "loss": 1886074
+    },
+    {
+      "rp": 1000,
+      "loss": 2748587
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 23823
+    },
+    {
+      "rp": 50,
+      "loss": 100451
+    },
+    {
+      "rp": 100,
+      "loss": 128233
+    },
+    {
+      "rp": 250,
+      "loss": 695414
+    },
+    {
+      "rp": 500,
+      "loss": 1451859
+    },
+    {
+      "rp": 1000,
+      "loss": 3192211
+    }
+  ]
+}

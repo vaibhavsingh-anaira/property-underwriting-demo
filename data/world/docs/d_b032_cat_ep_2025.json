@@ -1,0 +1,76 @@
+{
+  "account": "Oakmont Dining Co.",
+  "run_date": "2025-12-11",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 12742,
+  "aal_by_peril": {
+    "SCS": 12742
+  },
+  "location_aal": {
+    "L1": 8774,
+    "L2": 3079,
+    "L3": 889
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 24159
+    },
+    {
+      "rp": 25,
+      "loss": 96077
+    },
+    {
+      "rp": 50,
+      "loss": 163065
+    },
+    {
+      "rp": 100,
+      "loss": 185465
+    },
+    {
+      "rp": 250,
+      "loss": 347028
+    },
+    {
+      "rp": 500,
+      "loss": 347028
+    },
+    {
+      "rp": 1000,
+      "loss": 347028
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 24159
+    },
+    {
+      "rp": 25,
+      "loss": 96077
+    },
+    {
+      "rp": 50,
+      "loss": 175829
+    },
+    {
+      "rp": 100,
+      "loss": 198229
+    },
+    {
+      "rp": 250,
+      "loss": 347028
+    },
+    {
+      "rp": 500,
+      "loss": 359877
+    },
+    {
+      "rp": 1000,
+      "loss": 371187
+    }
+  ]
+}

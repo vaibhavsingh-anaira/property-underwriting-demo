@@ -1,0 +1,77 @@
+{
+  "account": "Timberline Hotels",
+  "run_date": "2025-12-04",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 4175,
+  "aal_by_peril": {
+    "SCS": 3460,
+    "WF": 715
+  },
+  "location_aal": {
+    "L1": 1062,
+    "L2": 808,
+    "L3": 2305
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 472
+    },
+    {
+      "rp": 25,
+      "loss": 17528
+    },
+    {
+      "rp": 50,
+      "loss": 41184
+    },
+    {
+      "rp": 100,
+      "loss": 211363
+    },
+    {
+      "rp": 250,
+      "loss": 211363
+    },
+    {
+      "rp": 500,
+      "loss": 211363
+    },
+    {
+      "rp": 1000,
+      "loss": 211363
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 17528
+    },
+    {
+      "rp": 50,
+      "loss": 35168
+    },
+    {
+      "rp": 100,
+      "loss": 68413
+    },
+    {
+      "rp": 250,
+      "loss": 211363
+    },
+    {
+      "rp": 500,
+      "loss": 211363
+    },
+    {
+      "rp": 1000,
+      "loss": 217660
+    }
+  ]
+}

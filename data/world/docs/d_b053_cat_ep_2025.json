@@ -1,0 +1,77 @@
+{
+  "account": "Falcon Stores",
+  "run_date": "2025-11-24",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 30160,
+  "aal_by_peril": {
+    "EQ": 22595,
+    "WF": 7218,
+    "SCS": 346
+  },
+  "location_aal": {
+    "L1": 29814,
+    "L2": 346
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 157
+    },
+    {
+      "rp": 25,
+      "loss": 23076
+    },
+    {
+      "rp": 50,
+      "loss": 80815
+    },
+    {
+      "rp": 100,
+      "loss": 326690
+    },
+    {
+      "rp": 250,
+      "loss": 1532596
+    },
+    {
+      "rp": 500,
+      "loss": 4301497
+    },
+    {
+      "rp": 1000,
+      "loss": 7859258
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 22664
+    },
+    {
+      "rp": 50,
+      "loss": 81738
+    },
+    {
+      "rp": 100,
+      "loss": 260206
+    },
+    {
+      "rp": 250,
+      "loss": 1117959
+    },
+    {
+      "rp": 500,
+      "loss": 1812012
+    },
+    {
+      "rp": 1000,
+      "loss": 4613360
+    }
+  ]
+}

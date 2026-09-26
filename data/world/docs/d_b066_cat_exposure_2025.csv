@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-44888,1,Orchard Oakland Facility,37.733631,-122.355967,US,CA,1225,5300,1975,1,2016,32464000,7655000,21433000,5529000,WTC;WSS;QEQ;ORF;BFR,AOP,25000

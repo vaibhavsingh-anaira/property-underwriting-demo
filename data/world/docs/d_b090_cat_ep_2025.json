@@ -1,0 +1,81 @@
+{
+  "account": "Union Realty Trust",
+  "run_date": "2025-12-31",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 35443,
+  "aal_by_peril": {
+    "SCS": 35443
+  },
+  "location_aal": {
+    "L1": 7835,
+    "L2": 0,
+    "L3": 3688,
+    "L4": 206,
+    "L5": 3331,
+    "L6": 3050,
+    "L7": 16555,
+    "L8": 778
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 110410
+    },
+    {
+      "rp": 25,
+      "loss": 169021
+    },
+    {
+      "rp": 50,
+      "loss": 303700
+    },
+    {
+      "rp": 100,
+      "loss": 442029
+    },
+    {
+      "rp": 250,
+      "loss": 550391
+    },
+    {
+      "rp": 500,
+      "loss": 550391
+    },
+    {
+      "rp": 1000,
+      "loss": 550391
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 110839
+    },
+    {
+      "rp": 25,
+      "loss": 189971
+    },
+    {
+      "rp": 50,
+      "loss": 419572
+    },
+    {
+      "rp": 100,
+      "loss": 550392
+    },
+    {
+      "rp": 250,
+      "loss": 550392
+    },
+    {
+      "rp": 500,
+      "loss": 557152
+    },
+    {
+      "rp": 1000,
+      "loss": 635644
+    }
+  ]
+}

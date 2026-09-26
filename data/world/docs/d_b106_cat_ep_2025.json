@@ -1,0 +1,81 @@
+{
+  "account": "Keystone Dining Co.",
+  "run_date": "2025-09-25",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 323565,
+  "aal_by_peril": {
+    "SCS": 16888,
+    "HU": 243489,
+    "FL": 63188
+  },
+  "location_aal": {
+    "L1": 590,
+    "L2": 53667,
+    "L3": 26456,
+    "L4": 110889,
+    "L5": 3693,
+    "L6": 128270
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 264244
+    },
+    {
+      "rp": 25,
+      "loss": 1406152
+    },
+    {
+      "rp": 50,
+      "loss": 3588657
+    },
+    {
+      "rp": 100,
+      "loss": 8492904
+    },
+    {
+      "rp": 250,
+      "loss": 15687044
+    },
+    {
+      "rp": 500,
+      "loss": 16888706
+    },
+    {
+      "rp": 1000,
+      "loss": 28578016
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 286022
+    },
+    {
+      "rp": 25,
+      "loss": 1560680
+    },
+    {
+      "rp": 50,
+      "loss": 3098302
+    },
+    {
+      "rp": 100,
+      "loss": 9403494
+    },
+    {
+      "rp": 250,
+      "loss": 15714287
+    },
+    {
+      "rp": 500,
+      "loss": 16927458
+    },
+    {
+      "rp": 1000,
+      "loss": 34835568
+    }
+  ]
+}

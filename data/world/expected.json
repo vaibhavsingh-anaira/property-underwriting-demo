@@ -1,0 +1,843 @@
+{
+ "acc_s1": {
+  "scenario": "S1",
+  "expected": [],
+  "issues": []
+ },
+ "acc_s2": {
+  "scenario": "S2",
+  "expected": [
+   "PRICE.RARC_AUTHORITY",
+   "PRICE.ADEQUACY",
+   "CAT.WIND.DED_FLOOR",
+   "CAT.NS_MIN_FLOOR",
+   "EXP.NEW_LOCATION_UNMODELLED",
+   "ACC.ZONE_UTIL",
+   "CONTRACT.BINDER_POLICY",
+   "OCC.DRIFT",
+   "ROOF.YEAR_CONFLICT",
+   "WATER.REPEAT",
+   "ENG.OVERDUE_REC",
+   "ENG.CLAIM_LINKED",
+   "VAL.RC_RATIO",
+   "VAL.FLAT_VALUES",
+   "CAT.INPUT_MISMATCH"
+  ],
+  "issues": []
+ },
+ "acc_s3": {
+  "scenario": "S3",
+  "expected": [
+   "SEC.HIGH_VALUE_UNMONITORED",
+   "SAFEGUARD.BREACH",
+   "COV.CRIME_GAP"
+  ],
+  "issues": []
+ },
+ "acc_s4": {
+  "scenario": "S4",
+  "expected": [
+   "OCC.DRIFT",
+   "FIRE.SPRINKLER_ADEQUACY"
+  ],
+  "issues": []
+ },
+ "acc_s5": {
+  "scenario": "S5",
+  "expected": [
+   "VAL.RC_RATIO",
+   "VAL.FLAT_VALUES",
+   "VAL.STALE_APPRAISAL"
+  ],
+  "issues": []
+ },
+ "acc_s6": {
+  "scenario": "S6",
+  "expected": [
+   "FIRE.COOKING_SUPPRESSION",
+   "CLAIMS.REPEAT_CAUSE",
+   "SAFEGUARD.BREACH"
+  ],
+  "issues": []
+ },
+ "acc_s7": {
+  "scenario": "S7",
+  "expected": [
+   "VAC.THRESHOLD",
+   "VAC.FIRE_SPRINKLER_OFF",
+   "SAFEGUARD.BREACH"
+  ],
+  "issues": []
+ },
+ "acc_s8": {
+  "scenario": "S8",
+  "expected": [
+   "AUTH.APPROVAL_INVALID",
+   "CONTRACT.BINDER_POLICY",
+   "CONTRACT.SUBJECTIVITY_OPEN",
+   "CAT.NS_MIN_FLOOR"
+  ],
+  "issues": []
+ },
+ "acc_s9": {
+  "scenario": "S9",
+  "expected": [
+   "ENG.UNVERIFIED_CLOSURE",
+   "ENG.BROKEN_COMMITMENT",
+   "ENG.CLAIM_LINKED",
+   "CLAIMS.LARGE_LOSS",
+   "ENG.OVERDUE_REC",
+   "SAFEGUARD.BREACH"
+  ],
+  "issues": []
+ },
+ "acc_s10": {
+  "scenario": "S10",
+  "expected": [
+   "APPETITE.DECLINED_CLASS"
+  ],
+  "issues": []
+ },
+ "acc_s11": {
+  "scenario": "S11",
+  "expected": [
+   "DQ.MATCH_AMBIGUOUS",
+   "EXP.NEW_LOCATION_UNMODELLED"
+  ],
+  "issues": []
+ },
+ "acc_s12": {
+  "scenario": "S12",
+  "expected": [],
+  "issues": []
+ },
+ "acc_001": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "overdue_rec",
+   "undervalued"
+  ]
+ },
+ "acc_002": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "undervalued"
+  ]
+ },
+ "acc_003": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "declined"
+  ]
+ },
+ "acc_004": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "declined",
+   "dq_modifiers"
+  ]
+ },
+ "acc_005": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target",
+   "old_roof"
+  ]
+ },
+ "acc_006": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target"
+  ]
+ },
+ "acc_007": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "binder_mismatch"
+  ]
+ },
+ "acc_008": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target",
+   "undervalued"
+  ]
+ },
+ "acc_009": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "dq_modifiers"
+  ]
+ },
+ "acc_010": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "wind_floor"
+  ]
+ },
+ "acc_011": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "old_roof"
+  ]
+ },
+ "acc_012": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "repeat_water"
+  ]
+ },
+ "acc_013": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_014": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "stale_values"
+  ]
+ },
+ "acc_015": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "declined"
+  ]
+ },
+ "acc_016": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_017": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "stale_values"
+  ]
+ },
+ "acc_018": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "overdue_rec"
+  ]
+ },
+ "acc_019": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_020": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target"
+  ]
+ },
+ "acc_021": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_022": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "overdue_rec"
+  ]
+ },
+ "acc_023": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "undervalued"
+  ]
+ },
+ "acc_024": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_025": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "binder_mismatch",
+   "overdue_rec"
+  ]
+ },
+ "acc_026": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target",
+   "undervalued",
+   "wind_floor"
+  ]
+ },
+ "acc_027": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_028": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target"
+  ]
+ },
+ "acc_029": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "dq_modifiers"
+  ]
+ },
+ "acc_030": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_031": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_032": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "binder_mismatch",
+   "low_target"
+  ]
+ },
+ "acc_033": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "occ_drift"
+  ]
+ },
+ "acc_034": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "stale_values"
+  ]
+ },
+ "acc_035": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_036": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "dq_modifiers",
+   "overdue_rec"
+  ]
+ },
+ "acc_037": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "undervalued"
+  ]
+ },
+ "acc_038": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "repeat_water"
+  ]
+ },
+ "acc_039": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_040": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_041": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target",
+   "repeat_water"
+  ]
+ },
+ "acc_042": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "undervalued"
+  ]
+ },
+ "acc_043": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "occ_drift"
+  ]
+ },
+ "acc_044": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "stale_values"
+  ]
+ },
+ "acc_045": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_046": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "overdue_rec"
+  ]
+ },
+ "acc_047": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "stale_values"
+  ]
+ },
+ "acc_048": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_049": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_050": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target",
+   "overdue_rec"
+  ]
+ },
+ "acc_051": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_052": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "declined",
+   "low_target",
+   "overdue_rec"
+  ]
+ },
+ "acc_053": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "repeat_water",
+   "undervalued"
+  ]
+ },
+ "acc_054": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target"
+  ]
+ },
+ "acc_055": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "repeat_water"
+  ]
+ },
+ "acc_056": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "wind_floor"
+  ]
+ },
+ "acc_057": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_058": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "overdue_rec"
+  ]
+ },
+ "acc_059": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target",
+   "old_roof"
+  ]
+ },
+ "acc_060": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_061": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_062": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target"
+  ]
+ },
+ "acc_063": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_064": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "overdue_rec"
+  ]
+ },
+ "acc_065": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "old_roof",
+   "overdue_rec"
+  ]
+ },
+ "acc_066": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_067": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "old_roof",
+   "undervalued"
+  ]
+ },
+ "acc_068": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_069": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target"
+  ]
+ },
+ "acc_070": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target",
+   "undervalued"
+  ]
+ },
+ "acc_071": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "occ_drift",
+   "old_roof",
+   "undervalued"
+  ]
+ },
+ "acc_072": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target",
+   "overdue_rec"
+  ]
+ },
+ "acc_073": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "occ_drift"
+  ]
+ },
+ "acc_074": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "undervalued"
+  ]
+ },
+ "acc_075": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_076": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "dq_modifiers"
+  ]
+ },
+ "acc_077": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "overdue_rec"
+  ]
+ },
+ "acc_078": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "binder_mismatch",
+   "dq_modifiers",
+   "undervalued"
+  ]
+ },
+ "acc_079": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "old_roof"
+  ]
+ },
+ "acc_080": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_081": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "overdue_rec"
+  ]
+ },
+ "acc_082": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target",
+   "repeat_water"
+  ]
+ },
+ "acc_083": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "binder_mismatch",
+   "repeat_water"
+  ]
+ },
+ "acc_084": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "binder_mismatch",
+   "declined"
+  ]
+ },
+ "acc_085": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target"
+  ]
+ },
+ "acc_086": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target",
+   "undervalued"
+  ]
+ },
+ "acc_087": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_088": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_089": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_090": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_091": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target",
+   "overdue_rec",
+   "repeat_water"
+  ]
+ },
+ "acc_092": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "undervalued"
+  ]
+ },
+ "acc_093": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "binder_mismatch"
+  ]
+ },
+ "acc_094": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "occ_drift",
+   "undervalued"
+  ]
+ },
+ "acc_095": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "dq_modifiers",
+   "low_target"
+  ]
+ },
+ "acc_096": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target",
+   "repeat_water"
+  ]
+ },
+ "acc_097": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "repeat_water",
+   "undervalued"
+  ]
+ },
+ "acc_098": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_099": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "declined",
+   "overdue_rec"
+  ]
+ },
+ "acc_100": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_101": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_102": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "repeat_water"
+  ]
+ },
+ "acc_103": {
+  "scenario": null,
+  "expected": [],
+  "issues": []
+ },
+ "acc_104": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "undervalued"
+  ]
+ },
+ "acc_105": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "repeat_water"
+  ]
+ },
+ "acc_106": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "overdue_rec"
+  ]
+ },
+ "acc_107": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "undervalued",
+   "wind_floor"
+  ]
+ },
+ "acc_108": {
+  "scenario": null,
+  "expected": [],
+  "issues": [
+   "low_target"
+  ]
+ }
+}

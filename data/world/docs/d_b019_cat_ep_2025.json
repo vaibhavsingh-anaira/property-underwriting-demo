@@ -1,0 +1,75 @@
+{
+  "account": "Gateway Apartments",
+  "run_date": "2025-10-07",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 514,
+  "aal_by_peril": {
+    "SCS": 514
+  },
+  "location_aal": {
+    "L1": 190,
+    "L2": 324
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 5745
+    },
+    {
+      "rp": 50,
+      "loss": 10610
+    },
+    {
+      "rp": 100,
+      "loss": 12035
+    },
+    {
+      "rp": 250,
+      "loss": 12713
+    },
+    {
+      "rp": 500,
+      "loss": 12713
+    },
+    {
+      "rp": 1000,
+      "loss": 12713
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 5745
+    },
+    {
+      "rp": 50,
+      "loss": 10610
+    },
+    {
+      "rp": 100,
+      "loss": 12713
+    },
+    {
+      "rp": 250,
+      "loss": 12713
+    },
+    {
+      "rp": 500,
+      "loss": 12713
+    },
+    {
+      "rp": 1000,
+      "loss": 15696
+    }
+  ]
+}

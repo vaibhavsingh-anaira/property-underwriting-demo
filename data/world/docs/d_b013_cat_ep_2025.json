@@ -1,0 +1,75 @@
+{
+  "account": "Northfield Properties",
+  "run_date": "2025-10-23",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 4378,
+  "aal_by_peril": {
+    "SCS": 4378
+  },
+  "location_aal": {
+    "L1": 4122,
+    "L2": 256
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 6669
+    },
+    {
+      "rp": 25,
+      "loss": 21597
+    },
+    {
+      "rp": 50,
+      "loss": 39917
+    },
+    {
+      "rp": 100,
+      "loss": 63427
+    },
+    {
+      "rp": 250,
+      "loss": 220118
+    },
+    {
+      "rp": 500,
+      "loss": 220118
+    },
+    {
+      "rp": 1000,
+      "loss": 220118
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 6669
+    },
+    {
+      "rp": 25,
+      "loss": 21597
+    },
+    {
+      "rp": 50,
+      "loss": 39917
+    },
+    {
+      "rp": 100,
+      "loss": 63427
+    },
+    {
+      "rp": 250,
+      "loss": 220118
+    },
+    {
+      "rp": 500,
+      "loss": 220118
+    },
+    {
+      "rp": 1000,
+      "loss": 231694
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "account": "Driftwood Freight Centers",
+  "run_date": "2025-12-24",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 76157,
+  "aal_by_peril": {
+    "SCS": 33451,
+    "EQ": 22128,
+    "WF": 20578
+  },
+  "location_aal": {
+    "L1": 15562,
+    "L2": 1201,
+    "L3": 3091,
+    "L4": 5,
+    "L5": 24825,
+    "L6": 11107,
+    "L7": 2485,
+    "L8": 17880
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 128935
+    },
+    {
+      "rp": 25,
+      "loss": 287519
+    },
+    {
+      "rp": 50,
+      "loss": 428547
+    },
+    {
+      "rp": 100,
+      "loss": 734137
+    },
+    {
+      "rp": 250,
+      "loss": 3190426
+    },
+    {
+      "rp": 500,
+      "loss": 3854509
+    },
+    {
+      "rp": 1000,
+      "loss": 6526348
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 160914
+    },
+    {
+      "rp": 25,
+      "loss": 356911
+    },
+    {
+      "rp": 50,
+      "loss": 467459
+    },
+    {
+      "rp": 100,
+      "loss": 894655
+    },
+    {
+      "rp": 250,
+      "loss": 3194871
+    },
+    {
+      "rp": 500,
+      "loss": 3846334
+    },
+    {
+      "rp": 1000,
+      "loss": 10225948
+    }
+  ]
+}

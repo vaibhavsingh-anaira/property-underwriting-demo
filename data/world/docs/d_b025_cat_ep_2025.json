@@ -1,0 +1,83 @@
+{
+  "account": "Liberty Row Hospitality",
+  "run_date": "2025-10-23",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 194155,
+  "aal_by_peril": {
+    "EQ": 54033,
+    "WF": 72105,
+    "SCS": 68017
+  },
+  "location_aal": {
+    "L1": 86162,
+    "L2": 1020,
+    "L3": 32753,
+    "L4": 57356,
+    "L5": 0,
+    "L6": 1910,
+    "L7": 13248,
+    "L8": 1705
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 230084
+    },
+    {
+      "rp": 25,
+      "loss": 520620
+    },
+    {
+      "rp": 50,
+      "loss": 980916
+    },
+    {
+      "rp": 100,
+      "loss": 1735165
+    },
+    {
+      "rp": 250,
+      "loss": 7138494
+    },
+    {
+      "rp": 500,
+      "loss": 14057162
+    },
+    {
+      "rp": 1000,
+      "loss": 15906588
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 308730
+    },
+    {
+      "rp": 25,
+      "loss": 632245
+    },
+    {
+      "rp": 50,
+      "loss": 1087589
+    },
+    {
+      "rp": 100,
+      "loss": 1794034
+    },
+    {
+      "rp": 250,
+      "loss": 7258130
+    },
+    {
+      "rp": 500,
+      "loss": 15670379
+    },
+    {
+      "rp": 1000,
+      "loss": 15967559
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-49915,1,Pioneer Minneapolis Facility,45.052485,-93.162659,US,MN,0311,5200,2012,12,2013,15366000,525000,0,2016000,WTC;WSS;QEQ;ORF;BFR,AOP,10000

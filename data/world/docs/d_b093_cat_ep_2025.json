@@ -1,0 +1,74 @@
+{
+  "account": "Timberline Logistics",
+  "run_date": "2025-10-31",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 4848,
+  "aal_by_peril": {
+    "SCS": 4848
+  },
+  "location_aal": {
+    "L1": 4848
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 11789
+    },
+    {
+      "rp": 25,
+      "loss": 29782
+    },
+    {
+      "rp": 50,
+      "loss": 56781
+    },
+    {
+      "rp": 100,
+      "loss": 74689
+    },
+    {
+      "rp": 250,
+      "loss": 79915
+    },
+    {
+      "rp": 500,
+      "loss": 79915
+    },
+    {
+      "rp": 1000,
+      "loss": 79915
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 11789
+    },
+    {
+      "rp": 25,
+      "loss": 41494
+    },
+    {
+      "rp": 50,
+      "loss": 67582
+    },
+    {
+      "rp": 100,
+      "loss": 79915
+    },
+    {
+      "rp": 250,
+      "loss": 82006
+    },
+    {
+      "rp": 500,
+      "loss": 87972
+    },
+    {
+      "rp": 1000,
+      "loss": 111080
+    }
+  ]
+}

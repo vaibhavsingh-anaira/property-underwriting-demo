@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-47447,1,Driftwood Seattle Facility,47.672349,-122.383946,US,WA,1220,5250,2017,3,2021,14560000,1974000,7291000,1661000,WTC;WSS;QEQ;ORF;BFR,AOP,25000

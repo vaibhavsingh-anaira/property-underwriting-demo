@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-23390,1,St. Aurelia Medical Center,32.700898,-79.904011,US,SC,0851,5300,1987,9,2015,410000000,120000000,6000000,64000000,WTC;WSS;QEQ;ORF;BFR,NS%,0.05

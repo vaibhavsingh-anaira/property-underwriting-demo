@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-XS-2025-00918,1,Meridian Ashburn Campus,39.012407,-77.580707,US,VA,0770,5300,2019,2,2019,361900000,568700000,0,103400000,WTC;WSS;QEQ;ORF;BFR,AOP,1000000

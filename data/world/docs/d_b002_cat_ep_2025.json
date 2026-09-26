@@ -1,0 +1,77 @@
+{
+  "account": "Frontier Home Goods",
+  "run_date": "2025-10-22",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 36822,
+  "aal_by_peril": {
+    "EQ": 23974,
+    "WF": 6403,
+    "SCS": 6446
+  },
+  "location_aal": {
+    "L1": 30376,
+    "L2": 6446
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 34541
+    },
+    {
+      "rp": 25,
+      "loss": 70032
+    },
+    {
+      "rp": 50,
+      "loss": 101465
+    },
+    {
+      "rp": 100,
+      "loss": 251866
+    },
+    {
+      "rp": 250,
+      "loss": 1455454
+    },
+    {
+      "rp": 500,
+      "loss": 3896656
+    },
+    {
+      "rp": 1000,
+      "loss": 5543103
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 37378
+    },
+    {
+      "rp": 25,
+      "loss": 70032
+    },
+    {
+      "rp": 50,
+      "loss": 112108
+    },
+    {
+      "rp": 100,
+      "loss": 297410
+    },
+    {
+      "rp": 250,
+      "loss": 3974944
+    },
+    {
+      "rp": 500,
+      "loss": 10762079
+    },
+    {
+      "rp": 1000,
+      "loss": 10762205
+    }
+  ]
+}

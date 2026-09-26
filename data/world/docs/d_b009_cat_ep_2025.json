@@ -1,0 +1,80 @@
+{
+  "account": "Gateway Hospitality Group",
+  "run_date": "2025-10-07",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 36076,
+  "aal_by_peril": {
+    "SCS": 24412,
+    "EQ": 10322,
+    "WF": 1343
+  },
+  "location_aal": {
+    "L1": 926,
+    "L2": 11664,
+    "L3": 143,
+    "L4": 23343,
+    "L5": 0
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 69714
+    },
+    {
+      "rp": 25,
+      "loss": 152482
+    },
+    {
+      "rp": 50,
+      "loss": 268200
+    },
+    {
+      "rp": 100,
+      "loss": 496132
+    },
+    {
+      "rp": 250,
+      "loss": 598860
+    },
+    {
+      "rp": 500,
+      "loss": 1322301
+    },
+    {
+      "rp": 1000,
+      "loss": 3706444
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 83403
+    },
+    {
+      "rp": 25,
+      "loss": 160230
+    },
+    {
+      "rp": 50,
+      "loss": 268200
+    },
+    {
+      "rp": 100,
+      "loss": 496132
+    },
+    {
+      "rp": 250,
+      "loss": 646492
+    },
+    {
+      "rp": 500,
+      "loss": 1322300
+    },
+    {
+      "rp": 1000,
+      "loss": 4137336
+    }
+  ]
+}

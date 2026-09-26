@@ -1,0 +1,78 @@
+{
+  "account": "Sterling Office Partners",
+  "run_date": "2025-10-19",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 317826,
+  "aal_by_peril": {
+    "HU": 284192,
+    "SCS": 2876,
+    "FL": 30759
+  },
+  "location_aal": {
+    "L1": 81896,
+    "L2": 2039,
+    "L3": 233891
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 342999
+    },
+    {
+      "rp": 25,
+      "loss": 1828416
+    },
+    {
+      "rp": 50,
+      "loss": 4366026
+    },
+    {
+      "rp": 100,
+      "loss": 7287040
+    },
+    {
+      "rp": 250,
+      "loss": 11381352
+    },
+    {
+      "rp": 500,
+      "loss": 11677861
+    },
+    {
+      "rp": 1000,
+      "loss": 12366244
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 355671
+    },
+    {
+      "rp": 25,
+      "loss": 1998747
+    },
+    {
+      "rp": 50,
+      "loss": 4736618
+    },
+    {
+      "rp": 100,
+      "loss": 7287040
+    },
+    {
+      "rp": 250,
+      "loss": 11411087
+    },
+    {
+      "rp": 500,
+      "loss": 12904811
+    },
+    {
+      "rp": 1000,
+      "loss": 39900532
+    }
+  ]
+}

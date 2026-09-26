@@ -1,0 +1,3 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-42389,1,Ridgeway Dallas Facility,32.78636,-96.802676,US,TX,0311,5100,2015,7,2022,36786000,1319000,0,4924000,WTC;WSS;QEQ;ORF;BFR,AOP,50000
+NSP-CP-2025-42389,2,Ridgeway Dayton Building,39.781863,-84.138744,US,OH,0311,5050,2014,13,2021,12053000,384000,0,1650000,WTC;WSS;QEQ;ORF;BFR,AOP,50000

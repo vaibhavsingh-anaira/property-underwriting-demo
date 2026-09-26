@@ -1,0 +1,3 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-42007,1,Harborline Dayton Facility,39.690988,-84.232215,US,OH,0311,5100,1975,5,1999,30054000,971000,0,4142000,WTC;WSS;QEQ;ORF;BFR,NS%,0.05
+NSP-CP-2025-42007,2,Harborline Charleston Building,32.776727,-79.894807,US,SC,0311,5200,1967,5,2006,30962000,1196000,0,4320000,WTC;WSS;QEQ;ORF;BFR,NS%,0.05

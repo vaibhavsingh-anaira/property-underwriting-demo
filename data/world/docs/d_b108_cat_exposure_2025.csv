@@ -1,0 +1,3 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-43841,1,Evergreen New Orleans Facility,29.920706,-90.153247,US,LA,4150,5150,2000,1,2012,14196000,8315000,2798000,2651000,WTC;WSS;QEQ;ORF;BFR,NS%,0.03
+NSP-CP-2025-43841,2,Evergreen Charleston Building,32.79998,-79.935549,US,SC,4150,5200,1991,3,2003,18984000,11758000,3807000,3768000,WTC;WSS;QEQ;ORF;BFR,NS%,0.03

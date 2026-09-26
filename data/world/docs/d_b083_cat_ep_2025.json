@@ -1,0 +1,75 @@
+{
+  "account": "Frontier Logistics",
+  "run_date": "2025-10-04",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 17379,
+  "aal_by_peril": {
+    "SCS": 15987,
+    "WF": 1392
+  },
+  "location_aal": {
+    "L1": 17379
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 42868
+    },
+    {
+      "rp": 25,
+      "loss": 103314
+    },
+    {
+      "rp": 50,
+      "loss": 158046
+    },
+    {
+      "rp": 100,
+      "loss": 313080
+    },
+    {
+      "rp": 250,
+      "loss": 313080
+    },
+    {
+      "rp": 500,
+      "loss": 313080
+    },
+    {
+      "rp": 1000,
+      "loss": 313080
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 44392
+    },
+    {
+      "rp": 25,
+      "loss": 108134
+    },
+    {
+      "rp": 50,
+      "loss": 193707
+    },
+    {
+      "rp": 100,
+      "loss": 313080
+    },
+    {
+      "rp": 250,
+      "loss": 323760
+    },
+    {
+      "rp": 500,
+      "loss": 354788
+    },
+    {
+      "rp": 1000,
+      "loss": 413179
+    }
+  ]
+}

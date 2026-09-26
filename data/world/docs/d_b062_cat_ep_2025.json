@@ -1,0 +1,83 @@
+{
+  "account": "Delta Inns & Suites",
+  "run_date": "2025-12-06",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 194552,
+  "aal_by_peril": {
+    "SCS": 82840,
+    "EQ": 97608,
+    "WF": 14104
+  },
+  "location_aal": {
+    "L1": 2714,
+    "L2": 173,
+    "L3": 62853,
+    "L4": 2400,
+    "L5": 2310,
+    "L6": 4867,
+    "L7": 111712,
+    "L8": 7523
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 202592
+    },
+    {
+      "rp": 25,
+      "loss": 592976
+    },
+    {
+      "rp": 50,
+      "loss": 826124
+    },
+    {
+      "rp": 100,
+      "loss": 915586
+    },
+    {
+      "rp": 250,
+      "loss": 3913959
+    },
+    {
+      "rp": 500,
+      "loss": 12282408
+    },
+    {
+      "rp": 1000,
+      "loss": 27341462
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 255516
+    },
+    {
+      "rp": 25,
+      "loss": 712283
+    },
+    {
+      "rp": 50,
+      "loss": 915586
+    },
+    {
+      "rp": 100,
+      "loss": 1519370
+    },
+    {
+      "rp": 250,
+      "loss": 4131818
+    },
+    {
+      "rp": 500,
+      "loss": 12344563
+    },
+    {
+      "rp": 1000,
+      "loss": 15208459
+    }
+  ]
+}

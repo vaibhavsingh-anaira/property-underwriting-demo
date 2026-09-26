@@ -1,0 +1,78 @@
+{
+  "account": "Magnolia Kitchens",
+  "run_date": "2025-09-17",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 113406,
+  "aal_by_peril": {
+    "HU": 65905,
+    "SCS": 41400,
+    "FL": 6101
+  },
+  "location_aal": {
+    "L1": 12266,
+    "L2": 41400,
+    "L3": 59740
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 195940
+    },
+    {
+      "rp": 25,
+      "loss": 629805
+    },
+    {
+      "rp": 50,
+      "loss": 994741
+    },
+    {
+      "rp": 100,
+      "loss": 1559134
+    },
+    {
+      "rp": 250,
+      "loss": 3516097
+    },
+    {
+      "rp": 500,
+      "loss": 3837080
+    },
+    {
+      "rp": 1000,
+      "loss": 3877696
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 235691
+    },
+    {
+      "rp": 25,
+      "loss": 630229
+    },
+    {
+      "rp": 50,
+      "loss": 1270574
+    },
+    {
+      "rp": 100,
+      "loss": 1873490
+    },
+    {
+      "rp": 250,
+      "loss": 3691846
+    },
+    {
+      "rp": 500,
+      "loss": 3936736
+    },
+    {
+      "rp": 1000,
+      "loss": 10576070
+    }
+  ]
+}

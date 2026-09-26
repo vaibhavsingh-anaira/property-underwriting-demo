@@ -1,0 +1,83 @@
+{
+  "account": "Ridgeway Office Partners",
+  "run_date": "2025-10-19",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 163365,
+  "aal_by_peril": {
+    "SCS": 60727,
+    "EQ": 75312,
+    "WF": 27326
+  },
+  "location_aal": {
+    "L1": 4577,
+    "L2": 13626,
+    "L3": 22985,
+    "L4": 79653,
+    "L5": 229,
+    "L6": 20404,
+    "L7": 16749,
+    "L8": 5142
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 139297
+    },
+    {
+      "rp": 25,
+      "loss": 223432
+    },
+    {
+      "rp": 50,
+      "loss": 331881
+    },
+    {
+      "rp": 100,
+      "loss": 1003200
+    },
+    {
+      "rp": 250,
+      "loss": 4947642
+    },
+    {
+      "rp": 500,
+      "loss": 13287968
+    },
+    {
+      "rp": 1000,
+      "loss": 17715593
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 205022
+    },
+    {
+      "rp": 25,
+      "loss": 305570
+    },
+    {
+      "rp": 50,
+      "loss": 428739
+    },
+    {
+      "rp": 100,
+      "loss": 1054310
+    },
+    {
+      "rp": 250,
+      "loss": 4074340
+    },
+    {
+      "rp": 500,
+      "loss": 14556378
+    },
+    {
+      "rp": 1000,
+      "loss": 29605826
+    }
+  ]
+}

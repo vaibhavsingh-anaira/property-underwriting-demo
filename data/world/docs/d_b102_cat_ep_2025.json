@@ -1,0 +1,79 @@
+{
+  "account": "Falcon Industries",
+  "run_date": "2025-09-01",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 132899,
+  "aal_by_peril": {
+    "HU": 90196,
+    "SCS": 3489,
+    "FL": 39214
+  },
+  "location_aal": {
+    "L1": 36900,
+    "L2": 87579,
+    "L3": 4676,
+    "L4": 3744
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 140134
+    },
+    {
+      "rp": 25,
+      "loss": 456689
+    },
+    {
+      "rp": 50,
+      "loss": 1427326
+    },
+    {
+      "rp": 100,
+      "loss": 2853650
+    },
+    {
+      "rp": 250,
+      "loss": 6453689
+    },
+    {
+      "rp": 500,
+      "loss": 8517323
+    },
+    {
+      "rp": 1000,
+      "loss": 13230119
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 159542
+    },
+    {
+      "rp": 25,
+      "loss": 536391
+    },
+    {
+      "rp": 50,
+      "loss": 1180315
+    },
+    {
+      "rp": 100,
+      "loss": 2397539
+    },
+    {
+      "rp": 250,
+      "loss": 5049600
+    },
+    {
+      "rp": 500,
+      "loss": 6529893
+    },
+    {
+      "rp": 1000,
+      "loss": 13230119
+    }
+  ]
+}

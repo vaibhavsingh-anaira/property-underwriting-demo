@@ -1,0 +1,3 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-36605,1,Anchor Boston Facility,42.351247,-71.053914,US,MA,0702,5100,2001,2,2006,15750000,3135000,0,2529000,WTC;WSS;QEQ;ORF;BFR,AOP,50000
+NSP-CP-2025-36605,2,Anchor Sterling Building,39.068133,-77.488678,US,VA,0702,5200,1990,11,1999,6615000,1515000,0,1087000,WTC;WSS;QEQ;ORF;BFR,AOP,50000

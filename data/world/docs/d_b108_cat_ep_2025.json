@@ -1,0 +1,77 @@
+{
+  "account": "Evergreen Polymers",
+  "run_date": "2025-11-25",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 128166,
+  "aal_by_peril": {
+    "HU": 105047,
+    "SCS": 259,
+    "FL": 22860
+  },
+  "location_aal": {
+    "L1": 57222,
+    "L2": 70944
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 28204
+    },
+    {
+      "rp": 25,
+      "loss": 412493
+    },
+    {
+      "rp": 50,
+      "loss": 1267853
+    },
+    {
+      "rp": 100,
+      "loss": 2873511
+    },
+    {
+      "rp": 250,
+      "loss": 5962474
+    },
+    {
+      "rp": 500,
+      "loss": 13233689
+    },
+    {
+      "rp": 1000,
+      "loss": 16527162
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 28204
+    },
+    {
+      "rp": 25,
+      "loss": 326265
+    },
+    {
+      "rp": 50,
+      "loss": 1131629
+    },
+    {
+      "rp": 100,
+      "loss": 2751223
+    },
+    {
+      "rp": 250,
+      "loss": 5426842
+    },
+    {
+      "rp": 500,
+      "loss": 10631541
+    },
+    {
+      "rp": 1000,
+      "loss": 13233689
+    }
+  ]
+}

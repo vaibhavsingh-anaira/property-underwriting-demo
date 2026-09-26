@@ -1,0 +1,14 @@
+# dependencies & build output
+backend/.venv/
+web/node_modules/
+web/dist/
+**/__pycache__/
+*.pyc
+*.tsbuildinfo
+
+# generated at runtime (rebuilt on first start)
+data/runtime/
+
+# local
+.DS_Store
+*.log

@@ -1,0 +1,80 @@
+{
+  "account": "Gateway Living",
+  "run_date": "2025-12-27",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 151049,
+  "aal_by_peril": {
+    "SCS": 33038,
+    "WF": 16884,
+    "EQ": 101126
+  },
+  "location_aal": {
+    "L1": 12784,
+    "L2": 22978,
+    "L3": 60953,
+    "L4": 0,
+    "L5": 54334
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 100455
+    },
+    {
+      "rp": 25,
+      "loss": 479650
+    },
+    {
+      "rp": 50,
+      "loss": 549230
+    },
+    {
+      "rp": 100,
+      "loss": 1114919
+    },
+    {
+      "rp": 250,
+      "loss": 5141636
+    },
+    {
+      "rp": 500,
+      "loss": 14937635
+    },
+    {
+      "rp": 1000,
+      "loss": 28531723
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 108353
+    },
+    {
+      "rp": 25,
+      "loss": 479650
+    },
+    {
+      "rp": 50,
+      "loss": 549230
+    },
+    {
+      "rp": 100,
+      "loss": 1028880
+    },
+    {
+      "rp": 250,
+      "loss": 5207981
+    },
+    {
+      "rp": 500,
+      "loss": 9697362
+    },
+    {
+      "rp": 1000,
+      "loss": 19882148
+    }
+  ]
+}

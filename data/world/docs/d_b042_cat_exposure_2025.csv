@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-37565,1,Lakeshore Fort Lauderdale Facility,26.134,-80.137657,US,FL,0567,5100,1976,2,2009,13228000,6300000,8178000,3023000,WTC;WSS;QEQ;ORF;BFR,NS%,0.03

@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2026-00311,1,Pinecrest Plaza,35.270872,-80.935718,US,NC,0580,5200,1994,1,2013,34000000,1200000,0,5800000,WTC;WSS;QEQ;ORF;BFR,AOP,25000

@@ -1,0 +1,76 @@
+{
+  "account": "St. Aurelia Medical Center",
+  "run_date": "2025-12-18",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 454059,
+  "aal_by_peril": {
+    "HU": 299170,
+    "SCS": 14069,
+    "FL": 140820
+  },
+  "location_aal": {
+    "L1": 454059
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 196611
+    },
+    {
+      "rp": 25,
+      "loss": 828639
+    },
+    {
+      "rp": 50,
+      "loss": 1853042
+    },
+    {
+      "rp": 100,
+      "loss": 3117294
+    },
+    {
+      "rp": 250,
+      "loss": 25000000
+    },
+    {
+      "rp": 500,
+      "loss": 49502543
+    },
+    {
+      "rp": 1000,
+      "loss": 79702407
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 196611
+    },
+    {
+      "rp": 25,
+      "loss": 936661
+    },
+    {
+      "rp": 50,
+      "loss": 1911522
+    },
+    {
+      "rp": 100,
+      "loss": 3117294
+    },
+    {
+      "rp": 250,
+      "loss": 6408533
+    },
+    {
+      "rp": 500,
+      "loss": 26629686
+    },
+    {
+      "rp": 1000,
+      "loss": 79702408
+    }
+  ]
+}

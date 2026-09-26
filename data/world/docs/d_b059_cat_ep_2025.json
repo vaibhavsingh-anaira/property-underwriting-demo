@@ -1,0 +1,83 @@
+{
+  "account": "Prairie Polymers",
+  "run_date": "2025-11-03",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 213188,
+  "aal_by_peril": {
+    "SCS": 95192,
+    "EQ": 78445,
+    "WF": 39551
+  },
+  "location_aal": {
+    "L1": 11098,
+    "L2": 0,
+    "L3": 489,
+    "L4": 34070,
+    "L5": 990,
+    "L6": 83925,
+    "L7": 78973,
+    "L8": 3641
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 282627
+    },
+    {
+      "rp": 25,
+      "loss": 834600
+    },
+    {
+      "rp": 50,
+      "loss": 1159029
+    },
+    {
+      "rp": 100,
+      "loss": 1840867
+    },
+    {
+      "rp": 250,
+      "loss": 4386510
+    },
+    {
+      "rp": 500,
+      "loss": 9873875
+    },
+    {
+      "rp": 1000,
+      "loss": 27751534
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 373779
+    },
+    {
+      "rp": 25,
+      "loss": 868251
+    },
+    {
+      "rp": 50,
+      "loss": 1174353
+    },
+    {
+      "rp": 100,
+      "loss": 1679687
+    },
+    {
+      "rp": 250,
+      "loss": 3935386
+    },
+    {
+      "rp": 500,
+      "loss": 11084453
+    },
+    {
+      "rp": 1000,
+      "loss": 29200292
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "account": "Kingsport Hotels",
+  "run_date": "2025-09-25",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 44130,
+  "aal_by_peril": {
+    "SCS": 591,
+    "EQ": 15789,
+    "WF": 27750
+  },
+  "location_aal": {
+    "L1": 591,
+    "L2": 43539,
+    "L3": 0
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 96297
+    },
+    {
+      "rp": 50,
+      "loss": 328485
+    },
+    {
+      "rp": 100,
+      "loss": 723605
+    },
+    {
+      "rp": 250,
+      "loss": 2758898
+    },
+    {
+      "rp": 500,
+      "loss": 4047358
+    },
+    {
+      "rp": 1000,
+      "loss": 7467590
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 83228
+    },
+    {
+      "rp": 50,
+      "loss": 310782
+    },
+    {
+      "rp": 100,
+      "loss": 723605
+    },
+    {
+      "rp": 250,
+      "loss": 2182890
+    },
+    {
+      "rp": 500,
+      "loss": 2969053
+    },
+    {
+      "rp": 1000,
+      "loss": 5081954
+    }
+  ]
+}

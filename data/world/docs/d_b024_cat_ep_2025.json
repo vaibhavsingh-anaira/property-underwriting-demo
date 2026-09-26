@@ -1,0 +1,76 @@
+{
+  "account": "Prairie Plaza Holdings",
+  "run_date": "2025-11-14",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 94512,
+  "aal_by_peril": {
+    "HU": 74611,
+    "SCS": 2452,
+    "FL": 17449
+  },
+  "location_aal": {
+    "L1": 94512
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 49002
+    },
+    {
+      "rp": 25,
+      "loss": 326763
+    },
+    {
+      "rp": 50,
+      "loss": 1039960
+    },
+    {
+      "rp": 100,
+      "loss": 2478178
+    },
+    {
+      "rp": 250,
+      "loss": 6269321
+    },
+    {
+      "rp": 500,
+      "loss": 7048834
+    },
+    {
+      "rp": 1000,
+      "loss": 9497431
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 56931
+    },
+    {
+      "rp": 25,
+      "loss": 344907
+    },
+    {
+      "rp": 50,
+      "loss": 1151796
+    },
+    {
+      "rp": 100,
+      "loss": 2139066
+    },
+    {
+      "rp": 250,
+      "loss": 6324176
+    },
+    {
+      "rp": 500,
+      "loss": 7048834
+    },
+    {
+      "rp": 1000,
+      "loss": 9497431
+    }
+  ]
+}

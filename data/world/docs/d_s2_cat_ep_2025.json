@@ -1,0 +1,81 @@
+{
+  "account": "ABC Manufacturing",
+  "run_date": "2025-10-22",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 73520,
+  "aal_by_peril": {
+    "SCS": 744,
+    "HU": 44706,
+    "FL": 6961,
+    "EQ": 6219,
+    "WF": 14889
+  },
+  "location_aal": {
+    "L1": 744,
+    "L2": 51668,
+    "L3": 21108,
+    "L4": 0
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 30787
+    },
+    {
+      "rp": 25,
+      "loss": 471353
+    },
+    {
+      "rp": 50,
+      "loss": 979862
+    },
+    {
+      "rp": 100,
+      "loss": 2068871
+    },
+    {
+      "rp": 250,
+      "loss": 3187600
+    },
+    {
+      "rp": 500,
+      "loss": 5912437
+    },
+    {
+      "rp": 1000,
+      "loss": 6471097
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 23971
+    },
+    {
+      "rp": 25,
+      "loss": 387561
+    },
+    {
+      "rp": 50,
+      "loss": 718432
+    },
+    {
+      "rp": 100,
+      "loss": 1956820
+    },
+    {
+      "rp": 250,
+      "loss": 3187600
+    },
+    {
+      "rp": 500,
+      "loss": 6095244
+    },
+    {
+      "rp": 1000,
+      "loss": 6471097
+    }
+  ]
+}

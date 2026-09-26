@@ -1,0 +1,77 @@
+{
+  "account": "Juniper Distribution",
+  "run_date": "2025-12-15",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 76688,
+  "aal_by_peril": {
+    "HU": 65060,
+    "SCS": 830,
+    "FL": 10798
+  },
+  "location_aal": {
+    "L1": 65637,
+    "L2": 11051
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 21696
+    },
+    {
+      "rp": 25,
+      "loss": 207005
+    },
+    {
+      "rp": 50,
+      "loss": 846551
+    },
+    {
+      "rp": 100,
+      "loss": 2734644
+    },
+    {
+      "rp": 250,
+      "loss": 4738671
+    },
+    {
+      "rp": 500,
+      "loss": 5410667
+    },
+    {
+      "rp": 1000,
+      "loss": 6063760
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 12148
+    },
+    {
+      "rp": 25,
+      "loss": 200958
+    },
+    {
+      "rp": 50,
+      "loss": 846551
+    },
+    {
+      "rp": 100,
+      "loss": 3310915
+    },
+    {
+      "rp": 250,
+      "loss": 4950263
+    },
+    {
+      "rp": 500,
+      "loss": 5410667
+    },
+    {
+      "rp": 1000,
+      "loss": 8158686
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "account": "Yardley Salvage",
+  "run_date": "2025-10-10",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 69148,
+  "aal_by_peril": {
+    "HU": 68070,
+    "SCS": 0,
+    "FL": 1077
+  },
+  "location_aal": {
+    "L1": 17571,
+    "L2": 51576
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 0
+    },
+    {
+      "rp": 50,
+      "loss": 446709
+    },
+    {
+      "rp": 100,
+      "loss": 1305770
+    },
+    {
+      "rp": 250,
+      "loss": 3926882
+    },
+    {
+      "rp": 500,
+      "loss": 6010878
+    },
+    {
+      "rp": 1000,
+      "loss": 8563539
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 0
+    },
+    {
+      "rp": 50,
+      "loss": 310434
+    },
+    {
+      "rp": 100,
+      "loss": 1144474
+    },
+    {
+      "rp": 250,
+      "loss": 3694787
+    },
+    {
+      "rp": 500,
+      "loss": 8563539
+    },
+    {
+      "rp": 1000,
+      "loss": 25868912
+    }
+  ]
+}

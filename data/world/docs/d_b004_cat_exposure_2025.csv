@@ -1,0 +1,3 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-49525,1,Cobalt Dallas Facility,32.788846,-96.73177,US,TX,4950,5300,1973,3,2003,19752000,16578000,21353000,6076000,WTC;WSS;QEQ;ORF;BFR,NS%,0.05
+NSP-CP-2025-49525,2,Cobalt Seattle Building,47.570624,-122.218139,US,WA,4950,5300,2014,1,2020,4976000,4351000,5609000,1602000,WTC;WSS;QEQ;ORF;BFR,NS%,0.05

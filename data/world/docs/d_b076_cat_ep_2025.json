@@ -1,0 +1,75 @@
+{
+  "account": "Cobalt Outfitters",
+  "run_date": "2025-10-26",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 72071,
+  "aal_by_peril": {
+    "SCS": 67228,
+    "WF": 4843
+  },
+  "location_aal": {
+    "L1": 72071
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 127421
+    },
+    {
+      "rp": 25,
+      "loss": 195105
+    },
+    {
+      "rp": 50,
+      "loss": 422425
+    },
+    {
+      "rp": 100,
+      "loss": 775148
+    },
+    {
+      "rp": 250,
+      "loss": 775148
+    },
+    {
+      "rp": 500,
+      "loss": 775148
+    },
+    {
+      "rp": 1000,
+      "loss": 775148
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 171367
+    },
+    {
+      "rp": 25,
+      "loss": 398576
+    },
+    {
+      "rp": 50,
+      "loss": 542183
+    },
+    {
+      "rp": 100,
+      "loss": 775148
+    },
+    {
+      "rp": 250,
+      "loss": 931390
+    },
+    {
+      "rp": 500,
+      "loss": 1005175
+    },
+    {
+      "rp": 1000,
+      "loss": 1331105
+    }
+  ]
+}

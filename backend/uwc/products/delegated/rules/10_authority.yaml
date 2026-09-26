@@ -1,0 +1,346 @@
+# Delegated authority — risk-level checks. Each policy transaction on a risk / premium bordereau is checked
+# against the authority in force on the date it was written (BAA + endorsements, parsed from the PDFs).
+# Outcome REFER = allowed only with the carrier's prior approval (reconciled against the referral system);
+# BREACH = outside authority whatever the approval. `row` = the bordereau line, `auth` = parsed authority,
+# `req` = requirement derived for this risk from the authority tables (deductible band, rated premium, zone).
+
+- id: DA.CLASS.PERMITTED
+  product: delegated
+  version: 1
+  family: class
+  title: Class outside the schedule of permitted classes
+  description: Class approved
+  applies_to: risk
+  when: "has(row.class_code) && !(row.class_code in auth.class_codes) && !(row.class_code in auth.prohibited_codes)"
+  outcome: REFER
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "{row.class_code} · {row.occupancy}"
+  expected: "Scheduled class ({auth.class_list})"
+  source: "BAA §1 Schedule of classes"
+  impact: premium_tied
+  action: "Carrier review of the class; referral evidence or cancellation"
+  tests:
+    - {name: bar_not_scheduled, fixture: {row: {class_code: BAR}, auth: {class_codes: [OFF, RET], prohibited_codes: [CAN]}}, expect: REFER}
+    - {name: office_ok, fixture: {row: {class_code: OFF}, auth: {class_codes: [OFF, RET], prohibited_codes: [CAN]}}, expect: PASS}
+
+- id: DA.CLASS.REFERRAL
+  product: delegated
+  version: 1
+  family: referral
+  title: Referral class written without approval
+  description: Referral class
+  applies_to: risk
+  when: "row.class_code in auth.referral_classes"
+  outcome: REFER
+  severity: MEDIUM
+  origin: carrier_guideline
+  observed: "{row.class_code} · {row.occupancy}"
+  expected: "Class marked Referral — prior approval"
+  source: "BAA §1 Schedule of classes"
+  impact: premium_tied
+  action: "Reconcile to the referral system"
+  tests:
+    - {name: hotel, fixture: {row: {class_code: HTL}, auth: {referral_classes: [HTL]}}, expect: REFER}
+    - {name: office, fixture: {row: {class_code: OFF}, auth: {referral_classes: [HTL]}}, expect: PASS}
+
+- id: DA.EXCLUSION.PROHIBITED
+  product: delegated
+  version: 1
+  family: exclusion
+  title: Prohibited risk written
+  description: Not a prohibited risk
+  applies_to: risk
+  when: "row.class_code in auth.prohibited_codes"
+  outcome: BREACH
+  severity: CRITICAL
+  origin: carrier_guideline
+  observed: "{row.class_code} · {row.occupancy}"
+  expected: "Not in the exclusions list"
+  source: "BAA §5 Exclusions"
+  impact: premium_tied
+  action: "Instruct cancellation; review for coverage position on any claim"
+  tests:
+    - {name: cannabis, fixture: {row: {class_code: CAN}, auth: {prohibited_codes: [CAN, VAC]}}, expect: BREACH}
+    - {name: retail, fixture: {row: {class_code: RET}, auth: {prohibited_codes: [CAN, VAC]}}, expect: PASS}
+
+- id: DA.TERRITORY.PERMITTED
+  product: delegated
+  version: 1
+  family: territory
+  title: Risk outside the permitted territory
+  description: Territory approved
+  applies_to: risk
+  when: "has(row.state) && !(row.state in auth.states)"
+  outcome: BREACH
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "{row.state} · {row.county}"
+  expected: "One of {auth.state_list}"
+  source: "BAA §2 Territories"
+  impact: premium_tied
+  action: "Instruct cancellation or carrier ratification"
+  tests:
+    - {name: out_of_state, fixture: {row: {state: GA}, auth: {states: [TX, LA]}}, expect: BREACH}
+    - {name: in_state, fixture: {row: {state: TX}, auth: {states: [TX, LA]}}, expect: PASS}
+
+- id: DA.TERRITORY.EXCLUDED
+  product: delegated
+  version: 1
+  family: territory
+  title: Risk in an excluded county
+  description: County not excluded
+  applies_to: risk
+  when: "has(row.county) && row.territory_key in auth.excluded_territories"
+  outcome: BREACH
+  severity: CRITICAL
+  origin: carrier_guideline
+  observed: "{row.county}, {row.state}"
+  expected: "Not an excluded county"
+  source: "BAA §2 Territories"
+  impact: premium_tied
+  action: "Instruct cancellation; coverage position on any claim"
+  tests:
+    - {name: butte, fixture: {row: {county: Butte, territory_key: "CA|Butte"}, auth: {excluded_territories: ["CA|Butte"]}}, expect: BREACH}
+    - {name: sacramento, fixture: {row: {county: Sacramento, territory_key: "CA|Sacramento"}, auth: {excluded_territories: ["CA|Butte"]}}, expect: PASS}
+
+- id: DA.LIMIT.MAX
+  product: delegated
+  version: 1
+  family: limit
+  title: Limit above authority
+  description: Limit vs authority
+  applies_to: risk
+  when: "row.limit > auth.max_limit"
+  outcome: REFER
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "{usd(row.limit)}"
+  expected: "≤ {usd(auth.max_limit)}"
+  source: "BAA §3 Maximum limit any one risk"
+  impact: exposure_above_limit
+  action: "Carrier review; referral evidence or corrective endorsement to the authorised limit"
+  tests:
+    - {name: over, fixture: {row: {limit: 7500000}, auth: {max_limit: 5000000}}, expect: REFER}
+    - {name: at, fixture: {row: {limit: 5000000}, auth: {max_limit: 5000000}}, expect: PASS}
+    - {name: missing, fixture: {row: {limit: null}, auth: {max_limit: 5000000}}, expect: NOT_APPLICABLE}
+
+- id: DA.DEDUCTIBLE.MIN_AOP
+  product: delegated
+  version: 1
+  family: deductible
+  title: AOP deductible below the minimum
+  description: Deductible vs minimum
+  applies_to: risk
+  when: "row.aop_deductible < req.min_aop"
+  outcome: REFER
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "{usd(row.aop_deductible)}"
+  expected: "≥ {usd(req.min_aop)} (TIV band)"
+  source: "BAA §3 Minimum AOP deductible"
+  impact: deductible_gap
+  action: "Endorse the deductible to the minimum or evidence approval"
+  tests:
+    - {name: low, fixture: {row: {aop_deductible: 25000}, req: {min_aop: 50000}}, expect: REFER}
+    - {name: ok, fixture: {row: {aop_deductible: 50000}, req: {min_aop: 50000}}, expect: PASS}
+
+- id: DA.DEDUCTIBLE.MIN_NS
+  product: delegated
+  version: 1
+  family: deductible
+  title: Named storm deductible below the minimum
+  description: Named storm deductible vs minimum
+  applies_to: risk
+  when: "has(req.ns_min) && row.ns_deductible_pct < req.ns_min"
+  outcome: REFER
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "{pct(row.ns_deductible_pct)} ({req.tier})"
+  expected: "≥ {pct(req.ns_min)}"
+  source: "BAA §3 Minimum named storm deductible"
+  impact: ns_gap
+  action: "Endorse the named storm deductible or evidence approval"
+  tests:
+    - {name: low, fixture: {row: {ns_deductible_pct: 0.03}, req: {ns_min: 0.05}}, expect: REFER}
+    - {name: inland, fixture: {row: {ns_deductible_pct: null}, req: {ns_min: null}}, expect: PASS}
+
+- id: DA.PRICING.BELOW_RANGE
+  product: delegated
+  version: 1
+  family: pricing
+  title: Premium below the approved rating range
+  description: Premium vs expected range
+  applies_to: risk
+  when: "row.gross_premium < req.premium_low"
+  outcome: REFER
+  severity: MEDIUM
+  origin: carrier_guideline
+  observed: "{usd(row.gross_premium)}"
+  expected: "{usd(req.premium_low)}–{usd(req.premium_high)} (rated {usd(req.technical)})"
+  source: "BAA §1 Rating and §3 premium tolerance"
+  impact: premium_shortfall
+  action: "Premium reconciliation; referral evidence or additional premium"
+  tests:
+    - {name: below, fixture: {row: {gross_premium: 132000}, req: {premium_low: 145000, premium_high: 197000, technical: 157600}}, expect: REFER}
+    - {name: in_range, fixture: {row: {gross_premium: 150000}, req: {premium_low: 145000, premium_high: 197000, technical: 157600}}, expect: PASS}
+    - {name: unrated, fixture: {row: {gross_premium: 150000}, req: {premium_low: null}}, expect: NOT_APPLICABLE}
+
+- id: DA.REFERRAL.TIV
+  product: delegated
+  version: 1
+  family: referral
+  title: TIV above the referral threshold without approval
+  description: TIV referral threshold
+  applies_to: risk
+  when: "row.tiv > auth.ref_tiv_any"
+  outcome: REFER
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "{usd(row.tiv)}"
+  expected: "Referral above {usd(auth.ref_tiv_any)}"
+  source: "BAA §4 Referral triggers"
+  impact: premium_tied
+  action: "Reconcile to the referral system"
+  tests:
+    - {name: over, fixture: {row: {tiv: 8000000}, auth: {ref_tiv_any: 7500000}}, expect: REFER}
+    - {name: under, fixture: {row: {tiv: 2000000}, auth: {ref_tiv_any: 7500000}}, expect: PASS}
+
+- id: DA.REFERRAL.TIER1_TIV
+  product: delegated
+  version: 1
+  family: referral
+  title: Tier 1 coastal TIV above the referral threshold without approval
+  description: Tier 1 referral threshold
+  applies_to: risk
+  when: "req.tier == 'Tier 1' && has(auth.ref_tiv_tier1) && row.tiv > auth.ref_tiv_tier1"
+  outcome: REFER
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "{usd(row.tiv)} in {row.county} ({req.tier})"
+  expected: "Referral above {usd(auth.ref_tiv_tier1)} in Tier 1"
+  source: "BAA §4 Referral triggers"
+  impact: premium_tied
+  action: "Reconcile to the referral system"
+  tests:
+    - {name: coastal_over, fixture: {row: {tiv: 3200000, county: Galveston}, req: {tier: Tier 1}, auth: {ref_tiv_tier1: 2500000}}, expect: REFER}
+    - {name: inland, fixture: {row: {tiv: 3200000}, req: {tier: Inland}, auth: {ref_tiv_tier1: 2500000}}, expect: PASS}
+
+- id: DA.REFERRAL.YEAR_BUILT
+  product: delegated
+  version: 1
+  family: referral
+  title: Older building written without approval
+  description: Year built referral
+  applies_to: risk
+  when: "row.year_built < auth.ref_year_built"
+  outcome: REFER
+  severity: MEDIUM
+  origin: carrier_guideline
+  observed: "Built {row.year_built}"
+  expected: "Referral if built before {auth.ref_year_built}"
+  source: "BAA §4 Referral triggers"
+  impact: premium_tied
+  action: "Reconcile to the referral system"
+  tests:
+    - {name: old, fixture: {row: {year_built: 1948}, auth: {ref_year_built: 1960}}, expect: REFER}
+    - {name: unknown, fixture: {row: {year_built: null}, auth: {ref_year_built: 1960}}, expect: NOT_APPLICABLE}
+
+- id: DA.PERIOD.AUTHORITY
+  product: delegated
+  version: 1
+  family: period
+  title: Bound outside the authority period
+  description: Within authority period
+  applies_to: risk
+  when: "row.written_date < auth.period_start || row.written_date > auth.period_end"
+  outcome: BREACH
+  severity: CRITICAL
+  origin: carrier_guideline
+  observed: "Bound {row.written_date}"
+  expected: "{auth.period_start} to {auth.period_end}"
+  source: "BAA Authority period"
+  impact: premium_tied
+  action: "Carrier ratification or cancellation"
+  tests:
+    - {name: after_end, fixture: {row: {written_date: "2027-01-04"}, auth: {period_start: "2026-01-01", period_end: "2026-12-31"}}, expect: BREACH}
+    - {name: inside, fixture: {row: {written_date: "2026-07-04"}, auth: {period_start: "2026-01-01", period_end: "2026-12-31"}}, expect: PASS}
+
+- id: DA.RESTRICTION.REFER
+  product: delegated
+  version: 1
+  family: aggregate
+  title: Incremental business in a referral-only zone without approval
+  description: Zone restriction (refer)
+  applies_to: risk
+  when: "req.zone_status == 'Refer' && row.adds_exposure"
+  outcome: REFER
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "{row.txn} · {usd(row.tiv)} in {req.zone_name}"
+  expected: "Refer incremental business in {req.zone_name}"
+  source: "BAA §6 Aggregate limits (as endorsed)"
+  impact: tiv_added
+  action: "Carrier review against the zone aggregate"
+  tests:
+    - {name: new_in_zone, fixture: {row: {adds_exposure: true}, req: {zone_status: Refer}}, expect: REFER}
+    - {name: renewal_flat, fixture: {row: {adds_exposure: false}, req: {zone_status: Refer}}, expect: PASS}
+
+- id: DA.RESTRICTION.STOP
+  product: delegated
+  version: 1
+  family: aggregate
+  title: Incremental business written in a closed zone
+  description: Zone restriction (stop)
+  applies_to: risk
+  when: "req.zone_status == 'Stop' && row.adds_exposure"
+  outcome: BREACH
+  severity: CRITICAL
+  origin: carrier_guideline
+  observed: "{row.txn} · {usd(row.tiv)} in {req.zone_name}"
+  expected: "No incremental business in {req.zone_name}"
+  source: "BAA §6 Aggregate limits (as endorsed)"
+  impact: tiv_added
+  action: "Instruct cancellation of the incremental exposure"
+  tests:
+    - {name: new_in_closed_zone, fixture: {row: {adds_exposure: true}, req: {zone_status: Stop}}, expect: BREACH}
+
+- id: DA.COMMISSION.CONTRACT
+  product: delegated
+  version: 1
+  family: commission
+  title: Commission deducted above the contract rate
+  description: Commission contract vs reported
+  applies_to: premium
+  when: "has(row.commission_pct) && row.commission_pct > auth.commission_pct + 0.0005"
+  outcome: BREACH
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "{pct(row.commission_pct)}"
+  expected: "{pct(auth.commission_pct)}"
+  source: "BAA §3 Commission"
+  impact: commission_diff
+  action: "Commission reconciliation — debit note for the over-deduction"
+  tests:
+    - {name: over, fixture: {row: {commission_pct: 0.25}, auth: {commission_pct: 0.225}}, expect: BREACH}
+    - {name: equal, fixture: {row: {commission_pct: 0.225}, auth: {commission_pct: 0.225}}, expect: PASS}
+
+- id: DA.CANX.RETURN_PREMIUM
+  product: delegated
+  version: 1
+  family: premium
+  title: Return premium above pro-rata on cancellation
+  description: Return premium vs pro-rata
+  applies_to: risk
+  when: "row.txn == 'CANCELLATION' && has(req.expected_return) && 0 - row.gross_premium > req.expected_return * 1.25 + 1000"
+  outcome: BREACH
+  severity: MEDIUM
+  origin: carrier_guideline
+  observed: "Return {usd(0 - row.gross_premium)}"
+  expected: "Pro-rata ≈ {usd(req.expected_return)}"
+  source: "BAA §3 Cancellation (pro-rata return)"
+  impact: return_excess
+  action: "Premium reconciliation — recover excess return premium"
+  tests:
+    - {name: flat_return, fixture: {row: {txn: CANCELLATION, gross_premium: -12000}, req: {expected_return: 5000}}, expect: BREACH}
+    - {name: pro_rata, fixture: {row: {txn: CANCELLATION, gross_premium: -5100}, req: {expected_return: 5000}}, expect: PASS}

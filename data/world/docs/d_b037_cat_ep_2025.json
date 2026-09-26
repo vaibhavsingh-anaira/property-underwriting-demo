@@ -1,0 +1,77 @@
+{
+  "account": "Sterling Freight Centers",
+  "run_date": "2025-10-11",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 75133,
+  "aal_by_peril": {
+    "SCS": 8118,
+    "EQ": 59327,
+    "WF": 7688
+  },
+  "location_aal": {
+    "L1": 8118,
+    "L2": 67015
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 47154
+    },
+    {
+      "rp": 25,
+      "loss": 91240
+    },
+    {
+      "rp": 50,
+      "loss": 110827
+    },
+    {
+      "rp": 100,
+      "loss": 384874
+    },
+    {
+      "rp": 250,
+      "loss": 2020364
+    },
+    {
+      "rp": 500,
+      "loss": 10494240
+    },
+    {
+      "rp": 1000,
+      "loss": 16117605
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 47154
+    },
+    {
+      "rp": 25,
+      "loss": 95886
+    },
+    {
+      "rp": 50,
+      "loss": 158006
+    },
+    {
+      "rp": 100,
+      "loss": 492537
+    },
+    {
+      "rp": 250,
+      "loss": 2031528
+    },
+    {
+      "rp": 500,
+      "loss": 4380766
+    },
+    {
+      "rp": 1000,
+      "loss": 11768127
+    }
+  ]
+}

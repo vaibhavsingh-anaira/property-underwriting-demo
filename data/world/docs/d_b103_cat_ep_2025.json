@@ -1,0 +1,77 @@
+{
+  "account": "Harborline Residential",
+  "run_date": "2025-10-14",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 72196,
+  "aal_by_peril": {
+    "SCS": 24335,
+    "HU": 37369,
+    "FL": 10493
+  },
+  "location_aal": {
+    "L1": 17237,
+    "L2": 54960
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 70642
+    },
+    {
+      "rp": 25,
+      "loss": 98214
+    },
+    {
+      "rp": 50,
+      "loss": 119080
+    },
+    {
+      "rp": 100,
+      "loss": 211590
+    },
+    {
+      "rp": 250,
+      "loss": 3507937
+    },
+    {
+      "rp": 500,
+      "loss": 4387794
+    },
+    {
+      "rp": 1000,
+      "loss": 4946729
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 90571
+    },
+    {
+      "rp": 25,
+      "loss": 129267
+    },
+    {
+      "rp": 50,
+      "loss": 167361
+    },
+    {
+      "rp": 100,
+      "loss": 245527
+    },
+    {
+      "rp": 250,
+      "loss": 3542900
+    },
+    {
+      "rp": 500,
+      "loss": 4398537
+    },
+    {
+      "rp": 1000,
+      "loss": 4947200
+    }
+  ]
+}

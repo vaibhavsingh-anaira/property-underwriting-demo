@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-46768,1,Allied Austin Facility,30.215761,-97.67022,US,TX,1220,5150,1990,3,2011,28072000,4156000,15944000,3703000,WTC;WSS;QEQ;ORF;BFR,AOP,25000

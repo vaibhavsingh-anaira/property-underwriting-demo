@@ -1,0 +1,81 @@
+{
+  "account": "Harborline Polymers",
+  "run_date": "2025-12-16",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 191823,
+  "aal_by_peril": {
+    "HU": 137251,
+    "SCS": 9842,
+    "FL": 44730
+  },
+  "location_aal": {
+    "L1": 11100,
+    "L2": 1506,
+    "L3": 2899,
+    "L4": 67709,
+    "L5": 0,
+    "L6": 108609
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 149234
+    },
+    {
+      "rp": 25,
+      "loss": 570648
+    },
+    {
+      "rp": 50,
+      "loss": 1672540
+    },
+    {
+      "rp": 100,
+      "loss": 3732240
+    },
+    {
+      "rp": 250,
+      "loss": 8534555
+    },
+    {
+      "rp": 500,
+      "loss": 12245261
+    },
+    {
+      "rp": 1000,
+      "loss": 18933053
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 151192
+    },
+    {
+      "rp": 25,
+      "loss": 563288
+    },
+    {
+      "rp": 50,
+      "loss": 1594950
+    },
+    {
+      "rp": 100,
+      "loss": 3375469
+    },
+    {
+      "rp": 250,
+      "loss": 8534555
+    },
+    {
+      "rp": 500,
+      "loss": 12262446
+    },
+    {
+      "rp": 1000,
+      "loss": 18956488
+    }
+  ]
+}

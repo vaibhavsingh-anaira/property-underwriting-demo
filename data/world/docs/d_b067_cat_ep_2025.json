@@ -1,0 +1,79 @@
+{
+  "account": "Gateway Distribution",
+  "run_date": "2025-10-22",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 164969,
+  "aal_by_peril": {
+    "HU": 22130,
+    "SCS": 136142,
+    "FL": 181,
+    "WF": 6516
+  },
+  "location_aal": {
+    "L1": 23191,
+    "L2": 8141,
+    "L3": 133637
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 217089
+    },
+    {
+      "rp": 25,
+      "loss": 468247
+    },
+    {
+      "rp": 50,
+      "loss": 712681
+    },
+    {
+      "rp": 100,
+      "loss": 844858
+    },
+    {
+      "rp": 250,
+      "loss": 1743846
+    },
+    {
+      "rp": 500,
+      "loss": 2649689
+    },
+    {
+      "rp": 1000,
+      "loss": 4336249
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 345260
+    },
+    {
+      "rp": 25,
+      "loss": 539166
+    },
+    {
+      "rp": 50,
+      "loss": 857874
+    },
+    {
+      "rp": 100,
+      "loss": 1280802
+    },
+    {
+      "rp": 250,
+      "loss": 2077006
+    },
+    {
+      "rp": 500,
+      "loss": 2800661
+    },
+    {
+      "rp": 1000,
+      "loss": 4405227
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "account": "Anchor Fabrication",
+  "run_date": "2025-09-25",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 249002,
+  "aal_by_peril": {
+    "HU": 239325,
+    "SCS": 1632,
+    "FL": 8045
+  },
+  "location_aal": {
+    "L1": 3692,
+    "L2": 118769,
+    "L3": 94004,
+    "L4": 32536
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 338002
+    },
+    {
+      "rp": 25,
+      "loss": 1738696
+    },
+    {
+      "rp": 50,
+      "loss": 2949397
+    },
+    {
+      "rp": 100,
+      "loss": 4540942
+    },
+    {
+      "rp": 250,
+      "loss": 9791451
+    },
+    {
+      "rp": 500,
+      "loss": 15159024
+    },
+    {
+      "rp": 1000,
+      "loss": 15719660
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 404952
+    },
+    {
+      "rp": 25,
+      "loss": 1936192
+    },
+    {
+      "rp": 50,
+      "loss": 3063451
+    },
+    {
+      "rp": 100,
+      "loss": 5582582
+    },
+    {
+      "rp": 250,
+      "loss": 9185246
+    },
+    {
+      "rp": 500,
+      "loss": 15719660
+    },
+    {
+      "rp": 1000,
+      "loss": 17997584
+    }
+  ]
+}

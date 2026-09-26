@@ -1,0 +1,81 @@
+{
+  "account": "Beacon Stores",
+  "run_date": "2025-09-26",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 117452,
+  "aal_by_peril": {
+    "SCS": 117452
+  },
+  "location_aal": {
+    "L1": 76651,
+    "L2": 1064,
+    "L3": 1304,
+    "L4": 390,
+    "L5": 0,
+    "L6": 19091,
+    "L7": 640,
+    "L8": 18313
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 291461
+    },
+    {
+      "rp": 25,
+      "loss": 564884
+    },
+    {
+      "rp": 50,
+      "loss": 1277026
+    },
+    {
+      "rp": 100,
+      "loss": 1521657
+    },
+    {
+      "rp": 250,
+      "loss": 1919858
+    },
+    {
+      "rp": 500,
+      "loss": 1919858
+    },
+    {
+      "rp": 1000,
+      "loss": 1919858
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 301111
+    },
+    {
+      "rp": 25,
+      "loss": 627276
+    },
+    {
+      "rp": 50,
+      "loss": 1488496
+    },
+    {
+      "rp": 100,
+      "loss": 1919858
+    },
+    {
+      "rp": 250,
+      "loss": 1952138
+    },
+    {
+      "rp": 500,
+      "loss": 2019200
+    },
+    {
+      "rp": 1000,
+      "loss": 2085579
+    }
+  ]
+}

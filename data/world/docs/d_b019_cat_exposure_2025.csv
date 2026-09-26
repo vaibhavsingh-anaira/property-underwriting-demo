@@ -1,0 +1,3 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-37484,1,Gateway Dayton Facility,39.796256,-84.286261,US,OH,0311,5100,1971,11,2018,12625000,431000,0,1740000,WTC;WSS;QEQ;ORF;BFR,AOP,25000
+NSP-CP-2025-37484,2,Gateway Minneapolis Building,45.013672,-93.247134,US,MN,0311,5100,1967,10,2018,12191000,423000,0,1737000,WTC;WSS;QEQ;ORF;BFR,AOP,25000

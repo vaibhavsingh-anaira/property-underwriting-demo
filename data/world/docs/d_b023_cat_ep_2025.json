@@ -1,0 +1,78 @@
+{
+  "account": "Eastgate Living",
+  "run_date": "2025-10-05",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 126783,
+  "aal_by_peril": {
+    "SCS": 960,
+    "EQ": 106357,
+    "WF": 19465
+  },
+  "location_aal": {
+    "L1": 960,
+    "L2": 0,
+    "L3": 125822
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 8831
+    },
+    {
+      "rp": 25,
+      "loss": 111268
+    },
+    {
+      "rp": 50,
+      "loss": 364299
+    },
+    {
+      "rp": 100,
+      "loss": 1257600
+    },
+    {
+      "rp": 250,
+      "loss": 7885435
+    },
+    {
+      "rp": 500,
+      "loss": 22958735
+    },
+    {
+      "rp": 1000,
+      "loss": 28875650
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 22785
+    },
+    {
+      "rp": 25,
+      "loss": 126828
+    },
+    {
+      "rp": 50,
+      "loss": 403264
+    },
+    {
+      "rp": 100,
+      "loss": 1749090
+    },
+    {
+      "rp": 250,
+      "loss": 7885435
+    },
+    {
+      "rp": 500,
+      "loss": 24562232
+    },
+    {
+      "rp": 1000,
+      "loss": 40010700
+    }
+  ]
+}

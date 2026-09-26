@@ -1,0 +1,78 @@
+{
+  "account": "Magnolia Outfitters",
+  "run_date": "2025-11-21",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 81618,
+  "aal_by_peril": {
+    "SCS": 8441,
+    "EQ": 56583,
+    "WF": 16594
+  },
+  "location_aal": {
+    "L1": 1872,
+    "L2": 73177,
+    "L3": 6569
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 46332
+    },
+    {
+      "rp": 25,
+      "loss": 111666
+    },
+    {
+      "rp": 50,
+      "loss": 228871
+    },
+    {
+      "rp": 100,
+      "loss": 454616
+    },
+    {
+      "rp": 250,
+      "loss": 4259495
+    },
+    {
+      "rp": 500,
+      "loss": 8992174
+    },
+    {
+      "rp": 1000,
+      "loss": 18245664
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 51157
+    },
+    {
+      "rp": 25,
+      "loss": 125663
+    },
+    {
+      "rp": 50,
+      "loss": 312719
+    },
+    {
+      "rp": 100,
+      "loss": 517723
+    },
+    {
+      "rp": 250,
+      "loss": 2315176
+    },
+    {
+      "rp": 500,
+      "loss": 8992174
+    },
+    {
+      "rp": 1000,
+      "loss": 24138108
+    }
+  ]
+}

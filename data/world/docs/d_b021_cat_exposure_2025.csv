@@ -1,0 +1,3 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-45743,1,Sterling Irvine Facility,33.719157,-117.745391,US,CA,2150,5200,2017,1,2018,24371000,9691000,2346000,2946000,WTC;WSS;QEQ;ORF;BFR,AOP,10000
+NSP-CP-2025-45743,2,Sterling Pittsburgh Building,40.443875,-79.907838,US,PA,2150,5200,1977,3,2010,25342000,9593000,2308000,2602000,WTC;WSS;QEQ;ORF;BFR,AOP,10000

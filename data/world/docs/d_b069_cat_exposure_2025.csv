@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-34048,1,Falcon Detroit Facility,42.39463,-83.060167,US,MI,0567,5300,2013,1,2020,8176000,3547000,4445000,1833000,WTC;WSS;QEQ;ORF;BFR,NS%,0.03

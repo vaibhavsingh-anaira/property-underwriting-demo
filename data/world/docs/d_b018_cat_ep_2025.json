@@ -1,0 +1,77 @@
+{
+  "account": "Quarry Plaza Holdings",
+  "run_date": "2025-10-13",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 50751,
+  "aal_by_peril": {
+    "HU": 44204,
+    "SCS": 1668,
+    "FL": 4879
+  },
+  "location_aal": {
+    "L1": 35806,
+    "L2": 14945
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 26950
+    },
+    {
+      "rp": 25,
+      "loss": 102026
+    },
+    {
+      "rp": 50,
+      "loss": 474377
+    },
+    {
+      "rp": 100,
+      "loss": 1125481
+    },
+    {
+      "rp": 250,
+      "loss": 4358589
+    },
+    {
+      "rp": 500,
+      "loss": 4607910
+    },
+    {
+      "rp": 1000,
+      "loss": 5002461
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 19699
+    },
+    {
+      "rp": 25,
+      "loss": 91472
+    },
+    {
+      "rp": 50,
+      "loss": 426079
+    },
+    {
+      "rp": 100,
+      "loss": 1415964
+    },
+    {
+      "rp": 250,
+      "loss": 4417596
+    },
+    {
+      "rp": 500,
+      "loss": 5002462
+    },
+    {
+      "rp": 1000,
+      "loss": 5937398
+    }
+  ]
+}

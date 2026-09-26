@@ -1,0 +1,79 @@
+{
+  "account": "Liberty Row Office Partners",
+  "run_date": "2025-12-22",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 44910,
+  "aal_by_peril": {
+    "SCS": 44910
+  },
+  "location_aal": {
+    "L1": 9030,
+    "L2": 24278,
+    "L3": 14,
+    "L4": 6965,
+    "L5": 1266,
+    "L6": 3356
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 77459
+    },
+    {
+      "rp": 25,
+      "loss": 180548
+    },
+    {
+      "rp": 50,
+      "loss": 186630
+    },
+    {
+      "rp": 100,
+      "loss": 196872
+    },
+    {
+      "rp": 250,
+      "loss": 268987
+    },
+    {
+      "rp": 500,
+      "loss": 268987
+    },
+    {
+      "rp": 1000,
+      "loss": 268987
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 109057
+    },
+    {
+      "rp": 25,
+      "loss": 193921
+    },
+    {
+      "rp": 50,
+      "loss": 236786
+    },
+    {
+      "rp": 100,
+      "loss": 280997
+    },
+    {
+      "rp": 250,
+      "loss": 343286
+    },
+    {
+      "rp": 500,
+      "loss": 389684
+    },
+    {
+      "rp": 1000,
+      "loss": 439776
+    }
+  ]
+}

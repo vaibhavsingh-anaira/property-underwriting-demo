@@ -1,0 +1,77 @@
+{
+  "account": "Juniper Fabrication",
+  "run_date": "2026-01-09",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 400,
+  "aal_by_peril": {
+    "SCS": 400
+  },
+  "location_aal": {
+    "L1": 400,
+    "L2": 0,
+    "L3": 0,
+    "L4": 0
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 0
+    },
+    {
+      "rp": 50,
+      "loss": 0
+    },
+    {
+      "rp": 100,
+      "loss": 8557
+    },
+    {
+      "rp": 250,
+      "loss": 35120
+    },
+    {
+      "rp": 500,
+      "loss": 35120
+    },
+    {
+      "rp": 1000,
+      "loss": 35120
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 0
+    },
+    {
+      "rp": 50,
+      "loss": 0
+    },
+    {
+      "rp": 100,
+      "loss": 8557
+    },
+    {
+      "rp": 250,
+      "loss": 35120
+    },
+    {
+      "rp": 500,
+      "loss": 35120
+    },
+    {
+      "rp": 1000,
+      "loss": 35120
+    }
+  ]
+}

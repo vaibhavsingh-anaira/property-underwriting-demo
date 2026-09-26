@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-32605,1,Silverline Denver Facility,39.698012,-105.024574,US,CO,0567,5150,2008,2,2010,3009000,1315000,1547000,680000,WTC;WSS;QEQ;ORF;BFR,AOP,100000

@@ -1,0 +1,83 @@
+{
+  "account": "Cobalt Logistics",
+  "run_date": "2025-10-25",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 272275,
+  "aal_by_peril": {
+    "HU": 210838,
+    "SCS": 4189,
+    "FL": 57248
+  },
+  "location_aal": {
+    "L1": 4166,
+    "L2": 93058,
+    "L3": 64986,
+    "L4": 9079,
+    "L5": 40615,
+    "L6": 13701,
+    "L7": 43530,
+    "L8": 3140
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 237708
+    },
+    {
+      "rp": 25,
+      "loss": 1232798
+    },
+    {
+      "rp": 50,
+      "loss": 3325432
+    },
+    {
+      "rp": 100,
+      "loss": 4871524
+    },
+    {
+      "rp": 250,
+      "loss": 9946537
+    },
+    {
+      "rp": 500,
+      "loss": 12869751
+    },
+    {
+      "rp": 1000,
+      "loss": 40202218
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 268521
+    },
+    {
+      "rp": 25,
+      "loss": 1165529
+    },
+    {
+      "rp": 50,
+      "loss": 2627770
+    },
+    {
+      "rp": 100,
+      "loss": 4440881
+    },
+    {
+      "rp": 250,
+      "loss": 9370678
+    },
+    {
+      "rp": 500,
+      "loss": 10124296
+    },
+    {
+      "rp": 1000,
+      "loss": 13088761
+    }
+  ]
+}

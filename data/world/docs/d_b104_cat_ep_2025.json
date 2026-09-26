@@ -1,0 +1,75 @@
+{
+  "account": "Kingsport Living",
+  "run_date": "2025-11-06",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 9134,
+  "aal_by_peril": {
+    "SCS": 9134
+  },
+  "location_aal": {
+    "L1": 7890,
+    "L2": 1244
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 32536
+    },
+    {
+      "rp": 25,
+      "loss": 68097
+    },
+    {
+      "rp": 50,
+      "loss": 91594
+    },
+    {
+      "rp": 100,
+      "loss": 125365
+    },
+    {
+      "rp": 250,
+      "loss": 151610
+    },
+    {
+      "rp": 500,
+      "loss": 151610
+    },
+    {
+      "rp": 1000,
+      "loss": 151610
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 32536
+    },
+    {
+      "rp": 25,
+      "loss": 68954
+    },
+    {
+      "rp": 50,
+      "loss": 125365
+    },
+    {
+      "rp": 100,
+      "loss": 151610
+    },
+    {
+      "rp": 250,
+      "loss": 157901
+    },
+    {
+      "rp": 500,
+      "loss": 164554
+    },
+    {
+      "rp": 1000,
+      "loss": 178195
+    }
+  ]
+}

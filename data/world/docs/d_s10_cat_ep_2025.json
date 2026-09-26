@@ -1,0 +1,76 @@
+{
+  "account": "Delta Scrap Metals",
+  "run_date": "2025-11-05",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 20428,
+  "aal_by_peril": {
+    "HU": 18238,
+    "SCS": 1599,
+    "FL": 591
+  },
+  "location_aal": {
+    "L1": 20428
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 42504
+    },
+    {
+      "rp": 50,
+      "loss": 59635
+    },
+    {
+      "rp": 100,
+      "loss": 94759
+    },
+    {
+      "rp": 250,
+      "loss": 1041650
+    },
+    {
+      "rp": 500,
+      "loss": 2322458
+    },
+    {
+      "rp": 1000,
+      "loss": 4601827
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 42504
+    },
+    {
+      "rp": 50,
+      "loss": 59635
+    },
+    {
+      "rp": 100,
+      "loss": 138280
+    },
+    {
+      "rp": 250,
+      "loss": 1759613
+    },
+    {
+      "rp": 500,
+      "loss": 9568895
+    },
+    {
+      "rp": 1000,
+      "loss": 9568895
+    }
+  ]
+}

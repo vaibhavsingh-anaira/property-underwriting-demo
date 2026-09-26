@@ -1,0 +1,78 @@
+{
+  "account": "Harborline Freight Centers",
+  "run_date": "2025-10-29",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 37766,
+  "aal_by_peril": {
+    "SCS": 22602,
+    "EQ": 6289,
+    "WF": 8875
+  },
+  "location_aal": {
+    "L1": 803,
+    "L2": 15164,
+    "L3": 21799
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 66259
+    },
+    {
+      "rp": 25,
+      "loss": 132344
+    },
+    {
+      "rp": 50,
+      "loss": 207885
+    },
+    {
+      "rp": 100,
+      "loss": 289323
+    },
+    {
+      "rp": 250,
+      "loss": 620328
+    },
+    {
+      "rp": 500,
+      "loss": 1329077
+    },
+    {
+      "rp": 1000,
+      "loss": 1837518
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 79672
+    },
+    {
+      "rp": 25,
+      "loss": 143944
+    },
+    {
+      "rp": 50,
+      "loss": 207885
+    },
+    {
+      "rp": 100,
+      "loss": 336393
+    },
+    {
+      "rp": 250,
+      "loss": 1149312
+    },
+    {
+      "rp": 500,
+      "loss": 1511052
+    },
+    {
+      "rp": 1000,
+      "loss": 1926482
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "account": "Harborview Hotels",
+  "run_date": "2025-09-20",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 99426,
+  "aal_by_peril": {
+    "HU": 68772,
+    "SCS": 1594,
+    "FL": 29060
+  },
+  "location_aal": {
+    "L1": 21647,
+    "L2": 15727,
+    "L3": 8193,
+    "L4": 53124,
+    "L5": 74,
+    "L6": 662
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 55108
+    },
+    {
+      "rp": 25,
+      "loss": 462728
+    },
+    {
+      "rp": 50,
+      "loss": 1224800
+    },
+    {
+      "rp": 100,
+      "loss": 1667915
+    },
+    {
+      "rp": 250,
+      "loss": 3107138
+    },
+    {
+      "rp": 500,
+      "loss": 3874177
+    },
+    {
+      "rp": 1000,
+      "loss": 18339512
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 72626
+    },
+    {
+      "rp": 25,
+      "loss": 522575
+    },
+    {
+      "rp": 50,
+      "loss": 1376789
+    },
+    {
+      "rp": 100,
+      "loss": 1988693
+    },
+    {
+      "rp": 250,
+      "loss": 3773985
+    },
+    {
+      "rp": 500,
+      "loss": 18339512
+    },
+    {
+      "rp": 1000,
+      "loss": 24510450
+    }
+  ]
+}

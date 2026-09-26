@@ -1,0 +1,83 @@
+{
+  "account": "Delta Freight Centers",
+  "run_date": "2025-10-16",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 146481,
+  "aal_by_peril": {
+    "SCS": 67534,
+    "EQ": 63469,
+    "WF": 15478
+  },
+  "location_aal": {
+    "L1": 14815,
+    "L2": 5739,
+    "L3": 7863,
+    "L4": 78947,
+    "L5": 7620,
+    "L6": 16845,
+    "L7": 11128,
+    "L8": 3525
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 158769
+    },
+    {
+      "rp": 25,
+      "loss": 265963
+    },
+    {
+      "rp": 50,
+      "loss": 514874
+    },
+    {
+      "rp": 100,
+      "loss": 731636
+    },
+    {
+      "rp": 250,
+      "loss": 3087436
+    },
+    {
+      "rp": 500,
+      "loss": 11057347
+    },
+    {
+      "rp": 1000,
+      "loss": 15845075
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 205367
+    },
+    {
+      "rp": 25,
+      "loss": 330954
+    },
+    {
+      "rp": 50,
+      "loss": 551750
+    },
+    {
+      "rp": 100,
+      "loss": 818849
+    },
+    {
+      "rp": 250,
+      "loss": 2984796
+    },
+    {
+      "rp": 500,
+      "loss": 3864878
+    },
+    {
+      "rp": 1000,
+      "loss": 18850808
+    }
+  ]
+}

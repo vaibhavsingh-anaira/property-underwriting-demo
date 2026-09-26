@@ -1,0 +1,75 @@
+{
+  "account": "Ridgeway Apartments",
+  "run_date": "2025-10-26",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 31362,
+  "aal_by_peril": {
+    "SCS": 31362
+  },
+  "location_aal": {
+    "L1": 31362,
+    "L2": 0
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 80232
+    },
+    {
+      "rp": 25,
+      "loss": 248627
+    },
+    {
+      "rp": 50,
+      "loss": 311237
+    },
+    {
+      "rp": 100,
+      "loss": 315934
+    },
+    {
+      "rp": 250,
+      "loss": 507321
+    },
+    {
+      "rp": 500,
+      "loss": 507321
+    },
+    {
+      "rp": 1000,
+      "loss": 507321
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 84520
+    },
+    {
+      "rp": 25,
+      "loss": 250556
+    },
+    {
+      "rp": 50,
+      "loss": 315934
+    },
+    {
+      "rp": 100,
+      "loss": 440374
+    },
+    {
+      "rp": 250,
+      "loss": 507829
+    },
+    {
+      "rp": 500,
+      "loss": 559864
+    },
+    {
+      "rp": 1000,
+      "loss": 588162
+    }
+  ]
+}

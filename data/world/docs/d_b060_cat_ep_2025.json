@@ -1,0 +1,76 @@
+{
+  "account": "Prairie Freight Centers",
+  "run_date": "2025-12-03",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 73889,
+  "aal_by_peril": {
+    "SCS": 68879,
+    "WF": 5010
+  },
+  "location_aal": {
+    "L1": 22489,
+    "L2": 51400
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 90883
+    },
+    {
+      "rp": 25,
+      "loss": 251213
+    },
+    {
+      "rp": 50,
+      "loss": 262600
+    },
+    {
+      "rp": 100,
+      "loss": 452899
+    },
+    {
+      "rp": 250,
+      "loss": 452899
+    },
+    {
+      "rp": 500,
+      "loss": 452899
+    },
+    {
+      "rp": 1000,
+      "loss": 452899
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 155669
+    },
+    {
+      "rp": 25,
+      "loss": 296088
+    },
+    {
+      "rp": 50,
+      "loss": 382243
+    },
+    {
+      "rp": 100,
+      "loss": 477870
+    },
+    {
+      "rp": 250,
+      "loss": 568183
+    },
+    {
+      "rp": 500,
+      "loss": 658941
+    },
+    {
+      "rp": 1000,
+      "loss": 954534
+    }
+  ]
+}

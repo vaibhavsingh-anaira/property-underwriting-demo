@@ -1,0 +1,268 @@
+# Northgate Commercial Property Underwriting Guidelines → executable rules.
+# Parameters come from `g` (the guideline version in force at evaluation date).
+
+- id: APPETITE.DECLINED_CLASS
+  version: 1
+  family: appetite
+  title: Class declined under current guidelines
+  applies_to: account
+  when: "acct.occ_family in g.declined_classes"
+  outcome: DECLINE
+  severity: CRITICAL
+  referral_level: 4
+  origin: carrier_guideline
+  effective_from: "2026-07-01"
+  observed: "{acct.occ_label} — declined class from guidelines {g.version}"
+  expected: "Non-renew with statutory notice, or CUO exception"
+  source: "Guidelines §2.1"
+  impact: control_premium
+  evidence: []
+  tests:
+    - {name: scrap, fixture: {acct: {occ_family: scrap}, g: {declined_classes: [scrap]}}, expect: DECLINE}
+    - {name: office, fixture: {acct: {occ_family: office}, g: {declined_classes: [scrap]}}, expect: PASS}
+
+- id: CAT.WIND.DED_FLOOR
+  version: 4
+  family: cat_terms
+  title: Named storm deductible below guideline floor
+  applies_to: location
+  when: "loc.wind_tier == 'T1' && has(terms.named_storm_ded_pct) && terms.named_storm_ded_pct < g.wind_ded_floor_pct_t1"
+  outcome: TERM_BREACH
+  severity: HIGH
+  referral_level: 2
+  origin: carrier_guideline
+  effective_from: "2026-07-01"
+  observed: "{pct(terms.named_storm_ded_pct)} named storm at Tier 1 {loc.label} ({terms.source})"
+  expected: "≥ {pct(g.wind_ded_floor_pct_t1)} per location"
+  source: "Guidelines §7.3"
+  impact: ns_floor_delta
+  evidence: [loc.wind_tier]
+  tests:
+    - {name: tampa_2pct, fixture: {loc: {wind_tier: T1}, terms: {named_storm_ded_pct: 0.02}, g: {wind_ded_floor_pct_t1: 0.03}}, expect: TERM_BREACH}
+    - {name: tampa_3pct, fixture: {loc: {wind_tier: T1}, terms: {named_storm_ded_pct: 0.03}, g: {wind_ded_floor_pct_t1: 0.03}}, expect: PASS}
+    - {name: ohio, fixture: {loc: {wind_tier: null}, terms: {named_storm_ded_pct: 0.02}, g: {wind_ded_floor_pct_t1: 0.03}}, expect: PASS}
+
+- id: CAT.NS_MIN_FLOOR
+  version: 2
+  family: cat_terms
+  title: Named storm minimum below guideline floor
+  applies_to: account
+  when: "acct.has_t1 && has(terms.named_storm_ded_pct) && coalesce(terms.named_storm_ded_min, 0) < g.ns_min_floor"
+  outcome: TERM_BREACH
+  severity: MEDIUM
+  referral_level: 2
+  origin: carrier_guideline
+  effective_from: "2026-07-01"
+  observed: "Named storm minimum {usd(coalesce(terms.named_storm_ded_min, 0))} ({terms.source})"
+  expected: "≥ {usd(g.ns_min_floor)}"
+  source: "Guidelines §7.3"
+  impact: ns_min_delta
+  evidence: []
+
+- id: VAL.RC_RATIO
+  version: 3
+  family: valuation
+  title: Building value below modelled replacement cost
+  applies_to: location
+  when: "has(loc.valuation_ratio) && loc.valuation_ratio < g.valuation_ratio_min"
+  outcome: PRICE_ADJUST
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "Reported {usd(loc.building_value)} = {pct(loc.valuation_ratio)} of modelled RC {usd(loc.model_rc)}"
+  expected: "≥ {pct(g.valuation_ratio_min)} of modelled RC or updated appraisal"
+  source: "Guidelines §5.1"
+  impact: valuation_gap
+  evidence: [loc.building_value, loc.model_rc]
+  tests:
+    - {name: low, fixture: {loc: {valuation_ratio: 0.68}, g: {valuation_ratio_min: 0.8}}, expect: PRICE_ADJUST}
+
+- id: VAL.FLAT_VALUES
+  version: 1
+  family: valuation
+  title: Building value unchanged while construction costs rose
+  applies_to: location
+  when: "loc.value_flat && acct.renewal_sov_received"
+  outcome: FLAG
+  severity: MEDIUM
+  origin: carrier_guideline
+  observed: "Building value {usd(loc.building_value)} unchanged; cost index +{pct(loc.cost_trend)} over 12 months"
+  expected: "Values trended annually"
+  source: "Guidelines §5.1"
+  impact: trend_gap
+  evidence: [loc.building_value]
+
+- id: VAL.STALE_APPRAISAL
+  version: 1
+  family: valuation
+  title: Appraisal older than guideline maximum
+  applies_to: account
+  when: "has(acct.appraisal_age_years) && acct.appraisal_age_years > g.appraisal_max_age_years"
+  outcome: DATA_REQUEST
+  severity: MEDIUM
+  origin: carrier_guideline
+  observed: "Last appraisal {acct.appraisal_date} ({acct.appraisal_age_years} years)"
+  expected: "Appraisal within {g.appraisal_max_age_years} years"
+  source: "Guidelines §5.1"
+  impact: none
+  evidence: []
+
+- id: ROOF.AGE
+  version: 1
+  family: construction
+  title: Roof older than guideline maximum in a wind/hail zone
+  applies_to: location
+  when: "loc.roof_age > g.roof_age_max && (has(loc.wind_tier) || loc.cat_zone in ['DFW', 'DEN'])"
+  outcome: CONDITION
+  severity: MEDIUM
+  origin: carrier_guideline
+  observed: "Roof {loc.roof_age} years old (roof year {loc.roof_year})"
+  expected: "≤ {g.roof_age_max} years, or roof inspection / schedule"
+  source: "Guidelines §6.2"
+  impact: none
+  evidence: [loc.roof_year]
+
+- id: FIRE.SPRINKLER_ADEQUACY
+  version: 2
+  family: fire
+  title: Storage height exceeds sprinkler design
+  applies_to: location
+  when: "has(loc.storage_height_ft) && has(loc.sprinkler_design_ft) && loc.storage_height_ft > loc.sprinkler_design_ft"
+  outcome: CONDITION
+  severity: CRITICAL
+  referral_level: 3
+  origin: carrier_guideline
+  observed: "Storage {num(loc.storage_height_ft)} ft vs design {num(loc.sprinkler_design_ft)} ft ({loc.commodity})"
+  expected: "Storage within sprinkler design basis; re-survey before bind"
+  source: "Guidelines §6.5"
+  impact: fire_uplift
+  evidence: [loc.storage_height_ft, loc.sprinkler_design_ft]
+  tests:
+    - {name: over, fixture: {loc: {storage_height_ft: 28, sprinkler_design_ft: 20}}, expect: CONDITION}
+    - {name: ok, fixture: {loc: {storage_height_ft: 18, sprinkler_design_ft: 20}}, expect: PASS}
+
+- id: FIRE.COOKING_SUPPRESSION
+  version: 1
+  family: fire
+  title: Commercial cooking without verified suppression / hood cleaning
+  applies_to: location
+  when: "loc.occupancy_class == 'restaurant' && acct.cooking_certs_provided && loc.cooking_suppression_verified != true"
+  outcome: CONDITION
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "No current UL 300 / hood-cleaning certificate for {loc.label}"
+  expected: "Certificate within 6 months"
+  source: "Guidelines §6.8"
+  impact: fire_uplift
+  evidence: []
+
+- id: SEC.HIGH_VALUE_UNMONITORED
+  version: 2
+  family: security
+  title: High-value stock in high-crime area without monitored alarm
+  applies_to: location
+  when: "loc.stock_value >= g.high_value_stock && loc.burglary_score >= g.burglary_threshold && loc.burglar_monitored != true"
+  outcome: REFER
+  severity: HIGH
+  referral_level: 2
+  origin: carrier_guideline
+  observed: "Stock {usd(loc.stock_value)}, burglary score {loc.burglary_score}, monitored alarm: {loc.monitored_text}"
+  expected: "UL-certificated central-station alarm"
+  source: "Guidelines §8.4"
+  impact: theft_expected
+  evidence: [loc.stock_value, loc.burglary_score]
+
+- id: COV.CRIME_GAP
+  version: 1
+  family: coverage
+  title: Cash exposure without money & securities cover
+  applies_to: account
+  when: "coalesce(acct.cash_on_premises, 0) > 25000 && !acct.has_crime_form"
+  outcome: FLAG
+  severity: MEDIUM
+  origin: carrier_guideline
+  observed: "Cash on premises up to {usd(acct.cash_on_premises)}; no money & securities form"
+  expected: "Crime cover offered or exposure declined in writing"
+  source: "Guidelines §8.4"
+  impact: none
+  evidence: []
+
+- id: VAC.THRESHOLD
+  version: 1
+  family: vacancy
+  title: Building materially vacant beyond guideline period
+  applies_to: location
+  when: "coalesce(loc.vacancy_pct, 0) >= 0.5 && loc.vacancy_days > g.vacancy_days_max"
+  outcome: REFER
+  severity: HIGH
+  referral_level: 2
+  origin: carrier_guideline
+  observed: "{pct(loc.vacancy_pct)} vacant for {loc.vacancy_days} days"
+  expected: "Referral + vacancy permit / conditions"
+  source: "Guidelines §9.2"
+  impact: control_tiv
+  evidence: [loc.vacancy_pct]
+
+- id: VAC.FIRE_SPRINKLER_OFF
+  version: 1
+  family: vacancy
+  title: Vacant building with impaired sprinklers
+  applies_to: location
+  when: "coalesce(loc.vacancy_pct, 0) >= 0.5 && loc.sprinkler_impaired == true"
+  outcome: REFER
+  severity: CRITICAL
+  referral_level: 3
+  origin: carrier_guideline
+  observed: "{pct(loc.vacancy_pct)} vacant and sprinkler system impaired"
+  expected: "Sprinklers restored; fire watch in place"
+  source: "Guidelines §9.2"
+  impact: control_tiv
+  evidence: [loc.sprinkler_impaired, loc.vacancy_pct]
+
+- id: ACC.ZONE_UTIL
+  version: 2
+  family: accumulation
+  title: Renewal takes a CAT zone over its referral threshold
+  applies_to: account
+  when: "acct.zone_util_post > g.accumulation_util_refer && acct.zone_increase_share > 0.005"
+  outcome: REFER
+  severity: HIGH
+  referral_level: 3
+  origin: carrier_guideline
+  observed: "{acct.zone_name} at {pct(acct.zone_util_post)} of capacity after renewal (+{usd(acct.zone_increase)})"
+  expected: "≤ {pct(g.accumulation_util_refer)} or Level 3 approval"
+  source: "Guidelines §11.4"
+  impact: accumulation_charge
+  evidence: []
+
+- id: PRICE.ADEQUACY
+  version: 2
+  family: pricing
+  title: Proposed premium below adequacy floor
+  applies_to: account
+  when: "pricing.has_proposal && has(pricing.adequacy) && pricing.adequacy < g.adequacy_floor"
+  outcome: PRICE_ADJUST
+  severity: HIGH
+  origin: carrier_guideline
+  observed: "Proposed {usd(pricing.proposed_premium)} = {pct(pricing.adequacy)} of technical {usd(pricing.tp)}"
+  expected: "≥ {pct(g.adequacy_floor)} of technical premium"
+  source: "Guidelines §4.2"
+  impact: adequacy_gap
+  evidence: []
+  tests:
+    - {name: low, fixture: {pricing: {adequacy: 0.8}, g: {adequacy_floor: 0.95}}, expect: PRICE_ADJUST}
+
+- id: PRICE.EXPIRING_INADEQUATE
+  version: 1
+  family: pricing
+  title: Expiring premium below today's technical price
+  applies_to: account
+  when: "has(pricing.expiring_adequacy) && pricing.expiring_adequacy < g.adequacy_floor && !acct.renewal_sov_received"
+  outcome: PRICE_ADJUST
+  severity: MEDIUM
+  origin: carrier_guideline
+  passes: [1]
+  observed: "Expiring {usd(pricing.expiring_premium)} = {pct(pricing.expiring_adequacy)} of today's technical on expiring exposure"
+  expected: "≥ {pct(g.adequacy_floor)}"
+  source: "Guidelines §4.2"
+  impact: expiring_gap
+  evidence: []

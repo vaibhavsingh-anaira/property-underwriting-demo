@@ -1,0 +1,78 @@
+{
+  "account": "Cobalt Freight Centers",
+  "run_date": "2025-10-14",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 15603,
+  "aal_by_peril": {
+    "SCS": 0,
+    "EQ": 14045,
+    "WF": 1557
+  },
+  "location_aal": {
+    "L1": 0,
+    "L2": 15603,
+    "L3": 0
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 0
+    },
+    {
+      "rp": 50,
+      "loss": 0
+    },
+    {
+      "rp": 100,
+      "loss": 40728
+    },
+    {
+      "rp": 250,
+      "loss": 543455
+    },
+    {
+      "rp": 500,
+      "loss": 1936128
+    },
+    {
+      "rp": 1000,
+      "loss": 5606666
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 0
+    },
+    {
+      "rp": 50,
+      "loss": 0
+    },
+    {
+      "rp": 100,
+      "loss": 0
+    },
+    {
+      "rp": 250,
+      "loss": 367007
+    },
+    {
+      "rp": 500,
+      "loss": 978658
+    },
+    {
+      "rp": 1000,
+      "loss": 8304052
+    }
+  ]
+}

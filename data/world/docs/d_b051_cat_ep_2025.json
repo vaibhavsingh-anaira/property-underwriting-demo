@@ -1,0 +1,76 @@
+{
+  "account": "Orchard Outfitters",
+  "run_date": "2025-09-24",
+  "model_version": "MockCat 3.1 (stand-in for Moody's RMS / Verisk)",
+  "snapshot": "AS_BOUND",
+  "basis": "Carrier share, net of deductibles",
+  "aal_total": 1204,
+  "aal_by_peril": {
+    "SCS": 1204
+  },
+  "location_aal": {
+    "L1": 842,
+    "L2": 284,
+    "L3": 79
+  },
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 0
+    },
+    {
+      "rp": 50,
+      "loss": 8571
+    },
+    {
+      "rp": 100,
+      "loss": 30961
+    },
+    {
+      "rp": 250,
+      "loss": 91810
+    },
+    {
+      "rp": 500,
+      "loss": 91810
+    },
+    {
+      "rp": 1000,
+      "loss": 91810
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 0
+    },
+    {
+      "rp": 25,
+      "loss": 0
+    },
+    {
+      "rp": 50,
+      "loss": 8571
+    },
+    {
+      "rp": 100,
+      "loss": 30961
+    },
+    {
+      "rp": 250,
+      "loss": 91810
+    },
+    {
+      "rp": 500,
+      "loss": 91810
+    },
+    {
+      "rp": 1000,
+      "loss": 91810
+    }
+  ]
+}

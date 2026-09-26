@@ -1,0 +1,108 @@
+{
+  "run_id": "cat_sample_current",
+  "vendor": "MockCat (stand-in for Moody's RMS / Verisk)",
+  "model_version": "MockCat 23.1 (sample)",
+  "basis": "Carrier share, net of deductibles",
+  "perils": [
+    "WS",
+    "FL",
+    "EQ",
+    "SCS"
+  ],
+  "oep": [
+    {
+      "rp": 10,
+      "loss": 2100000
+    },
+    {
+      "rp": 25,
+      "loss": 5800000
+    },
+    {
+      "rp": 50,
+      "loss": 9900000
+    },
+    {
+      "rp": 100,
+      "loss": 15600000
+    },
+    {
+      "rp": 250,
+      "loss": 24800000
+    },
+    {
+      "rp": 500,
+      "loss": 32000000
+    },
+    {
+      "rp": 1000,
+      "loss": 40500000
+    }
+  ],
+  "aep": [
+    {
+      "rp": 10,
+      "loss": 2478000
+    },
+    {
+      "rp": 25,
+      "loss": 6728000
+    },
+    {
+      "rp": 50,
+      "loss": 11286000
+    },
+    {
+      "rp": 100,
+      "loss": 17472000
+    },
+    {
+      "rp": 250,
+      "loss": 27280000
+    },
+    {
+      "rp": 500,
+      "loss": 34560000
+    },
+    {
+      "rp": 1000,
+      "loss": 42930000
+    }
+  ],
+  "compare": [
+    {
+      "label": "As bound 2025",
+      "oep": [
+        {
+          "rp": 10,
+          "loss": 1638000
+        },
+        {
+          "rp": 25,
+          "loss": 4524000
+        },
+        {
+          "rp": 50,
+          "loss": 7722000
+        },
+        {
+          "rp": 100,
+          "loss": 12168000
+        },
+        {
+          "rp": 250,
+          "loss": 19344000
+        },
+        {
+          "rp": 500,
+          "loss": 24960000
+        },
+        {
+          "rp": 1000,
+          "loss": 31590000
+        }
+      ]
+    }
+  ],
+  "aal_total": 1412000
+}

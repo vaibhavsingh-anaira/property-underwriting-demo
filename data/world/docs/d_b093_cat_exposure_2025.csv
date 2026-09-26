@@ -1,0 +1,2 @@
+AccNumber,LocNumber,LocName,Latitude,Longitude,CountryCode,AreaCode,OccupancyCode,ConstructionCode,YearBuilt,NumberOfStoreys,RoofYear,BuildingTIV,ContentsTIV,OtherTIV,BITIV,LocPerilsCovered,LocDedType,LocDed1Building
+NSP-CP-2025-30832,1,Timberline Minneapolis Facility,44.943351,-93.18484,US,MN,1220,5150,2020,1,2022,23422000,3630000,13328000,3132000,WTC;WSS;QEQ;ORF;BFR,AOP,12500.0
