@@ -259,7 +259,7 @@ def run_step(rt, p: dict, step: dict) -> str:
         act = c["actions"][-1]
         return (f"{act['type'].title()} at {money(act['premium'])} · AOP {money(act['aop'])} · line {act['line'] * 100:.0f}%"
                 + (f" · manuscript {act['manuscript']}" if act.get("manuscript") else "")
-                + f" — {pct(res['deviation'], True)} vs technical {money(res['technical'])}, permitted ±{res['permitted_dev'] * 100:.0f}% → {_v(res)}"
+                + f" — {pct(res['deviation'], True)} vs technical {money(res['technical'])}, permitted ±{res['permitted_dev'] * 100:.0f}%: {_v(res)}"
                 + (f" ({res['counts']['fail']} fail: {', '.join(ch['rule_id'] for ch in res['checks'] if ch['result'] == 'FAIL')})" if res["counts"]["fail"] else "")
                 + (f" · {sum(1 for k in res['conditions'] if k['status'] == 'OPEN')} condition(s) before bind" if any(k["status"] == "OPEN" for k in res["conditions"]) else ""))
     if a == "route":
@@ -283,7 +283,7 @@ def run_step(rt, p: dict, step: dict) -> str:
         if not ev:
             return f"Broker reply already in: quote {(c.get('quote') or {}).get('status', 'none').lower().replace('_', ' ')}"
         titles = FL.run_due(rt, cid, ev["date"])
-        return f"Clock → {rt.clock}: " + "; ".join(titles[-3:]).lower()
+        return f"Clock advanced to {rt.clock}: " + "; ".join(titles[-3:]).lower()
     if a == "survey":
         FL.order_inspection(rt, cid, "u_elena", rt.clock, "Verify in-rack sprinklers and roof condition")
         ev = FL.next_event(rt, cid, ("decision.inspection",))

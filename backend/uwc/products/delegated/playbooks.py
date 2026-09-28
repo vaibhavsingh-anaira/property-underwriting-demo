@@ -287,7 +287,7 @@ def run_step(rt, p, step) -> str:
         new = [r for r in st["referrals"][n_ref:] if r["ch"] == ch]
         prev = st["prevented"][n_prev:]
         led = [x for x in st["ledger"] if x["ch"] == ch and x.get("settled") and x["settled"] > start]
-        parts = [f"Clock {start} → {rt.clock}"]
+        parts = [f"Clock advanced from {start} to {rt.clock}"]
         if new:
             parts.append(f"{len(new)} referral requests at the carrier desk: {sum(1 for r in new if r['status'] == 'APPROVED')} approved, {sum(1 for r in new if r['status'] == 'DECLINED')} declined")
         if prev:

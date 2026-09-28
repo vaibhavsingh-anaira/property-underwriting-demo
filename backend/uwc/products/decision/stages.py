@@ -379,7 +379,7 @@ def decide_stage(rt, cid: str) -> str:
     due = [x["date"] for x in rt.dynamic if not x.get("done") and x.get("case_id") == cid and x["type"] in ("decision.broker_quote", "decision.broker_docs", "decision.inspection")]
     if due:
         FL.run_due(rt, cid, max(due))
-        msgs.append(f"clock → {rt.clock}: broker {c['quote']['status'].lower().replace('_', ' ')}")
+        msgs.append(f"clock advanced to {rt.clock}: broker {c['quote']['status'].lower().replace('_', ' ')}")
     if c["status"] == "LOST":
         return " · ".join(msgs)
     msgs.append(FL.bind(rt, cid, uw, rt.clock))

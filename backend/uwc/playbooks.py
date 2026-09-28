@@ -7,6 +7,7 @@ Every step runs against the real engine and the mocks; nothing is canned output.
 """
 from __future__ import annotations
 
+import re
 from datetime import date, timedelta
 from typing import TYPE_CHECKING
 
@@ -105,7 +106,7 @@ def run_step(rt: "Runtime", p: dict, step: dict) -> str:
             if f["status"] == "OPEN" and f["material"]:
                 rt.disposition(f["finding_id"], "ACCEPT", "agree", "Accepted in walkthrough", uw)
                 n += 1
-        return f"{n} material findings accepted (reason: agree)"
+        return f"{n} material findings accepted — the underwriter agreed with all of them"
     if a == "confirm_maintain":
         ren.fast_track_confirmed = True
         rt.log(acct, "user", "15", "Fast-track confirmed — maintain", "No material change; renewal on expiring terms", USER_BY_ID[uw]["name"])
@@ -204,15 +205,41 @@ def run_step(rt: "Runtime", p: dict, step: dict) -> str:
     return "Unknown action"
 
 
-_SPEAK = [(r"\bRARC\b", "real rate change"), (r"\bL(\d)\b", r"level \1"), (r"\bv(\d+)\b", r"version \1"), (r" · ", ". "), (r"→", "to"),
+_SPEAK = [(r"\bRARC\b", "real rate change"), (r"\bL(\d)\b", r"level \1"), (r"\bv(\d+)\b", r"version \1"), (r"\s*→\s*", " to "),
           (r"\bTP\b", "technical price"), (r"\bNS\b", "named storm"), (r"\+(\d)", r"plus \1"), (r"(?<![\w])-(\d)", r"minus \1")]
+
+# Reference codes (endorsement/query/referral IDs, e.g. "R_ACC_S2_ENDT_0002" or "EX-0004") are useful in an
+# on-screen message but unintelligible read aloud letter by letter, so speech drops them.
+_ID_PATTERNS = [re.compile(r"\b[A-Z0-9]+(?:_[A-Z0-9]+){2,}\b"), re.compile(r"\b[A-Za-z]{1,4}-\d{3,6}\b")]
+_REASON = re.compile(r"\s*\(reason: [^)]+\)")
+_COUNT_S = re.compile(r"\b(\d+)\s+(\w+)\(s\)")
+
+
+def _speak_count(m: "re.Match") -> str:
+    n, word = m.group(1), m.group(2)
+    return f"{n} {word}" if n == "1" else f"{n} {word}s"
+
+
+def _speak_fragments(msg: str) -> str:
+    """Message templates join short label/value fragments with ' · ' for a compact on-screen readout;
+    read aloud that lands as a flat list of clipped statements, so speech joins them into one sentence."""
+    if " · " not in msg:
+        return msg
+    parts = [p.strip() for p in msg.split(" · ") if p.strip()]
+    if len(parts) < 2:
+        return parts[0] if parts else msg
+    return ", ".join(parts[:-1]) + ", and " + parts[-1]
 
 
 def speakable(msg: str | None) -> str:
-    import re
     if not msg:
         return ""
-    out = msg
+    out = _REASON.sub("", msg)
+    out = _COUNT_S.sub(_speak_count, out)
+    out = _speak_fragments(out)
+    for pat in _ID_PATTERNS:
+        out = pat.sub("", out)
+    out = re.sub(r"\s{2,}", " ", out).strip(" ,")
     for pat, rep in _SPEAK:
         out = re.sub(pat, rep, out)
     return out if out.endswith(".") else out + "."

@@ -742,7 +742,7 @@ def assure(rt, cid: str, a: dict, asof: str | None = None, uid: str | None = Non
     tier3.append("Final commitment (quote, bind or decline) is a human decision")
     exposure = sum(ch["impact_usd"] for ch in checks if ch["result"] in ("FAIL", "FLAG"))
     dev = env["act"]["dev"]
-    summ = (f"{a['type'].title()} at {money(a['premium'])} ({pct(dev, True)} vs technical {money(px['technical'])}; permitted ±{NB_AUTHORITY[uw_level]['max_price_dev'] * 100:.0f}% at L{uw_level}) → "
+    summ = (f"{a['type'].title()} at {money(a['premium'])} ({pct(dev, True)} vs technical {money(px['technical'])}; permitted ±{NB_AUTHORITY[uw_level]['max_price_dev'] * 100:.0f}% at L{uw_level}): "
             f"{ {'PASS': 'Pass', 'PASS_WITH_FLAGS': 'Pass with flags', 'REFER_HOLD': 'Refer / hold'}[verdict]}"
             + (f" · {len(fails)} fail" if fails else "") + (f" · {len(flags)} flag(s)" if flags else "") + (f" · {len(open_conds)} condition(s) before bind" if open_conds else ""))
     return {"verdict": verdict, "dimensions": dims, "checks": sorted(checks, key=lambda ch: (-RANK.get(ch["result"], -1), ch["tier"], ch["rule_id"])), "conditions": conds,
