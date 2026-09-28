@@ -4,6 +4,8 @@ from __future__ import annotations
 from fastapi import APIRouter, Body, File, Header, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 
+from uwc.config import resolve_doc_path
+
 from . import actions as A
 from . import views as V
 from .refdata import COVERHOLDERS
@@ -214,4 +216,4 @@ def sample(name: str):
         d = RT.store.docs.get(files[name])
         if not d:
             raise HTTPException(404, "sample not available")
-        return FileResponse(d["abs_path"], filename=f"sample_{d['filename']}")
+        return FileResponse(resolve_doc_path(d), filename=f"sample_{d['filename']}")

@@ -172,7 +172,7 @@ class Runtime:
     def add_runtime_doc(self, acct: str | None, doc_id: str, doc_type: str, title: str, fmt: str, path: Path, channel: str, term: str | None = "current", **extra) -> dict:
         reg = self.systems["accounts"].get(acct, {}) if acct else {}
         doc = {"doc_id": doc_id, "account_id": acct, "account_name": reg.get("name"), "doc_type": doc_type, "title": title, "filename": path.name,
-               "format": fmt, "received_at": self.clock, "source_channel": channel, "term": term, "runtime": True, "abs_path": str(path),
+               "format": fmt, "received_at": self.clock, "source_channel": channel, "term": term, "runtime": True, "rel_path": str(path.relative_to(RUNTIME_DIR)),
                "size_bytes": path.stat().st_size, **extra}
         self.world_docs[doc_id] = doc
         self.store.docs[doc_id] = doc

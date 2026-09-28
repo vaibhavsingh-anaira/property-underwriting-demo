@@ -5,6 +5,7 @@ import { usePlaybook } from '@/api/client';
 import { Page, Loading, ErrorBox, Badge, MockBadge } from '@/components/ui';
 import { fmtDate } from '@/lib/format';
 import { productById } from '@/products';
+import { Info } from '@/help/Info';
 
 export default function BriefPage() {
   const { pid = '' } = useParams();
@@ -17,7 +18,8 @@ export default function BriefPage() {
   const UL = ({ items }: { items?: string[] }) => <ul className="list-disc space-y-1 pl-5 text-[13.5px] leading-relaxed text-ink-800">{(items ?? []).map((x) => <li key={x}>{x}</li>)}</ul>;
   return (
     <Page crumbs={<Link to={`${prod.base}/pipeline`} className="hover:underline">{prod.name} · Pipeline & mocks</Link>} title="Client brief"
-      actions={<div className="flex gap-2 print:hidden">
+      actions={<div className="flex items-center gap-2 print:hidden">
+        <Info id="player.brief" label="About this page" />
         <Link to={`${prod.base}/pipeline/journey?pb=${pb.id}`} className="inline-flex h-8 items-center gap-1.5 rounded-md border border-line-strong px-3 text-[13px] font-medium hover:bg-ink-50"><Play className="size-3.5" />Open in player</Link>
         <button onClick={() => window.print()} className="inline-flex h-8 items-center gap-1.5 rounded-md bg-ink-900 px-3 text-[13px] font-medium text-white hover:bg-ink-800"><Printer className="size-3.5" />Print / save PDF</button>
       </div>}>

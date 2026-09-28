@@ -16,7 +16,7 @@ from fastapi.responses import FileResponse, JSONResponse, PlainTextResponse
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
-from uwc.config import CARRIER, DEMO_END, DEMO_START, WORLD_DIR
+from uwc.config import CARRIER, DEMO_END, DEMO_START, WORLD_DIR, resolve_doc_path
 from uwc import fulfilment as F
 from uwc import playbooks as PB
 from uwc import products as PR
@@ -42,7 +42,7 @@ def uid_of(x_user_id: str | None) -> str:
 
 
 def doc_path(doc: dict) -> Path:
-    return Path(doc["abs_path"]) if doc.get("runtime") else WORLD_DIR / doc["path"]
+    return resolve_doc_path(doc)
 
 
 def days(a: str, b: str) -> int:

@@ -16,6 +16,7 @@ from email.utils import format_datetime
 from datetime import datetime
 from pathlib import Path
 
+from uwc.config import resolve_doc_path
 from uwc.ingest import interpret as I
 from uwc.ingest import pdf_extract as PX
 from uwc.refdata import CITIES, OCCUPANCY, USER_BY_ID, ZONES
@@ -603,7 +604,7 @@ def final_decision(rt, cid: str, decision: str, uid: str, on: str, note: str = "
 
 def readback(rt, c: dict, doc: dict, a: dict) -> dict:
     """Read the policy-admin document back with the extractor and compare it with the committed action."""
-    ex = PX.extract(Path(doc["abs_path"]), I.TABLES)
+    ex = PX.extract(resolve_doc_path(doc), I.TABLES)
     got = {}
     for kv in ex.kvs:
         if kv.label in I.CONTRACT_KV:

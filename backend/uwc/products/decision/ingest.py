@@ -14,6 +14,7 @@ from datetime import date
 from email import policy as email_policy
 from pathlib import Path
 
+from uwc.config import resolve_doc_path
 from uwc.ingest import interpret as I
 from uwc.ingest import pdf_extract as PX
 from uwc.ingest.sov import METHOD as SOV_METHOD, map_construction, map_occupancy, map_sprinkler, parse_sov
@@ -48,7 +49,7 @@ def _num(s: str) -> float | None:
 
 # ============================================================================ SOV
 def ingest_sov(rt, cid: str, doc: dict, d: str) -> int:
-    p = parse_sov(Path(doc["abs_path"]))
+    p = parse_sov(resolve_doc_path(doc))
     rt.store.doc_issues[doc["doc_id"]] = p.issues
     rt.store.doc_method[doc["doc_id"]] = SOV_METHOD
     for row in p.rows:
@@ -76,7 +77,7 @@ APP_ACCT = {"Named insured": ("named_insured", str), "FEIN": ("fein", str), "Yea
 
 
 def ingest_application(rt, cid: str, doc: dict, d: str) -> int:
-    ex = PX.extract(Path(doc["abs_path"]))
+    ex = PX.extract(resolve_doc_path(doc))
     did = doc["doc_id"]
     rt.store.doc_method[did] = PX.METHOD + " · ACORD 125/140 field map"
     fam, lab = "Broker / insured", "ACORD application"
@@ -154,7 +155,7 @@ INSP = {"Construction": ("construction_class", lambda s: map_construction(s.spli
 
 
 def ingest_inspection(rt, cid: str, doc: dict, d: str) -> int:
-    ex = PX.extract(Path(doc["abs_path"]))
+    ex = PX.extract(resolve_doc_path(doc))
     did = doc["doc_id"]
     rt.store.doc_method[did] = PX.METHOD + " · loss-control report map"
     sd = next((kv.value for kv in ex.kvs if kv.label == "Survey date"), d)
@@ -180,7 +181,7 @@ def ingest_inspection(rt, cid: str, doc: dict, d: str) -> int:
 
 # ============================================================================ loss runs
 def ingest_loss_run(rt, cid: str, doc: dict, d: str) -> int:
-    ex = PX.extract(Path(doc["abs_path"]), LR_TABLE)
+    ex = PX.extract(resolve_doc_path(doc), LR_TABLE)
     did = doc["doc_id"]
     rt.store.doc_method[did] = PX.METHOD + " · loss-run table map"
     lab = doc["title"]
@@ -216,7 +217,7 @@ def ingest_loss_run(rt, cid: str, doc: dict, d: str) -> int:
 
 # ============================================================================ manuscript wording
 def ingest_manuscript(rt, cid: str, doc: dict, d: str) -> int:
-    ex = PX.extract(Path(doc["abs_path"]))
+    ex = PX.extract(resolve_doc_path(doc))
     did = doc["doc_id"]
     rt.store.doc_method[did] = PX.METHOD + " · clause pattern map (production: LLM clause → structured term, human-confirmed)"
     text = " ".join(t for t, *_ in ex.paragraphs)
@@ -246,7 +247,7 @@ EMAIL = [
 
 
 def ingest_email(rt, cid: str, doc: dict, d: str) -> int:
-    msg = email.message_from_bytes(Path(doc["abs_path"]).read_bytes(), policy=email_policy.default)
+    msg = email.message_from_bytes(resolve_doc_path(doc).read_bytes(), policy=email_policy.default)
     body = msg.get_body(preferencelist=("plain",)).get_content()
     did = doc["doc_id"]
     rt.store.doc_method[did] = "Email parser v1 (MIME · statement patterns · attachment routing)"
@@ -262,7 +263,7 @@ def ingest_email(rt, cid: str, doc: dict, d: str) -> int:
 
 # ============================================================================ roof schedule / contractor letter (broker replies)
 def ingest_roof_schedule(rt, cid: str, doc: dict, d: str) -> int:
-    ex = PX.extract(Path(doc["abs_path"]), [["Location", "Address", "Roof year"]])
+    ex = PX.extract(resolve_doc_path(doc), [["Location", "Address", "Roof year"]])
     did = doc["doc_id"]
     rt.store.doc_method[did] = PX.METHOD
     n = 0
@@ -277,7 +278,7 @@ def ingest_roof_schedule(rt, cid: str, doc: dict, d: str) -> int:
 
 
 def ingest_contractor_letter(rt, cid: str, doc: dict, d: str) -> int:
-    ex = PX.extract(Path(doc["abs_path"]))
+    ex = PX.extract(resolve_doc_path(doc))
     did = doc["doc_id"]
     rt.store.doc_method[did] = PX.METHOD
     uid = None

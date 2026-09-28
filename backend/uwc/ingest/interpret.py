@@ -14,7 +14,7 @@ from email import policy as email_policy
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
-from uwc.config import WORLD_DIR
+from uwc.config import WORLD_DIR, resolve_doc_path
 from uwc.ingest import pdf_extract as PX
 from uwc.ingest.sov import METHOD as SOV_METHOD, map_construction, map_occupancy, map_sprinkler, parse_sov
 from uwc.ledger.matching import match_rows, std_address, sim
@@ -52,7 +52,7 @@ def pdf_anchor(doc_id: str, page: int, bbox, page_size, text: str | None = None)
 def ingest_document(rt: "Runtime", doc: dict, role: str, date: str, extra: dict | None = None):
     extra = extra or {}
     acct = doc.get("account_id")
-    path = WORLD_DIR / doc["path"] if not doc.get("runtime") else Path(doc["abs_path"])
+    path = resolve_doc_path(doc)
     fn = {
         "sov_prior": _sov_prior, "sov_current": _sov_current, "quote": _contract_doc, "binder": _contract_doc, "policy": _contract_doc,
         "endorsement": _endorsement, "loss_run": _loss_run, "engineering": _engineering, "email": _email, "alarm_certs": _alarm_certs,
