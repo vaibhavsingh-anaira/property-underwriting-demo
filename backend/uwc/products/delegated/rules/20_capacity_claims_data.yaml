@@ -189,8 +189,8 @@
   outcome: BREACH
   severity: MEDIUM
   origin: standard_library
-  observed: "{bdx.missing_list}"
-  expected: "All mandatory CRS v5.2 fields"
+  observed: "Missing: {bdx.missing_list}"
+  expected: "All mandatory CRS v5.2 fields present"
   source: "Lloyd's Coverholder Reporting Standards v5.2"
   impact: none
   action: "Request resubmission in the CRS template"

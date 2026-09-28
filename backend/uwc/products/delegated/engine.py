@@ -211,7 +211,7 @@ RULE_FIELDS = {"DA.CLASS.PERMITTED": ("class_code", "classes"), "DA.CLASS.REFERR
                "DA.PRICING.BELOW_RANGE": ("gross_premium", "tolerance_low"), "DA.REFERRAL.TIV": ("tiv", "ref_tiv_any"), "DA.REFERRAL.TIER1_TIV": ("tiv", "ref_tiv_tier1"),
                "DA.REFERRAL.YEAR_BUILT": ("year_built", "ref_year_built"), "DA.PERIOD.AUTHORITY": ("written_date", "period_start"),
                "DA.RESTRICTION.REFER": ("tiv", "aggregates"), "DA.RESTRICTION.STOP": ("tiv", "aggregates"), "DA.COMMISSION.CONTRACT": ("commission_pct", "commission_pct"),
-               "DA.CANX.RETURN_PREMIUM": ("gross_premium", "commission_pct")}
+               "DA.CANX.RETURN_PREMIUM": ("gross_premium", None)}
 
 
 def _auth_anchor(anchors: dict, rule_id: str, r: dict, env: dict) -> dict | None:
