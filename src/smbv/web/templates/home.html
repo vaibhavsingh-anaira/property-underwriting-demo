@@ -1,0 +1,15 @@
+{% extends "base.html" %}{% block body %}
+<div class="card stats">
+ <div class="stat"><b>{{ "{:,}".format(stats.businesses) }}</b><span class="mute">businesses</span></div>
+ <div class="stat"><b>{{ "{:,}".format(stats.observations) }}</b><span class="mute">observations</span></div>
+ <div class="stat"><b>{{ "{:,}".format(stats.sites) }}</b><span class="mute">websites fetched</span></div>
+ <div class="stat"><b>{{ "{:,}".format(stats.extracted) }}</b><span class="mute">read by Gemini</span></div>
+ <div class="stat"><b>{{ "{:,}".format(stats.with_conflicts) }}</b><span class="mute">with conflicting sources</span></div>
+</div>
+<div class="card"><form method="get"><input name="q" value="{{ q }}" placeholder="Business name, street or inspection ID" style="width:340px">
+ <label class="small"><input type="checkbox" name="only_conflicts" value="true" {% if only_conflicts %}checked{% endif %}> only conflicts</label>
+ <button>Search</button></form></div>
+<div class="card"><table><tr><th>Business</th><th>Address</th><th>Cuisine</th><th>Sources</th><th>Conflicts</th></tr>
+{% for r in rows %}<tr><td><a href="/b/{{ r.business_id }}">{{ r.name }}</a></td><td>{{ r.address }}</td><td class="mute">{{ r.cuisine or "" }}</td>
+<td>{{ r.sources }}</td><td>{% if r.conflicts %}<span class="pill bad">{{ r.conflicts }}</span>{% endif %}</td></tr>{% endfor %}</table></div>
+{% endblock %}

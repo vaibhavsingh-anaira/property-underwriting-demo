@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+data/
+*.duckdb
+config.local.yaml
+*.log
+data_e2e/
+.pytest_cache/

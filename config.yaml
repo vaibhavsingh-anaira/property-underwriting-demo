@@ -1,0 +1,29 @@
+# Copy to config.local.yaml to override (gitignored). Every value here is used.
+data_dir: data
+scope:
+  boroughs: [MANHATTAN]          # any of MANHATTAN, BROOKLYN, QUEENS, BRONX, STATEN ISLAND
+  since: "2022-01-01"            # history window for 311 complaints and building permits
+  osm_bbox: [40.68, -74.03, 40.885, -73.905]   # south, west, north, east covering the boroughs above
+socrata:
+  app_token_env: SOCRATA_APP_TOKEN   # optional; raises rate limits
+  page_size: 50000
+  single_request_max: 3000000   # sources up to this size download as one consistent snapshot
+crawl:
+  max_sites: 400                 # websites fetched per run (demo); null = all linked businesses
+  workers: 12
+  headless_fallback: true        # render JS sites with Chromium when plain fetch is thin
+  min_words: 400
+extract:
+  max_businesses: 400            # LLM calls per run (demo); null = all with website text
+  workers: 8
+  max_chars: 24000
+gemini:
+  model: gemini-2.5-flash
+  project: gen-lang-client-0069431661
+  location: us-central1
+  credentials:                   # same mechanism as tampering-check / preinspection-car-ml
+    source: aws_secret           # aws_secret | file | adc | api_key
+    secret_name: gcp/gemini-credentials
+    secret_region: ap-south-1
+maps_live:
+  enabled: true                  # live Google Maps review insight in the app; never stored

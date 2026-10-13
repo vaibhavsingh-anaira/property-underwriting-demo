@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SMB Risk Verification</title>
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--ink:#1d2433;--mute:#667085;--line:#e4e7ec;--acc:#1f5fa8;--bad:#b42318;--badbg:#fef3f2;--ok:#067647;--okbg:#ecfdf3;--warn:#b54708;--warnbg:#fffaeb}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#171e2c;--ink:#e6e9ef;--mute:#98a2b3;--line:#2a3345;--acc:#7cb4ff;--bad:#ff8a80;--badbg:#3a1d1d;--ok:#6ce9a6;--okbg:#123326;--warn:#fdb022;--warnbg:#3a2a10}}
+*{box-sizing:border-box}body{margin:0;font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--card);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;gap:16px;align-items:center}
+header a{color:var(--ink);text-decoration:none;font-weight:600}main{max-width:1180px;margin:0 auto;padding:20px 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--mute);font-weight:600}a{color:var(--acc)}.mute{color:var(--mute)}.small{font-size:12px}
+.pill{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12px;font-weight:600}
+.bad{background:var(--badbg);color:var(--bad)}.ok{background:var(--okbg);color:var(--ok)}.warn{background:var(--warnbg);color:var(--warn)}
+.stats{display:flex;gap:12px;flex-wrap:wrap}.stat{flex:1;min-width:150px}.stat b{display:block;font-size:22px}
+input,select,button{font:inherit;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
+button{background:var(--acc);color:#fff;border:0;cursor:pointer}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+details summary{cursor:pointer;color:var(--acc)}
+</style></head><body><header><a href="/">SMB Risk Verification</a><span class="mute small">Real NYC &amp; NY State public records · business websites read by Gemini</span></header>
+<main>{% block body %}{% endblock %}</main></body></html>

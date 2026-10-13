@@ -1,0 +1,35 @@
+{% extends "base.html" %}{% block body %}
+<div class="card"><h2 style="margin:0">{{ b.name }}</h2>
+<div class="mute">{{ b.house }} {{ b.street }}, {{ b.boro }} {{ b.zip }} · {{ b.cuisine or "" }} · inspection ID
+<a href="https://data.cityofnewyork.us/resource/43nn-pn8j.json?camis={{ b.business_id }}">{{ b.business_id }}</a> · BIN {{ b.bin }} · BBL {{ b.bbl }}
+{% if b.tenants_in_lot > 1 %}· <span class="pill warn">{{ b.tenants_in_lot }} food businesses share this tax lot</span>{% endif %}</div></div>
+
+<div class="card"><h3 style="margin-top:0">Verify an application</h3>
+<form method="post" action="/b/{{ b.business_id }}/verify"><div class="grid">
+{% for f in groups["Application facts"] %}<label>{{ f.label }}<br><select name="{{ f.fact }}"><option value="">not asked</option>
+<option value="yes" {% if claims and claims.get(f.fact)=="yes" %}selected{% endif %}>applicant says yes</option>
+<option value="no" {% if claims and claims.get(f.fact)=="no" %}selected{% endif %}>applicant says no</option></select></label>{% endfor %}
+</div><p><button>Check against records</button></p></form>
+{% if verdicts %}<table><tr><th>Question</th><th>Applicant</th><th>Verdict</th><th>Evidence</th></tr>
+{% for v in verdicts %}<tr><td>{{ v.label }}</td><td>{{ v.claim }}</td>
+<td><span class="pill {{ 'bad' if v.verdict.startswith('Contra') else 'warn' if v.verdict.startswith('Weak') else 'ok' if v.verdict=='Consistent' else '' }}">{{ v.verdict }}</span></td>
+<td class="small">{% for o in v.against %}<div>✗ <b>{{ o.source }}</b>: {{ o.evidence }} <a href="{{ o.ref }}">source</a></div>{% endfor %}
+{% for o in v.support %}<div>✓ <b>{{ o.source }}</b>: {{ o.evidence }} <a href="{{ o.ref }}">source</a></div>{% endfor %}</td></tr>{% endfor %}</table>{% endif %}
+</div>
+
+{% for g, items in groups.items() %}<div class="card"><h3 style="margin-top:0">{{ g }}</h3><table>
+<tr><th style="width:24%">Fact</th><th style="width:14%">Resolved</th><th>Evidence (highest trust first)</th></tr>
+{% for f in items %}<tr><td>{{ f.label }}</td>
+<td>{% if f.value is defined %}<b>{{ f.value }}</b>{% if f.conflict %} <span class="pill bad">conflict</span>{% endif %}{% else %}<span class="mute">no record</span>{% endif %}</td>
+<td class="small">{% for o in f.obs %}<div><span class="mute">[{{ o.source_type }}]</span> <b>{{ o.source }}</b> → {{ o.value }} · {{ o.evidence }}
+ {% if o.ref %}<a href="{{ o.ref }}" target="_blank">source</a>{% endif %}</div>{% endfor %}</td></tr>{% endfor %}</table></div>{% endfor %}
+
+<div class="card"><h3 style="margin-top:0">Record links</h3><table><tr><th>Source</th><th>Record</th><th>Matched by</th><th>Score</th><th>Distance</th></tr>
+{% for l in links %}<tr><td>{{ l.source }}</td><td class="small">{{ l.source_key }}</td><td>{{ l.method }}</td><td>{{ "%.0f"|format(l.score) }}</td>
+<td>{% if l.distance_m == l.distance_m and l.distance_m is not none %}{{ "%.0f"|format(l.distance_m) }} m{% endif %}</td></tr>{% endfor %}</table>
+{% if page %}<p class="small mute">Website: <a href="{{ page.final_url or page.url }}">{{ page.final_url or page.url }}</a> · {{ page.words }} words · {{ page.method }} · fetched {{ page.fetched_at[:16] }}</p>{% endif %}</div>
+
+{% if maps_live %}<div class="card"><h3 style="margin-top:0">Google Maps review insight <span class="pill warn">live, not stored, not used in any fact</span></h3>
+<button onclick="this.disabled=true;this.textContent='Loading…';fetch('/b/{{ b.business_id }}/reviews').then(r=>r.text()).then(h=>{document.getElementById('rv').innerHTML=h;this.remove()})">Load live insight</button>
+<div id="rv"></div></div>{% endif %}
+{% endblock %}

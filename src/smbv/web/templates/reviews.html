@@ -1,0 +1,3 @@
+<div style="white-space:pre-wrap;margin-top:8px">{{ r.text }}</div>
+{% if r.sources %}<p class="small">Sources: {% for s in r.sources %}<a href="{{ s.uri }}" target="_blank" translate="no">{{ s.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}
+ · <span translate="no">Google Maps</span></p>{% endif %}
