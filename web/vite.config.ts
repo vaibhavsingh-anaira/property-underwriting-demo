@@ -10,5 +10,6 @@ export default defineConfig({
     port: 5173,
     // UWC_API_PORT lets an isolated API (own runtime dir) back a second dev server during development
     proxy: { '/api': { target: `http://127.0.0.1:${process.env.UWC_API_PORT ?? 8765}`, changeOrigin: true } },
+    allowedHosts: ['.ngrok-free.dev', '.ngrok-free.app', '.ngrok.app', '.ngrok.io'],
   },
 })

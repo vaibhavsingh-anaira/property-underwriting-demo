@@ -662,6 +662,16 @@ def claims_eng(acct: str):
 
 
 # ============================================================================ workflow actions
+@app.get("/api/findings/{fid}")
+def get_finding(fid: str):
+    with LOCK:
+        try:
+            f = RT.find_finding(fid)
+        except KeyError:
+            raise HTTPException(404, "finding not found")
+        return finding_payload(f)
+
+
 @app.post("/api/findings/{fid}/disposition")
 def disposition(fid: str, b: dict = Body(...), x_user_id: str | None = Header(None)):
     with LOCK:
@@ -1024,9 +1034,16 @@ def data_quality():
                 if e.match_status == "AMBIGUOUS":
                     tgt = locs.get(e.proposed_target)
                     last_alias = e.aliases[-1] if e.aliases else {}
+                    doc_id = last_alias.get("doc_id")
+                    anchor = None
+                    for oid in RT.store.by_subject.get((e.location_uid, "address"), []):
+                        o = RT.store.obs[oid]
+                        if o.doc_id == doc_id:
+                            anchor = o.anchor
                     queue.append({"item_id": f"{a}|{e.location_uid}", "account_id": a, "account_name": RT.systems["accounts"][a]["name"], "kind": "LOCATION_MATCH",
                                   "label": f"'{last_alias.get('address', e.address)}' → {e.label}",
-                                  "detail": f"{e.match_method} · score {e.match_score} · expiring address {e.address}", "options": []})
+                                  "detail": f"{e.match_method} · score {e.match_score} · expiring address {e.address}", "options": [],
+                                  "doc_id": doc_id, "anchor": anchor})
             if not ren.pass_no:
                 continue
             low = sum(1 for o in RT.store.account_obs(a) if o.confidence < 0.85 and o.obs_type in ("N", "C"))

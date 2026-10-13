@@ -52,6 +52,8 @@ export const useFields = (accountId: string | undefined, subjectId?: string) =>
   useQuery({ queryKey: ['fields', accountId, subjectId], queryFn: () => api<T.ResolvedField[]>(`/accounts/${accountId}/fields` + qs({ subject_id: subjectId })), enabled: !!accountId });
 export const useObservation = (obsId: string | null | undefined) =>
   useQuery({ queryKey: ['obs', obsId], queryFn: () => api<T.ObservationDetail>(`/observations/${obsId}`), enabled: !!obsId });
+export const useFinding = (id: string | null | undefined) =>
+  useQuery({ queryKey: ['finding', id], queryFn: () => api<T.Finding>(`/findings/${id}`), enabled: !!id });
 export const useReferrals = (status?: string) =>
   useQuery({ queryKey: ['referrals', status], queryFn: () => api<T.Referral[]>('/referrals' + qs({ status })) });
 export const useDocuments = (f: { account_id?: string; type?: string; format?: string; q?: string } = {}) =>

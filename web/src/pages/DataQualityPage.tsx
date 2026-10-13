@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Maximize2 } from 'lucide-react';
 import { useDataQuality, useMatchDecision } from '@/api/client';
 import type { DataQualitySummary } from '@/api/types';
 import { Page, Card, Stat, Badge, Button, Loading, ErrorBox, Empty, ScoreRing, cx } from '@/components/ui';
+import { useEvidence } from '@/components/evidence';
 import { num, pct } from '@/lib/format';
 import { Bar } from './common';
 import { Info } from '@/help/Info';
@@ -65,6 +67,7 @@ export default function DataQualityPage() {
 
 function ReviewQueue({ d, className }: { d: DataQualitySummary; className?: string }) {
   const mut = useMatchDecision();
+  const ev = useEvidence();
   const [choice, setChoice] = useState<Record<string, string>>({});
   const KIND = { LOCATION_MATCH: { l: 'Location match', t: 'high' }, LOW_CONFIDENCE: { l: 'Low confidence', t: 'med' }, MAPPING: { l: 'Header mapping', t: 'info' } } as const;
   return (
@@ -85,6 +88,7 @@ function ReviewQueue({ d, className }: { d: DataQualitySummary; className?: stri
                     <button key={o} onClick={() => setChoice({ ...choice, [r.item_id]: o })} className={cx('rounded-md border px-2 py-0.5 text-[11.5px]', opt === o ? 'border-accent-600 bg-accent-50 font-medium text-accent-700' : 'border-line-strong text-ink-700 hover:bg-ink-50')}>{o}</button>
                   ))}
                   <span className="flex-1" />
+                  {r.doc_id && <Button size="sm" variant="ghost" icon={<Maximize2 className="size-3.5" />} onClick={() => ev.openDoc(r.doc_id!, r.anchor)}>View source</Button>}
                   <Button size="sm" variant="ghost" disabled={mut.isPending} onClick={() => mut.mutate({ item_id: r.item_id, decision: 'REJECT' })}>Reject</Button>
                   <Button size="sm" variant="primary" loading={mut.isPending && mut.variables?.item_id === r.item_id} onClick={() => mut.mutate({ item_id: r.item_id, decision: 'CONFIRM', option: opt })}>Confirm</Button>
                 </div>

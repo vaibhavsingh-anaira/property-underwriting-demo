@@ -568,7 +568,7 @@ export interface DataQualitySummary {
   extraction: { documents: number; fields: number; avg_confidence: number; human_review_queue: number };
   matching: { matched: number; new: number; deleted: number; ambiguous: number; merged: number; split: number };
   accounts: DataQualityAccount[];
-  review_queue: { item_id: string; account_id: string; account_name: string; kind: 'LOCATION_MATCH' | 'LOW_CONFIDENCE' | 'MAPPING'; label: string; detail: string; options?: string[] }[];
+  review_queue: { item_id: string; account_id: string; account_name: string; kind: 'LOCATION_MATCH' | 'LOW_CONFIDENCE' | 'MAPPING'; label: string; detail: string; options?: string[]; doc_id?: string | null; anchor?: Anchor | null }[];
 }
 
 // ---------------------------------------------------------------- pipeline & demo --

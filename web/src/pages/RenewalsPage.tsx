@@ -2,9 +2,10 @@ import { useMemo, useRef, useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ChevronDown, ChevronRight, ChevronsUpDown, Search, X, Zap } from 'lucide-react';
-import { api, getCurrentUserId, useRenewals, useUsers } from '@/api/client';
-import type { RenewalQueueItem } from '@/api/types';
+import { api, getCurrentUserId, useFinding, useRenewals, useUsers } from '@/api/client';
+import type { FindingBrief, RenewalQueueItem } from '@/api/types';
 import { Page, Card, Tabs, Input, Select, Button, Badge, Loading, ErrorBox, Empty, ScoreRing, SeverityDot, cx } from '@/components/ui';
+import { useEvidence } from '@/components/evidence';
 import { usd, pct, fmtDate } from '@/lib/format';
 import { ActionChips, NoticeCountdown, PassDots, ScenarioChip, StatusBadge, useHotkeys } from './common';
 import { FAMILY_LABEL, familyMatch } from './common/families';
@@ -167,7 +168,7 @@ function FastTrackLane({ items, open, onToggle }: { items: RenewalQueueItem[]; o
           <table className="dt">
             <thead><tr>
               <th className="w-8"><input type="checkbox" checked={all} onChange={() => setSel(all ? new Set() : new Set(items.map((i) => i.account_id)))} className="accent-[var(--color-accent-600)]" /></th>
-              <th>Account</th><th>Expiry</th><th>Underwriter</th><th className="r">TIV change</th><th className="r">Premium</th><th className="r">RARC</th><th className="r">Adequacy</th><th>Integrity</th><th />
+              <th>Account</th><th>Expiry</th><th>Underwriter</th><th className="r">TIV change</th><th className="r">Premium</th><th className="r">RARC</th><th className="r">Adequacy</th><th>Integrity</th><th>Findings</th><th />
             </tr></thead>
             <tbody>
               {items.map((i) => (
@@ -181,6 +182,10 @@ function FastTrackLane({ items, open, onToggle }: { items: RenewalQueueItem[]; o
                   <td className="num r text-ok">{pct(i.rarc, 1, true)}</td>
                   <td className="num r">{pct(i.adequacy)}</td>
                   <td><ScoreRing score={i.integrity_score} size={26} /></td>
+                  <td className="max-w-[220px]">
+                    {i.top_findings.length === 0 ? <span className="text-ink-400">None material</span> :
+                      i.top_findings.slice(0, 2).map((f) => <FindingChip key={f.finding_id} f={f} />)}
+                  </td>
                   <td className="r"><Button size="sm" onClick={() => confirm.mutate([i.account_id])} disabled={confirm.isPending}>Confirm</Button></td>
                 </tr>
               ))}
@@ -190,5 +195,16 @@ function FastTrackLane({ items, open, onToggle }: { items: RenewalQueueItem[]; o
         </div>
       )}
     </Card>
+  );
+}
+
+function FindingChip({ f }: { f: FindingBrief }) {
+  const ev = useEvidence();
+  const { data } = useFinding(f.finding_id);
+  return (
+    <button onClick={(e) => { e.stopPropagation(); if (data) ev.openFinding(data); }} title={f.title}
+      className="flex w-full items-center gap-1.5 truncate text-left text-[12px] text-ink-700 hover:text-accent-700">
+      <SeverityDot s={f.severity} /><span className="truncate underline decoration-accent-500/50 decoration-dotted underline-offset-2">{f.title}</span>
+    </button>
   );
 }

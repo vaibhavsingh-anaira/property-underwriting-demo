@@ -221,7 +221,7 @@ def parse_file(path: Path, kind: str, expect: dict | None = None) -> dict:
         if f:
             cols[f] = ci
             if how == "fuzzy":
-                iss.append({"code": "LOW_CONFIDENCE_MAPPING", "severity": "LOW", "label": f"Header '{v}' mapped to {fields[f][0]} by similarity ({conf:.2f}) — confirm",
+                iss.append({"code": "LOW_CONFIDENCE_MAPPING", "severity": "LOW", "label": f"Header '{v}' mapped to {fields[f][0]} by similarity ({conf:.2f}) — review",
                             "cell": f"{letter}{hr + 1}", "field": f, "row": hr + 1})
         else:
             iss.append({"code": "UNMAPPED_COLUMN", "severity": "LOW", "label": f"Column '{v}' does not map to a CRS v5.2 field — ignored", "cell": f"{letter}{hr + 1}", "field": None, "row": hr + 1})
