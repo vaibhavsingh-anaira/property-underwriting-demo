@@ -15,6 +15,26 @@ Each candidate below was checked against real data before being listed. "Measure
 | 6 | **Property hazard for BOP** | Flood and storm exposure of the premises | PLUTO flood flags `firm07_flag`, `pfirm15_flag` ([64uk-42ks](https://data.cityofnewyork.us/d/64uk-42ks)); [Hurricane Evacuation Zones](https://data.cityofnewyork.us/d/epne-qv9x) | **730** restaurants (6.9%) on lots in the FEMA 1% flood zone (2007 FIRM or 2015 preliminary FIRM) | Evacuation zones need a point-in-polygon step; not measured yet |
 | 7 | Industry claim benchmark | What injuries does this industry produce in NYC? | [NY WCB assembled claims](https://data.ny.gov/d/jshw-gkgu) | 35,019 accommodation and food claims injured in New York County | **No employer name**: benchmark only, cannot be attributed to a business |
 
+## Built into the platform (14 Oct 2026)
+Every business page now shows these, each with its source record linked. Counts are Manhattan.
+
+| # | Shown as | Businesses with a value |
+|---|---|---|
+| 1 | Employees (PPP jobs reported), Industry code (PPP NAICS) | 1,905 (18%), median 15 jobs |
+| 2 | Liquor licence type; Bar indicators (licence type Club/Cabaret/Tavern, OpenStreetMap bar/pub, PPP NAICS 722410) | 4,548 licence types; 757 with a bar signal |
+| 3 | Changes in the last 12 months: health closures, liquor licence applications at the address, licences in the inactive list (with the business's current active licence shown alongside), new DOB/ECB violations on the building | 3,616 with at least one event |
+| 4 | FDNY fire extinguisher summonses; Kitchen fire work permits (whole building) | 620 with extinguisher summonses; 4,162 buildings with kitchen, hood, exhaust, sprinkler or suppression permits |
+| 5 | NYC licences held by the operator (other premises listed) | 294 operators with 2+ distinct NYC premises |
+| 6 | FEMA 1% flood zone (tax lot); Hurricane evacuation zone (official polygons) | 740 in a flood zone; 4,260 in zones 1-6 (422 in zone 1) |
+| 7 | Industry benchmark card: workers' comp claims by cause | 35,019 claims, industry-level only |
+
+Only facts stated in a source record are shown; nothing is inferred. For that reason two items are not built:
+- **Decoding licence class codes:** no published SLA source maps the dataset's class numbers (0340, 0240, ...) to licence
+  types; the retail fee chart uses a different numbering. The page shows the class number and description as published.
+- **Drinks share of receipts from website menus:** a menu lists items, not sales; any share would be an estimate, not a record.
+
+Extension 5 counts distinct premises, so it is lower than the 771 above, which counts licences.
+
 ## Recommended order
 1. **Extensions 1 and 2 together.** They check the two inputs that drive premium for a restaurant: its class and its size.
    Misclassification is the documented leakage ([Verisk: about 52% of small commercial records carry the wrong industry

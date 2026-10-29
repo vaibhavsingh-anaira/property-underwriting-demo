@@ -25,7 +25,8 @@ SOURCES = {
                        "borough in ({upper_311}) and created_date >= '{since}' and complaint_type in "
                        "('Food Establishment','Food Poisoning','Noise - Commercial')"),
     "pluto": ("data.cityofnewyork.us", "64uk-42ks",
-              "bbl,address,bldgclass,landuse,yearbuilt,yearalter1,yearalter2,numfloors,bldgarea,comarea,retailarea,numbldgs,ownername,latitude,longitude",
+              "bbl,address,bldgclass,landuse,yearbuilt,yearalter1,yearalter2,numfloors,bldgarea,comarea,retailarea,numbldgs,ownername,latitude,longitude,"
+              "firm07_flag,pfirm15_flag",
               "borough in ({abbr})"),
     "dob_violations": ("data.cityofnewyork.us", "3h2n-5cm9",
                        "isn_dob_bis_viol,bin,issue_date,violation_type,violation_category,description,disposition_date",
@@ -49,13 +50,24 @@ SOURCES = {
                    "business_legal_name,assumed_name_s,street,borough,postcode,license_type,license_status,"
                    "license_issue_date,license_expiration_date,latitude,longitude,bin,bbl",
                    "borough in ({title})"),
+    # liquor licence applications not yet decided, and licences no longer active (change alerts)
+    "sla_pending": ("data.ny.gov", "f8i8-k2gm",
+                    "application_id,premises_county,description,legalname,actual_address_of_premises,zip_code,received_date,status",
+                    "premises_county in ('New York','Kings','Queens','Bronx','Richmond')"),
+    "sla_inactive": ("data.ny.gov", "6dg3-2z7i",
+                     "license_permit_id,premises_county,description,legalname,actual_address_of_premises,zip_code,"
+                     "original_issue_date,expiration_date",
+                     "premises_county in ('New York','Kings','Queens','Bronx','Richmond')"),
 }
-DATASET_URL = {k: f"https://{d}/d/{i}" for k, (d, i, _, _) in SOURCES.items()}
+DATASET_URL = {k: f"https://{d}/d/{i}" for k, (d, i, _, _) in SOURCES.items()} | {
+    "ppp": "https://data.sba.gov/dataset/ppp-foia", "wcb": "https://data.ny.gov/d/jshw-gkgu",
+    "evac": "https://data.cityofnewyork.us/d/epne-qv9x"}
 # Deterministic order for the paged fallback (only used above `single_request_max` rows).
 ORDER = {"inspections": "camis,inspection_date,violation_code", "liquor_licences": "licensepermitid", "complaints_311": "unique_key",
          "pluto": "bbl", "dob_violations": "isn_dob_bis_viol", "ecb_violations": "ecb_violation_number",
          "dob_permits": "job_filing_number,work_permit", "fdny_inspections": "bbl,insp_inspect_dt_fk,insptn_typ_cd_fk",
-         "fire_summonses": "ticket_number", "dining_out": "business_legal_name,street"}
+         "fire_summonses": "ticket_number", "dining_out": "business_legal_name,street",
+         "sla_pending": "application_id", "sla_inactive": "license_permit_id"}
 
 
 def _where(template: str) -> str:
@@ -145,7 +157,58 @@ def osm() -> int:
     return len(df)
 
 
+PPP_BASE = "https://data.sba.gov/sites/default/files/distribution/SBA-OCA-2022-07-001/"
+PPP_FILES = ["public_150k_plus_240930.csv", *[f"public_up_to_150k_{i}_240930.csv" for i in range(1, 13)]]
+PPP_COLS = ["LoanNumber", "DateApproved", "BorrowerName", "BorrowerAddress", "BorrowerCity", "BorrowerZip", "ProjectCountyName",
+            "JobsReported", "NAICSCode", "PAYROLL_PROCEED", "CurrentApprovalAmount", "BusinessAgeDescription", "BusinessType"]
+
+
+def ppp() -> int:
+    """SBA Paycheck Protection Program loans (2020-21), food service (NAICS 722*) in the scope's counties.
+    Streamed file by file (about 5.5 GB in total); only the matching rows are kept."""
+    counties = {c.upper() for c in scope_values("county")}
+    frames = []
+    for f in PPP_FILES:
+        for chunk in pd.read_csv(PPP_BASE + f, dtype=str, usecols=PPP_COLS + ["ProjectState"], chunksize=200_000,
+                                 encoding="latin-1"):
+            frames.append(chunk[(chunk.ProjectState == "NY") & chunk.NAICSCode.fillna("").str.startswith("722")
+                                & chunk.ProjectCountyName.str.upper().isin(counties)][PPP_COLS])
+        print(f"  ppp: {f} done, {sum(len(x) for x in frames):,} loans kept", flush=True)
+    df = pd.concat(frames, ignore_index=True).drop_duplicates("LoanNumber").astype("string")
+    df.to_parquet(raw("ppp"), index=False)
+    print(f"  ppp: {len(df):,} loans -> {raw('ppp')}")
+    return len(df)
+
+
+def wcb() -> int:
+    """NY Workers' Compensation Board claims, accommodation and food services, injured in the scope's counties: an industry
+    benchmark only (the dataset has no employer name)."""
+    counties = sql_list([c.upper() for c in scope_values("county")])
+    rows = _get("https://data.ny.gov/resource/jshw-gkgu.json", {
+        "$select": "wcio_cause_of_injury_desc AS cause, count(*) AS n",
+        "$where": f"industry_desc='ACCOMMODATION AND FOOD SERVICES' AND injured_in_county_name in ({counties})",
+        "$group": "wcio_cause_of_injury_desc", "$order": "n DESC", "$limit": 5000})
+    df = pd.DataFrame(rows).astype({"n": int})
+    df.to_parquet(raw("wcb"), index=False)
+    print(f"  wcb: {df.n.sum():,} claims in {len(df):,} cause groups -> {raw('wcb')}")
+    return len(df)
+
+
+def evac() -> int:
+    """NYC Hurricane Evacuation Zones (official polygons, zones 1-6)."""
+    r = _request("https://data.cityofnewyork.us/resource/epne-qv9x.geojson", {"$limit": 50000})
+    n = len(r.json()["features"])
+    path = raw("evac").replace(".parquet", ".geojson")
+    with open(path, "w") as f:
+        f.write(r.text)
+    print(f"  evac: {n} zone polygons -> {path}")
+    return n
+
+
+EXTRA = {"osm": osm, "ppp": ppp, "wcb": wcb, "evac": evac}
+
+
 def run(only: list[str] | None = None) -> None:
-    for name in only or [*SOURCES, "osm"]:
+    for name in only or [*SOURCES, *EXTRA]:
         print(f"[ingest] {name}")
-        osm() if name == "osm" else socrata(name)
+        EXTRA[name]() if name in EXTRA else socrata(name)

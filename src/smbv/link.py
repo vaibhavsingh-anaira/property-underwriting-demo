@@ -156,6 +156,26 @@ def _summons_links(b: pd.DataFrame, legal_names: dict[str, list[str]]) -> list[d
     return out
 
 
+def link_ppp(b: pd.DataFrame, legal_names: dict[str, list[str]]) -> list[dict]:
+    """PPP loans by borrower name + street address (the loan data has no coordinates). Every matching loan is kept
+    (a business can have a first and a second draw)."""
+    p = pd.read_parquet(raw("ppp"))
+    p[["num", "st"]] = p.BorrowerAddress.apply(lambda a: pd.Series(N.split_address(a)))
+    p["nm"] = p.BorrowerName.map(N.name)
+    by_addr = defaultdict(list)
+    for r in p.itertuples():
+        by_addr[(r.num, r.st)].append(r)
+    out = []
+    for r in b.itertuples():
+        names = [r.nm, *[N.name(x) for x in legal_names.get(r.business_id, [])]]
+        for x in by_addr.get((r.num, r.st), ()):
+            s = _score(x.nm, *names)
+            if s >= 85:
+                out.append({"business_id": r.business_id, "source": "ppp", "source_key": x.LoanNumber,
+                            "method": "borrower name+address", "score": s, "distance_m": None})
+    return out
+
+
 def run() -> None:
     con = connect()
     b = businesses()
@@ -178,6 +198,13 @@ def run() -> None:
     s = _summons_links(b, legal)
     print(f"[link] fire summonses attributed to a business: {len(s):,} across {len({x['business_id'] for x in s}):,} businesses")
     lk = pd.concat([lk, pd.DataFrame(s)], ignore_index=True)
+    try:
+        pp = link_ppp(b, legal)
+        print(f"[link] PPP loans: {len(pp):,} across {len({x['business_id'] for x in pp}):,} businesses "
+              f"({len({x['business_id'] for x in pp}) / len(b):.0%})")
+        lk = pd.concat([lk, pd.DataFrame(pp)], ignore_index=True)
+    except FileNotFoundError:
+        print("[link] PPP loans not ingested (smbv ingest --only ppp); skipped")
     con.execute("CREATE OR REPLACE TABLE businesses AS SELECT * FROM b")
     con.execute("CREATE OR REPLACE TABLE links AS SELECT * FROM lk")
     ln = pd.DataFrame([{"business_id": k, "legal_name": n} for k, v in legal.items() for n in dict.fromkeys(v)])

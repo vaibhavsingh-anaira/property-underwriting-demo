@@ -8,7 +8,20 @@
 </div>
 <div class="card"><form method="get"><input name="q" value="{{ q }}" placeholder="Business name, street or inspection ID" style="width:340px">
  <label class="small"><input type="checkbox" name="only_conflicts" value="true" {% if only_conflicts %}checked{% endif %}> only conflicts</label>
- <button>Search</button></form></div>
+ <button>Search</button> <button type="button" onclick="about.showModal()">ⓘ About this demo</button>
+ <a href="/docs/smb-basic-check.pdf" target="_blank" class="small">Read the PRD (PDF)</a></form></div>
+<dialog id="about" style="max-width:640px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);padding:20px">
+ <h3 style="margin-top:0">About this demo</h3>
+ <p>Small-business insurance applications are self-declared, and answers like "serves alcohol" or "open after midnight" are often wrong.
+ This demo checks those answers for Manhattan restaurants against real public records (NYC health inspections, NYS liquor licences,
+ Dining Out licences, the NY company register, FDNY, DOB, PLUTO, 311 and OpenStreetMap) and each business's own website, and shows the evidence behind every fact.</p>
+ <p>We downloaded these sources, matched businesses across them, and used Gemini to read business websites. Gemini must quote the
+ supporting sentence word for word, and we discard any answer whose quote isn't on the page. Facts are resolved by source trust, and
+ where sources disagree the app flags a <b>conflict</b>: those are the questions an underwriter should ask. Google Maps reviews are shown live only and never stored.</p>
+ <p><a href="/docs/smb-basic-check.pdf" target="_blank">Read the PRD (PDF)</a> for sources, method and success metrics.</p>
+ <form method="dialog" style="text-align:right"><button>Got it</button></form>
+</dialog>
+<script>if(!location.search)about.showModal()</script>
 <div class="card"><table><tr><th>Business</th><th>Address</th><th>Cuisine</th><th>Sources</th><th>Conflicts</th></tr>
 {% for r in rows %}<tr><td><a href="/b/{{ r.business_id }}">{{ r.name }}</a></td><td>{{ r.address }}</td><td class="mute">{{ r.cuisine or "" }}</td>
 <td>{{ r.sources }}</td><td>{% if r.conflicts %}<span class="pill bad">{{ r.conflicts }}</span>{% endif %}</td></tr>{% endfor %}</table></div>

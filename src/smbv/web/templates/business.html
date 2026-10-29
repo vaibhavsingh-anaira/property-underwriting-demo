@@ -2,7 +2,11 @@
 <div class="card"><h2 style="margin:0">{{ b.name }}</h2>
 <div class="mute">{{ b.house }} {{ b.street }}, {{ b.boro }} {{ b.zip }} · {{ b.cuisine or "" }} · inspection ID
 <a href="https://data.cityofnewyork.us/resource/43nn-pn8j.json?camis={{ b.business_id }}">{{ b.business_id }}</a> · BIN {{ b.bin }} · BBL {{ b.bbl }}
-{% if b.tenants_in_lot > 1 %}· <span class="pill warn">{{ b.tenants_in_lot }} food businesses share this tax lot</span>{% endif %}</div></div>
+{% if b.tenants_in_lot > 1 %}· <span class="pill warn">{{ b.tenants_in_lot }} food businesses share this tax lot</span>{% endif %}</div>
+<div style="margin-top:6px">Website:
+{% if site.url %}<a href="{{ site.url if site.url.startswith('http') else 'http://' ~ site.url }}" target="_blank">{{ site.url }}</a>{% endif %}
+<span class="pill {{ 'ok' if site.status == 'read' else 'warn' }}">{{ site.status }}</span>
+{% if site.fetched_at %}<span class="small mute">{{ site.words }} words · {{ site.method }} · fetched {{ site.fetched_at[:16] }}{% if site.note %} · {{ site.note }}{% endif %}</span>{% endif %}</div></div>
 
 <div class="card"><h3 style="margin-top:0">Verify an application</h3>
 <form method="post" action="/b/{{ b.business_id }}/verify"><div class="grid">
@@ -27,7 +31,13 @@
 <div class="card"><h3 style="margin-top:0">Record links</h3><table><tr><th>Source</th><th>Record</th><th>Matched by</th><th>Score</th><th>Distance</th></tr>
 {% for l in links %}<tr><td>{{ l.source }}</td><td class="small">{{ l.source_key }}</td><td>{{ l.method }}</td><td>{{ "%.0f"|format(l.score) }}</td>
 <td>{% if l.distance_m == l.distance_m and l.distance_m is not none %}{{ "%.0f"|format(l.distance_m) }} m{% endif %}</td></tr>{% endfor %}</table>
-{% if page %}<p class="small mute">Website: <a href="{{ page.final_url or page.url }}">{{ page.final_url or page.url }}</a> · {{ page.words }} words · {{ page.method }} · fetched {{ page.fetched_at[:16] }}</p>{% endif %}</div>
+</div>
+
+{% if bench %}<div class="card"><h3 style="margin-top:0">Industry benchmark: workers' comp claims <span class="pill warn">industry-level, not this business</span></h3>
+<p class="small mute">{{ "{:,}".format(bench.total) }} NY Workers' Compensation Board claims in accommodation and food services, injured in New York County.
+The data has no employer name, so it cannot be attributed to a business. <a href="https://data.ny.gov/d/jshw-gkgu" target="_blank">source</a></p>
+<table><tr><th>Cause of injury</th><th>Claims</th><th>Share</th></tr>
+{% for r in bench.rows %}<tr><td>{{ r.cause }}</td><td>{{ "{:,}".format(r.n) }}</td><td>{{ "%.0f"|format(r.share * 100) }}%</td></tr>{% endfor %}</table></div>{% endif %}
 
 {% if maps_live %}<div class="card"><h3 style="margin-top:0">Google Maps review insight <span class="pill warn">live, not stored, not used in any fact</span></h3>
 <button onclick="this.disabled=true;this.textContent='Loading…';fetch('/b/{{ b.business_id }}/reviews').then(r=>r.text()).then(h=>{document.getElementById('rv').innerHTML=h;this.remove()})">Load live insight</button>

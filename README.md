@@ -37,6 +37,10 @@ underwriter should ask.
 | fdny_inspections | [FDNY mandatory inspections](https://data.cityofnewyork.us/d/kfgh-h6re) | BBL |
 | fire_summonses | [OATH hearings, FDNY summonses](https://data.cityofnewyork.us/d/jz4z-kudi) | BBL + respondent name |
 | dining_out | [NYC Dining Out licences](https://data.cityofnewyork.us/d/fpeh-f7ci) | BBL + name, or location + name |
+| ppp | [SBA PPP loan-level data](https://data.sba.gov/dataset/ppp-foia), NAICS 722* | borrower name + address |
+| sla_pending, sla_inactive | [NYS Liquor Authority pending](https://data.ny.gov/d/f8i8-k2gm) and [inactive](https://data.ny.gov/d/6dg3-2z7i) licences | address |
+| evac | [NYC Hurricane Evacuation Zones](https://data.cityofnewyork.us/d/epne-qv9x) | point in polygon |
+| wcb | [NY Workers' Compensation Board claims](https://data.ny.gov/d/jshw-gkgu), accommodation and food | industry benchmark only |
 | corps (on demand) | [NYS Department of State active corporations](https://data.ny.gov/d/n9v6-gdp6) | legal name from licences |
 | osm | OpenStreetMap via Overpass (ODbL, attribution required) | name + location |
 | websites | each business's own site (URL from OpenStreetMap), robots.txt respected | business |
